@@ -26,10 +26,30 @@ namespace DatingApp.API.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
             var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
             return Ok(value); //200 Ok response. If there is no matching id for x, returns 204 no response or NULL
+        }
+
+
+        // POST api/values
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
