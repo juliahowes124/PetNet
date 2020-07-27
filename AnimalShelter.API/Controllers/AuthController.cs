@@ -17,10 +17,12 @@ namespace AnimalShelter.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class AuthController
+    public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        
+
         public AuthController(IAuthRepository repo, IConfiguration config)
         {
             _config = config;
@@ -61,6 +63,7 @@ namespace AnimalShelter.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
+
 
             //Sign our token - this is hashed, want to store in our app settings
             var key = new SymmetricSecurityKey(Encoding.UTF8
