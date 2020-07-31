@@ -39,6 +39,8 @@ import { ErrorInterceptorProvider } from './_services/error-interceptor.service'
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AlertifyService } from './_services/alertify.service';
 import { MessagesComponent } from './messages/messages.component';
+import { RehomeComponent } from './rehome/rehome.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -53,7 +55,9 @@ export function tokenGetter() {
       HomeComponent,
       RegisterComponent,
       AnimalListComponent,
-      MessagesComponent
+      MessagesComponent,
+      RehomeComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
@@ -66,12 +70,12 @@ export function tokenGetter() {
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
       TabsModule.forRoot(),
-      RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
          config: {
             tokenGetter
          }
-      })
+      }),
+      RouterModule.forRoot(appRoutes),
    ],
    providers: [
       AuthService,

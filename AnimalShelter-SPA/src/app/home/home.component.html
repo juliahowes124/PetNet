@@ -1,17 +1,9 @@
 <div class="container mt-5">
-
-      <div *ngIf= "!registerMode" style="text-align: left">
-        <div class="text-center">
-          <button class="btn btn-primary btn-lg mr-1" [routerLink]="['/animals']">Adopt</button>
-          <button class="btn btn-primary btn-lg ml-1" (click)="registerToggle()">Rehome</button>
-        </div>
-      </div>
-
-  <div *ngIf= "registerMode" class="container">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <app-register (cancelRegister)= "cancelRegisterMode($event)"></app-register>
+  <h1 class="text-center">Welcome</h1>
+    <div style="text-align: left">
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg mr-1" [routerLink]="['/animals']"><i class="fa fa-paw"> Adopt</i></button>
+        <button class="btn btn-primary btn-lg ml-1" [routerLink]="['/rehome']"><i class="fa fa-home"> Rehome</i></button>
       </div>
     </div>
-  </div>
 </div>

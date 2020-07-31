@@ -4,7 +4,13 @@
 
   <ul class="navbar-nav mr-auto">
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/animals']">Adopt</a>
+      <a class="nav-link" [routerLink]="['/animals']">Adopters</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/messages']">Guardians</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/messages']">About</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
       <a class="nav-link" [routerLink]="['/messages']">Messages</a>
@@ -12,11 +18,12 @@
   </ul>
 
   <div *ngIf="!loginMode && !loggedIn()">
-    <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Login</button>
-    <button class="btn btn-success my-2 my-sm-0" [routerLink]="['/home']">Sign-Up</button>
+    <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Sign-In</button>
+    <button class="btn btn-secondary my-2 my-sm-0" [routerLink]="['/register']">Register</button>
   </div>
 
   <form *ngIf="loginMode" #loginForm ="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)= "login()">
+    <button class="mr-2" (click)="loginToggle()"><i class="fa fa-arrow-left"> Back</i></button>
     <input class="form-control mr-sm-2" type="text" name="username" 
       placeholder="Username" required [(ngModel)]= "model.username">
     <input class="form-control mr-sm-2" type="password" name="password" 
