@@ -13,7 +13,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 // import { TimeagoModule } from 'ngx-timeago';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-// import { appRoutes } from './routes';
+import { appRoutes } from './routes';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +36,9 @@ import { ErrorInterceptorProvider } from './_services/error-interceptor.service'
 // import { ListsResolver } from './_resolvers/lists.resolver';
 // import { MessagesResolver } from './_resolvers/messages.resolver';
 // import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AnimalListComponent } from './animal-list/animal-list.component';
+import { AlertifyService } from './_services/alertify.service';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -49,6 +52,8 @@ export function tokenGetter() {
       NavComponent,
       HomeComponent,
       RegisterComponent,
+      AnimalListComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -61,7 +66,7 @@ export function tokenGetter() {
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
       TabsModule.forRoot(),
-      // RouterModule.forRoot(appRoutes),
+      RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
          config: {
             tokenGetter
@@ -70,7 +75,7 @@ export function tokenGetter() {
    ],
    providers: [
       AuthService,
-      // AlertifyService,
+      AlertifyService,
       ErrorInterceptorProvider
    ],
    bootstrap: [

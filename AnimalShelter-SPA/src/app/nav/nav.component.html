@@ -1,19 +1,19 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" >Find A Pet</a>
+    <a class="navbar-brand" [routerLink]="['/home']">Find A Pet</a>
 
   <ul class="navbar-nav mr-auto">
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link">Adopt</a>
+      <a class="nav-link" [routerLink]="['/animals']">Adopt</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link">Volunteer</a>
+      <a class="nav-link" [routerLink]="['/messages']">Messages</a>
     </li>
   </ul>
 
   <div *ngIf="!loginMode && !loggedIn()">
     <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Login</button>
-    <button class="btn btn-success my-2 my-sm-0">Sign-Up</button>
+    <button class="btn btn-success my-2 my-sm-0" [routerLink]="['/home']">Sign-Up</button>
   </div>
 
   <form *ngIf="loginMode" #loginForm ="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)= "login()">
