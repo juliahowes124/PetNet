@@ -8,6 +8,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  loginMode = false;
 
   constructor(public authService: AuthService) { }
 
@@ -20,11 +21,16 @@ export class NavComponent implements OnInit {
     }, error => {
       console.log('Failed to login');
     });
+    this.loginToggle();
   }
 
   loggedIn() {
     const token = localStorage.getItem('token');
     return !!token;
+  }
+
+  loginToggle() {
+    this.loginMode = !this.loginMode;
   }
 
   logout() {

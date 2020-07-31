@@ -1,11 +1,11 @@
 <div class="container mt-5">
-  <div *ngIf= "!registerMode" style="text-align: center">
-    <h1>Find your match</h1>
-    <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg" (click)="registerToggle()">Register</button>
-    </div>
-  </div>
+
+      <div *ngIf= "!registerMode" style="text-align: left">
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg mr-1">Adopt</button>
+          <button class="btn btn-primary btn-lg ml-1" (click)="registerToggle()">Rehome</button>
+        </div>
+      </div>
 
   <div *ngIf= "registerMode" class="container">
     <div class="row justify-content-center">

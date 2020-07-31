@@ -15,23 +15,19 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
   registerForm: FormGroup;
-  // bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor() { }
+  constructor(private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    // this.bsConfig = {
-    //   containerClass: 'theme-red'
-    // };
     this.createRegisterForm();
   }
 
   createRegisterForm() {
-    // this.registerForm = this.fb.group({
-    //   username: [''],
-    //   password: [''],
-    //   confirmPassword: ['']
-    // });
+    this.registerForm = this.fb.group({
+      username: [''],
+      password: [''],
+      confirmPassword: ['']
+    });
   }
 
   // passwordMatchValidator(g: FormGroup) {
@@ -39,14 +35,13 @@ export class RegisterComponent implements OnInit {
   // }
 
   register() {
-    console.log('registered');
-      // this.authService.register(this.model).subscribe(() => {
-      //   console.log('registration successful');
-      //   // this.alertify.success('Registration successful');
-      // }, error => {
-      //   // this.alertify.error(error);
-      //   console.log(error);
-      // });
+    this.authService.register(this.model).subscribe(() => {
+      console.log('registration successful');
+      // this.alertify.success('Registration successful');
+    }, error => {
+      // this.alertify.error(error);
+      console.log(error);
+    });
   }
 
   cancel() {
