@@ -10,5 +10,8 @@ namespace AnimalShelter.API.Models
         public ICollection<Photo> Photos { get; set; }
         public string Species { get; set; }
         public DateTime InShelterSince { get; set; }
+        
+        public DateTime TimeLeftToAdopt { get; set; }
+        public int GuardianId { get; set; } 
     }
 }
