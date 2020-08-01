@@ -7,11 +7,10 @@ namespace AnimalShelter.API.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Photo> Photos { get; set; }
         public string Species { get; set; }
         public DateTime InShelterSince { get; set; }
-        
         public DateTime TimeLeftToAdopt { get; set; }
-        public int GuardianId { get; set; } 
+        public int UserId { get; set; } 
+        public ICollection<Photo> Photos { get; set; }
     }
 }
