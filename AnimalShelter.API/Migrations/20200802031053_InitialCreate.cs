@@ -58,8 +58,7 @@ namespace AnimalShelter.API.Migrations
                     Url = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
-                    AnimalId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    AnimalId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,12 +67,6 @@ namespace AnimalShelter.API.Migrations
                         name: "FK_Photos_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Photos_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -88,11 +81,11 @@ namespace AnimalShelter.API.Migrations
                 table: "Photos",
                 column: "AnimalId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Photos_UserId",
-                table: "Photos",
-                column: "UserId",
-                unique: true);
+            // migrationBuilder.CreateIndex(
+            //     name: "IX_Photos_UserId",
+            //     table: "Photos",
+            //     column: "UserId",
+            //     unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

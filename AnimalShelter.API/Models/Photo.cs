@@ -9,6 +9,6 @@ namespace AnimalShelter.API.Models
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public int AnimalId { get; set; }
-        public int UserId { get; set; }
+        // public int UserId { get; set; }
     }
 }

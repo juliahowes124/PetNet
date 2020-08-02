@@ -1,0 +1,97 @@
+[
+  {
+    "Username": "Jane",
+    "Password": "password",
+    "KnownAs": "Jane",
+    "City": "Libertytown",
+    "State": "Connecticut",
+    "Animals": [
+      {
+        "name": "Shannon",
+        "species": "dog",
+        "photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "isMain": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Username": "Marcy",
+    "Password": "password",
+    "KnownAs": "Marcy",
+    "City": "Homestead",
+    "State": "Maine",
+    "Animals": [
+      {
+        "name": "Reba",
+        "species": "dog",
+        "photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "isMain": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Username": "Brandi",
+    "Password": "password",
+    "KnownAs": "Brandi",
+    "City": "Maybell",
+    "State": "American Samoa",
+    "Animals": [
+      {
+        "name": "Hayes",
+        "species": "dog",
+        "photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "isMain": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Username": "Alba",
+    "Password": "password",
+    "KnownAs": "Alba",
+    "City": "Innsbrook",
+    "State": "Marshall Islands",
+    "Animals": [
+      {
+        "name": "Keller",
+        "species": "dog",
+        "photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "isMain": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Username": "Angelique",
+    "Password": "password",
+    "KnownAs": "Angelique",
+    "City": "Nogal",
+    "State": "Nebraska",
+    "Animals": [
+      {
+        "name": "Rios",
+        "species": "dog",
+        "photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "isMain": true
+          }
+        ]
+      }
+    ]
+  }
+]
