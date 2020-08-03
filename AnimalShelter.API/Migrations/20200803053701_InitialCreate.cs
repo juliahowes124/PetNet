@@ -19,7 +19,8 @@ namespace AnimalShelter.API.Migrations
                     KnownAs = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
-                    LastActive = table.Column<DateTime>(nullable: false)
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    ProfilePictureUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,7 +59,7 @@ namespace AnimalShelter.API.Migrations
                     Url = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
-                    AnimalId = table.Column<int>(nullable: true)
+                    AnimalId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,12 +81,6 @@ namespace AnimalShelter.API.Migrations
                 name: "IX_Photos_AnimalId",
                 table: "Photos",
                 column: "AnimalId");
-
-            // migrationBuilder.CreateIndex(
-            //     name: "IX_Photos_UserId",
-            //     table: "Photos",
-            //     column: "UserId",
-            //     unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

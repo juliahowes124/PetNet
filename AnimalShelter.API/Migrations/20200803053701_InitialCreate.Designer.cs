@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelter.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200802031053_InitialCreate")]
+    [Migration("20200803053701_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,15 +64,9 @@ namespace AnimalShelter.API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Photos");
                 });
@@ -97,6 +91,9 @@ namespace AnimalShelter.API.Migrations
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
@@ -123,12 +120,6 @@ namespace AnimalShelter.API.Migrations
                     b.HasOne("AnimalShelter.API.Models.Animal", null)
                         .WithMany("Photos")
                         .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AnimalShelter.API.Models.User", null)
-                        .WithOne("ProfilePicture")
-                        .HasForeignKey("AnimalShelter.API.Models.Photo", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

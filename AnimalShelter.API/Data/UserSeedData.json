@@ -5,13 +5,14 @@
     "KnownAs": "Jane",
     "City": "Libertytown",
     "State": "Connecticut",
+    "ProfilePictureUrl":"https://randomuser.me/api/portraits/women/44.jpg",
     "Animals": [
       {
         "name": "Shannon",
         "species": "dog",
         "photos": [
           {
-            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "url": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "isMain": true
           }
         ]
@@ -24,13 +25,14 @@
     "KnownAs": "Marcy",
     "City": "Homestead",
     "State": "Maine",
+    "ProfilePictureUrl":"https://randomuser.me/api/portraits/women/44.jpg",
     "Animals": [
       {
         "name": "Reba",
         "species": "dog",
         "photos": [
           {
-            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "url": "https://images.pexels.com/photos/57627/pexels-photo-57627.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "isMain": true
           }
         ]
@@ -43,13 +45,14 @@
     "KnownAs": "Brandi",
     "City": "Maybell",
     "State": "American Samoa",
+    "ProfilePictureUrl": "https://randomuser.me/api/portraits/women/44.jpg",
     "Animals": [
       {
         "name": "Hayes",
         "species": "dog",
         "photos": [
           {
-            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "url": "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "isMain": true
           }
         ]
@@ -62,13 +65,14 @@
     "KnownAs": "Alba",
     "City": "Innsbrook",
     "State": "Marshall Islands",
+    "ProfilePictureUrl": "https://randomuser.me/api/portraits/women/44.jpg",
     "Animals": [
       {
         "name": "Keller",
         "species": "dog",
         "photos": [
           {
-            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "url": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
             "isMain": true
           }
         ]
@@ -81,13 +85,14 @@
     "KnownAs": "Angelique",
     "City": "Nogal",
     "State": "Nebraska",
+    "ProfilePictureUrl": "https://randomuser.me/api/portraits/women/44.jpg",
     "Animals": [
       {
         "name": "Rios",
         "species": "dog",
         "photos": [
           {
-            "url": "https://randomuser.me/api/portraits/women/44.jpg",
+            "url": "https://images.pexels.com/photos/4588047/pexels-photo-4588047.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "isMain": true
           }
         ]
