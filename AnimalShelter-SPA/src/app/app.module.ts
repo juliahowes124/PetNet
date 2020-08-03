@@ -19,6 +19,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './_services/auth.service';
+import { AnimalService } from './_services/animal.service';
 import { ErrorInterceptorProvider } from './_services/error-interceptor.service';
 // import { AlertifyService } from './services/alertify.service';
 // import { MemberListComponent } from './members/member-list/member-list.component';
@@ -36,11 +37,13 @@ import { ErrorInterceptorProvider } from './_services/error-interceptor.service'
 // import { ListsResolver } from './_resolvers/lists.resolver';
 // import { MessagesResolver } from './_resolvers/messages.resolver';
 // import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
-import { AnimalListComponent } from './animal-list/animal-list.component';
+
 import { AlertifyService } from './_services/alertify.service';
 import { MessagesComponent } from './messages/messages.component';
 import { RehomeComponent } from './rehome/rehome.component';
 import { LoginComponent } from './login/login.component';
+import { AnimalListComponent } from './animals/animal-list/animal-list/animal-list.component';
+import { AnimalCardComponent } from './animals/animal-list/animal-card/animal-card.component';
 
 
 
@@ -57,7 +60,8 @@ export function tokenGetter() {
       AnimalListComponent,
       MessagesComponent,
       RehomeComponent,
-      LoginComponent
+      LoginComponent,
+      AnimalCardComponent
    ],
    imports: [
       BrowserModule,
@@ -80,6 +84,7 @@ export function tokenGetter() {
    providers: [
       AuthService,
       AlertifyService,
+      AnimalService,
       ErrorInterceptorProvider
    ],
    bootstrap: [

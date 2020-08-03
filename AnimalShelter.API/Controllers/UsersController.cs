@@ -36,7 +36,7 @@ namespace AnimalShelter.API.Controllers
         {
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForInfoDto>(user);
-            return Ok(user);
+            return Ok(userToReturn);
         }
     }
 }

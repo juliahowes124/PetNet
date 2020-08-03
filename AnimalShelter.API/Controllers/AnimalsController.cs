@@ -1,12 +1,14 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AnimalShelter.API.Data;
+using AnimalShelter.API.DTOs;
+using AnimalShelter.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelter.API.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AnimalsController : ControllerBase
@@ -24,7 +26,8 @@ namespace AnimalShelter.API.Controllers
         public async Task<IActionResult> GetAnimals()
         {
             var animals = await _repo.GetAnimals();
-            return Ok(animals);
+            var animalsToReturn = _mapper.Map<IEnumerable<AnimalForListDto>>(animals);
+            return Ok(animalsToReturn);
         }
 
         [HttpGet("{id}")]
