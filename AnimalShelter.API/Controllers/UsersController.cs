@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AnimalShelter.API.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -26,16 +26,16 @@ namespace AnimalShelter.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _repo.GetUsers();
-            // var usersToReturn = _mapper.Map<IEnumerable<UserForInfoDto>>(users);
+            var usersToReturn = _mapper.Map<IEnumerable<UserForInfoDto>>(users);
 
-            return Ok(users);
+            return Ok(usersToReturn);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
-            // var userToReturn = _mapper.Map<UserForInfoDto>(user);
+            var userToReturn = _mapper.Map<UserForInfoDto>(user);
             return Ok(user);
         }
     }

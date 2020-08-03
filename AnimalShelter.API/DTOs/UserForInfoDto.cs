@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using AnimalShelter.API.Models;
 
 namespace AnimalShelter.API.DTOs
 {
-    public class UserForIntoDto
+    public class UserForInfoDto
     {
         public int Id { get; set; }
         public string Username { get; set; }
@@ -12,7 +10,7 @@ namespace AnimalShelter.API.DTOs
         public string City { get; set; }
         public string State { get; set; }
         public DateTime LastActive { get; set; }
-        //  public string ProfilePictureUrl { get; set; }
+        public string ProfilePictureUrl { get; set; }
         // public ICollection<Animal> Animals { get; set; }
     }
 }

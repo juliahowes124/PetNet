@@ -8,7 +8,7 @@ namespace AnimalShelter.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            // CreateMap<User, UserForInfoDto>();
+            CreateMap<User, UserForInfoDto>();
         }
     }
 }

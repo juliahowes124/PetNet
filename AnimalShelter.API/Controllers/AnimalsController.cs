@@ -20,7 +20,7 @@ namespace AnimalShelter.API.Controllers
             _mapper=mapper;
         }
 
-            [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAnimals()
         {
             var animals = await _repo.GetAnimals();
