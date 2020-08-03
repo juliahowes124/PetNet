@@ -31,13 +31,13 @@ namespace AnimalShelter.API.Data
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users.Include(a=>a.Animals).ToListAsync();
             return users;
         }
 
         public Task<User> GetUser(int id)
         {
-            var user = _context.Users
+            var user = _context.Users.Include(a => a.Animals)
             .FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
