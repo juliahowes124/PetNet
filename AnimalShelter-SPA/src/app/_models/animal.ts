@@ -9,6 +9,8 @@ export interface Animal {
     gender: string;
     posted: Date;
     timeLeftToAdopt: Date;
+    city: string;
+    state: string;
     photoUrl: string;
     photos?: Photo[];
 }

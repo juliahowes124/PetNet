@@ -5,10 +5,10 @@
         <img class="card-img-top img-thumbnail" src="{{animal.photoUrl}}" alt="{{animal.name}}">
         <div class="card-body">
           <div>
-            <strong>Location: </strong>
+            <strong>{{animal.name}}</strong>
           </div>
           <div>
-            <strong>Age: </strong>
+            <strong>Location: {{animal.city}}, {{animal.state}}</strong>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <tabset class="animal-tabset">
           <tab heading="About {{animal.name}}">
             <h4>Description</h4>
-            <h4>Looking For</h4>
+            <p>{{animal.description}}</p>
           </tab>
           <tab heading="Interests">
             <h4>Interests</h4>
