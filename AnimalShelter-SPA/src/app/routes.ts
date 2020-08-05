@@ -9,6 +9,7 @@ import { AnimalListComponent } from './animals/animal-list/animal-list/animal-li
 import { AnimalDetailComponent } from './animals/animal-detail/animal-detail.component';
 import { AnimalDetailResolver } from './_resolvers/animal-detail.resolver';
 import { AnimalListResolver } from './_resolvers/animal-list.resolver';
+import { AnimalRegisterComponent } from './animals/animal-register/animal-register.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]},
+            { path: 'animals/register', component: AnimalRegisterComponent},
         ]
     },
     { path: 'animals/:id', component: AnimalDetailComponent, resolve: {animal: AnimalDetailResolver}},

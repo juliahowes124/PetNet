@@ -47,6 +47,7 @@ import { AnimalCardComponent } from './animals/animal-card/animal-card.component
 import { AnimalDetailComponent } from './animals/animal-detail/animal-detail.component';
 import { AnimalDetailResolver } from './_resolvers/animal-detail.resolver';
 import { AnimalListResolver } from './_resolvers/animal-list.resolver';
+import { AnimalRegisterComponent } from './animals/animal-register/animal-register.component';
 
 
 
@@ -65,7 +66,8 @@ export function tokenGetter() {
       RehomeComponent,
       LoginComponent,
       AnimalCardComponent,
-      AnimalDetailComponent
+      AnimalDetailComponent,
+      AnimalRegisterComponent
    ],
    imports: [
       BrowserModule,

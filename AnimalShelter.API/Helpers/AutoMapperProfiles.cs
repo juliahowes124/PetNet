@@ -20,6 +20,7 @@ namespace AnimalShelter.API.Helpers
             .ForMember(u => u.UserKnownAs, opt =>
                 opt.MapFrom(src => src.KnownAs));
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<AnimalForRegisterDto, Animal>();
         }
     }
 }

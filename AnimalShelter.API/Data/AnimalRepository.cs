@@ -35,6 +35,14 @@ namespace AnimalShelter.API.Data
             return animals;
         }
 
+        public async Task<Animal> Register(Animal animal)
+        {
+            await _context.Animals.AddAsync(animal);
+            await _context.SaveChangesAsync();
+
+            return animal;
+        }
+
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

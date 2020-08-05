@@ -25,4 +25,8 @@ export class AnimalService {
     getAnimal(id): Observable<Animal> {
       return this.http.get<Animal>(this.baseUrl + 'animals/' + id);
     }
+
+    register(animal: Animal) {
+      return this.http.post(this.baseUrl + 'animals/' + 'register', animal);
+    }
   }

@@ -42,6 +42,15 @@ namespace AnimalShelter.API.Controllers
             return Ok(animalToReturn);
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(AnimalForRegisterDto animalForRegisterDto)
+        {
+            var animalToCreate = _mapper.Map<Animal>(animalForRegisterDto);
+            var createdAnimal = await _animal_repo.Register(animalToCreate);
+
+            return StatusCode(201);
+        }
+
     }
 
 }
