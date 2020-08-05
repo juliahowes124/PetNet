@@ -10,6 +10,7 @@
       {
         "name": "Shannon",
         "species": "dog",
+        "gender": "female",
         "photos": [
           {
             "url": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -30,6 +31,7 @@
       {
         "name": "Reba",
         "species": "dog",
+        "gender": "female",
         "photos": [
           {
             "url": "https://images.pexels.com/photos/57627/pexels-photo-57627.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -50,6 +52,7 @@
       {
         "name": "Hayes",
         "species": "dog",
+        "gender": "male",
         "photos": [
           {
             "url": "https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -70,6 +73,7 @@
       {
         "name": "Keller",
         "species": "dog",
+        "gender": "male",
         "photos": [
           {
             "url": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" ,
@@ -90,6 +94,7 @@
       {
         "name": "Rios",
         "species": "dog",
+        "gender": "male",
         "photos": [
           {
             "url": "https://images.pexels.com/photos/4588047/pexels-photo-4588047.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",

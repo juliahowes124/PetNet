@@ -16,6 +16,13 @@ namespace AnimalShelter.API.Helpers
             CreateMap<Animal, AnimalForDetailDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+            CreateMap<User, AnimalForDetailDto>()
+            .ForMember(u => u.UserKnownAs, opt =>
+                opt.MapFrom(src => src.KnownAs));
+        
+             
+            // .ForMember(u => u.Username, opt =>
+            //     opt.MapFrom(src => src.User.Username));
             
             
         }

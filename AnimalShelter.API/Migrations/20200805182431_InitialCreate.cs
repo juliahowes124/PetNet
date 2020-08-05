@@ -13,9 +13,9 @@ namespace AnimalShelter.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(nullable: true),
-                    PasswordHash = table.Column<byte[]>(nullable: true),
-                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    Username = table.Column<string>(nullable: false),
+                    PasswordHash = table.Column<byte[]>(nullable: false),
+                    PasswordSalt = table.Column<byte[]>(nullable: false),
                     KnownAs = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
@@ -35,8 +35,11 @@ namespace AnimalShelter.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Species = table.Column<string>(nullable: true),
-                    InShelterSince = table.Column<DateTime>(nullable: false),
-                    TimeLeftToAdopt = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: true),
+                    Gender = table.Column<string>(nullable: true),
+                    Posted = table.Column<DateTime>(nullable: true),
+                    TimeLeftToAdopt = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -57,6 +60,7 @@ namespace AnimalShelter.API.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Url = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
                     AnimalId = table.Column<int>(nullable: false)

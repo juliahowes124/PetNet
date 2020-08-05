@@ -13,19 +13,21 @@ namespace AnimalShelter.API.Controllers
     [ApiController]
     public class AnimalsController : ControllerBase
     {
-        private readonly IAnimalRepository _repo;
+        private readonly IAnimalRepository _animal_repo;
         private readonly IMapper _mapper;
-        
-        public AnimalsController(IAnimalRepository repo, IMapper mapper)
+        private readonly IUserRepository _user_repo;
+
+        public AnimalsController(IAnimalRepository animal_repo, IMapper mapper, IUserRepository user_repo)
         {
-            _repo=repo;
-            _mapper=mapper;
+            _user_repo = user_repo;
+            _animal_repo = animal_repo;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAnimals()
         {
-            var animals = await _repo.GetAnimals();
+            var animals = await _animal_repo.GetAnimals();
             var animalsToReturn = _mapper.Map<IEnumerable<AnimalForListDto>>(animals);
             return Ok(animalsToReturn);
         }
@@ -33,8 +35,10 @@ namespace AnimalShelter.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAnimal(int id)
         {
-            var animal = await _repo.GetAnimal(id);
-            var animalToReturn = _mapper.Map<AnimalForDetailDto>(animal);
+            var animal = await _animal_repo.GetAnimal(id);
+            var user = await _user_repo.GetUser(animal.UserId);
+            var firstMap= _mapper.Map<AnimalForDetailDto>(animal);
+            var animalToReturn = _mapper.Map(user, firstMap);
             return Ok(animalToReturn);
         }
 
