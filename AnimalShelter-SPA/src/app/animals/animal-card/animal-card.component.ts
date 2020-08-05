@@ -1,6 +1,6 @@
 import { OnInit, Input, Component } from '@angular/core';
 import { Animal } from 'src/app/_models/animal';
-import { identifierName } from '@angular/compiler';
+
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AnimalService } from 'src/app/_services/animal.service';
 

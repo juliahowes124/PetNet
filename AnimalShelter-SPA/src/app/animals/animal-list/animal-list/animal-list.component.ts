@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AnimalService } from 'src/app/_services/animal.service';
 import { Animal } from 'src/app/_models/animal';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,17 +12,11 @@ import { Animal } from 'src/app/_models/animal';
 })
 export class AnimalListComponent implements OnInit {
   animals: Animal[];
-  constructor(private animalService: AnimalService, private alertify: AlertifyService) { }
+  constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadAnimals();
-  }
-
-  loadAnimals() {
-    this.animalService.getAnimals().subscribe((animals: Animal[]) => {
-      this.animals = animals;
-    }, error => {
-      this.alertify.error(error);
+    this.route.data.subscribe(data => {
+      this.animals = data.animals;
     });
   }
 

@@ -34,7 +34,8 @@ namespace AnimalShelter.API.Controllers
         public async Task<IActionResult> GetAnimal(int id)
         {
             var animal = await _repo.GetAnimal(id);
-            return Ok(animal);
+            var animalToReturn = _mapper.Map<AnimalForDetailDto>(animal);
+            return Ok(animalToReturn);
         }
 
     }

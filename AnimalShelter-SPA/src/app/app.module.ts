@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-// import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 // import { FileUploadModule } from 'ng2-file-upload';
 // import { TimeagoModule } from 'ngx-timeago';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -43,7 +43,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { RehomeComponent } from './rehome/rehome.component';
 import { LoginComponent } from './login/login.component';
 import { AnimalListComponent } from './animals/animal-list/animal-list/animal-list.component';
-import { AnimalCardComponent } from './animals/animal-list/animal-card/animal-card.component';
+import { AnimalCardComponent } from './animals/animal-card/animal-card.component';
+import { AnimalDetailComponent } from './animals/animal-detail/animal-detail.component';
+import { AnimalDetailResolver } from './_resolvers/animal-detail.resolver';
+import { AnimalListResolver } from './_resolvers/animal-list.resolver';
 
 
 
@@ -61,7 +64,8 @@ export function tokenGetter() {
       MessagesComponent,
       RehomeComponent,
       LoginComponent,
-      AnimalCardComponent
+      AnimalCardComponent,
+      AnimalDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -73,6 +77,7 @@ export function tokenGetter() {
       BrowserAnimationsModule,
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
+      NgxGalleryModule,
       TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
@@ -85,6 +90,8 @@ export function tokenGetter() {
       AuthService,
       AlertifyService,
       AnimalService,
+      AnimalDetailResolver,
+      AnimalListResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [

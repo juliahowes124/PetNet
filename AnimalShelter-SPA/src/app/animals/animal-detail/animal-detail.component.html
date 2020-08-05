@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl}}" alt="{{animal.name}}">
+        <div class="card-body">
+          <div>
+            <strong>Location: </strong>
+          </div>
+          <div>
+            <strong>Age: </strong>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary w-100">Save</button>
+          <button class="btn btn-success w-100">Message Owner</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="animal-tabset">
+          <tab heading="About {{animal.name}}">
+            <h4>Description</h4>
+            <h4>Looking For</h4>
+          </tab>
+          <tab heading="Interests">
+            <h4>Interests</h4>
+          </tab>
+          <tab heading="Photos">
+            <ngx-gallery style="display: inline-block; margin-bottom:20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> 
+          </tab>
+          <tab heading="Messages">
+            <p>Messages will go here.</p>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

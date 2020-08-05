@@ -22,7 +22,7 @@ export class AnimalService {
       return this.http.get<Animal[]>(this.baseUrl + 'animals', httpOptions);
     }
 
-    getAnimal(id: number): Observable<Animal> {
-      return this.http.get<Animal>(this.baseUrl + 'animals/' + id, httpOptions);
+    getAnimal(id): Observable<Animal> {
+      return this.http.get<Animal>(this.baseUrl + 'animals/' + id);
     }
   }
