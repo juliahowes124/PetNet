@@ -15,13 +15,15 @@
     transform: scale(1.0, 1.0);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
+    height: 100%;
+    object-fit: cover;
 }
 
 
 .card-img-wrapper {
     overflow: hidden;
     position: relative;
-    height: 200%;
+    height: 600%;
     object-fit: cover;
 }
 

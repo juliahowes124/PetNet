@@ -1,9 +1,12 @@
 .img-thumbnail {
     margin: 10px;
     object-fit: cover;
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
 }
 
-.card {
+.card-body {
     height: 300px;
     width: 500px;
 }

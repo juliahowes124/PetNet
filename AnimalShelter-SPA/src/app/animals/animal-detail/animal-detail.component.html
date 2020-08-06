@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl}}" alt="{{animal.name}}">
+        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
         <div class="card-body">
           <div>
             <strong>{{animal.name}}</strong>
@@ -25,9 +25,6 @@
           <tab heading="About {{animal.name}}">
             <h4>Description</h4>
             <p>{{animal.description}}</p>
-          </tab>
-          <tab heading="Interests">
-            <h4>Interests</h4>
           </tab>
           <tab heading="Photos">
             <ngx-gallery style="display: inline-block; margin-bottom:20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> 
