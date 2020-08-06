@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AnimalShelter.API.Data;
@@ -47,7 +48,6 @@ namespace AnimalShelter.API.Controllers
         {
             var animalToCreate = _mapper.Map<Animal>(animalForRegisterDto);
             var createdAnimal = await _animal_repo.Register(animalToCreate);
-
             return StatusCode(201);
         }
 

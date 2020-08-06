@@ -30,6 +30,9 @@
         <div class="form-group">
           <input type="text" class="form-control" required name="species" [(ngModel)]="model.species" placeholder="Species">
         </div>
+        <!-- <div class="form-group">
+          <input type="text" class="form-control" required name="timeLeft" [(ngModel)]="model.timeLeftToAdopt" placeholder="How many more days will you keep your pet?">
+        </div> -->
 
         <div class="form-group text-center">
           <button class="btn btn-success" [disabled]="!animalRegisterForm.valid" type="submit">Create Profile</button>
