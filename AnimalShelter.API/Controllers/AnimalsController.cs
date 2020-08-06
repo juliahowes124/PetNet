@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AnimalShelter.API.Data;
 using AnimalShelter.API.DTOs;
@@ -49,6 +50,21 @@ namespace AnimalShelter.API.Controllers
             var animalToCreate = _mapper.Map<Animal>(animalForRegisterDto);
             var createdAnimal = await _animal_repo.Register(animalToCreate);
             return StatusCode(201);
+        }
+
+        [HttpPut("{id}", Name="GetAnimal")]
+        public async Task<IActionResult> UpdateAnimal(int id, AnimalForUpdateDto animalForUpdateDto) 
+        {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            
+            var animalFromRepo = await _animal_repo.GetAnimal(id);
+
+            _mapper.Map(animalForUpdateDto, animalFromRepo);
+
+            if (await _animal_repo.SaveAll())
+                return NoContent();
+            throw new System.Exception($"Updating user {id} failed on save");
         }
 
     }

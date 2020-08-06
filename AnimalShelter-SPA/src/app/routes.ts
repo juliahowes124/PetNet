@@ -9,6 +9,10 @@ import { AnimalListComponent } from './animals/animal-list/animal-list/animal-li
 import { AnimalDetailComponent } from './animals/animal-detail/animal-detail.component';
 import { AnimalDetailResolver } from './_resolvers/animal-detail.resolver';
 import { AnimalListResolver } from './_resolvers/animal-list.resolver';
+import { YourAnimalsComponent } from './your-animals/your-animals.component';
+import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
+import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
+import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -18,6 +22,8 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]},
+            { path: 'your-animals', component: YourAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: YourAnimalsResolver}},
+            { path: 'animal/edit/:id', component: AnimalEditComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}}
         ]
     },
     { path: 'animals/:id', component: AnimalDetailComponent, resolve: {animal: AnimalDetailResolver}},

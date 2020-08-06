@@ -47,6 +47,10 @@ import { AnimalCardComponent } from './animals/animal-card/animal-card.component
 import { AnimalDetailComponent } from './animals/animal-detail/animal-detail.component';
 import { AnimalDetailResolver } from './_resolvers/animal-detail.resolver';
 import { AnimalListResolver } from './_resolvers/animal-list.resolver';
+import { YourAnimalsComponent } from './your-animals/your-animals.component';
+import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
+import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
+import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 
 
 
@@ -66,6 +70,8 @@ export function tokenGetter() {
       LoginComponent,
       AnimalCardComponent,
       AnimalDetailComponent,
+      YourAnimalsComponent,
+      AnimalEditComponent
    ],
    imports: [
       BrowserModule,
@@ -81,7 +87,7 @@ export function tokenGetter() {
       TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
-            tokenGetter
+            tokenGetter,
          }
       }),
       RouterModule.forRoot(appRoutes),
@@ -92,6 +98,8 @@ export function tokenGetter() {
       AnimalService,
       AnimalDetailResolver,
       AnimalListResolver,
+      YourAnimalsResolver,
+      AnimalEditResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [

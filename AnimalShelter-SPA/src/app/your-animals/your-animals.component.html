@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row">
+    <div *ngFor="let animal of animals" class="col-lg-6 col-md-6 col-sm-6">
+          <div class="card mb-5">
+            <div class="card-body">
+              <div>
+                <strong>{{animal.name}}</strong>
+              </div>
+              <div class="row">
+                <div class="col md-4">
+                  <div>
+                    <img class="card-img-top img-thumbnail" src="{{animal.photoUrl}}" alt="{{animal.name}}">
+                  </div>
+                </div>
+                <div class="col md-8">
+                  <p>Posted: {{animal.posted}}</p>
+                  <p>Time Left to Adopt: {{animal.timeLeftToAdopt}}</p>
+                  <p>Saved by # people</p>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="btn-group d-flex">
+                <button class="btn btn-success mr-1" [routerLink]="['/messages']" routerLinkActive="router-link-active" >Messages</button>
+                <button class="btn btn-primary mr-1 ml-1" [routerLink]="['/animal/edit',animal.id]" routerLinkActive="router-link-active" >Edit Profile</button>
+                <button class="btn btn-danger ml-1">Mark As Adopted</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        

@@ -1,0 +1,14 @@
+.img-thumbnail {
+    margin: 10px;
+    object-fit: cover;
+}
+
+.card {
+    height: 300px;
+    width: 500px;
+}
+
+strong {
+    font-size: large;
+    margin: 10px;
+}

@@ -40,6 +40,8 @@
     <div class="dropdown-menu mt-3" *dropdownMenu>
       <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
       <div class="dropdown-divider"></div>
+      <a class="dropdown-item" [routerLink]="['/your-animals']"><i class="fa fa-paw"></i>Your Pets</a>
+      <div class="dropdown-divider"></div>
       <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
     </div>
   </div>

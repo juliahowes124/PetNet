@@ -29,4 +29,8 @@ export class AnimalService {
     registerAnimal(animal: Animal) {
       return this.http.post(this.baseUrl + 'animals/' + 'register', animal);
     }
+
+    updateAnimal(id: number, animal: Animal) {
+      return this.http.put(this.baseUrl + 'animals/' + animal.id, animal);
+    }
   }
