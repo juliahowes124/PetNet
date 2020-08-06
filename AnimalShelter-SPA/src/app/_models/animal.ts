@@ -11,6 +11,7 @@ export interface Animal {
     timeLeftToAdopt: Date;
     city: string;
     state: string;
+    userId: number;
     photoUrl: string;
     photos?: Photo[];
 }

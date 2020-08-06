@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
+import { AnimalService } from '../_services/animal.service';
+import { Animal } from '../_models/animal';
+import { AlertifyService } from '../_services/alertify.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-rehome',
@@ -7,9 +14,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RehomeComponent implements OnInit {
 
-  constructor() { }
+  model: any = {};
+  animalRegisterForm: FormGroup;
+
+  constructor(public authService: AuthService, private animalService: AnimalService,
+              private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  createRegisterForm() {
+    this.animalRegisterForm = this.fb.group({
+      name: [''],
+      gender: [''],
+    });
+  }
+
+  loggedIn()
+  {
+    return this.authService.loggedIn();
+  }
+
+  registerAnimal() {
+    const id = this.authService.decodedToken.nameid;
+    this.model.userId = id;
+    this.animalService.registerAnimal(this.model).subscribe(() => {
+      this.alertify.success('Registration successful');
+      this.router.navigate(['/home']);
+    }, error => {
+      this.alertify.error(error);
+    });
   }
 
 }

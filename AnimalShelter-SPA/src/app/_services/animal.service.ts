@@ -26,7 +26,7 @@ export class AnimalService {
       return this.http.get<Animal>(this.baseUrl + 'animals/' + id);
     }
 
-    register(animal: Animal) {
+    registerAnimal(animal: Animal) {
       return this.http.post(this.baseUrl + 'animals/' + 'register', animal);
     }
   }
