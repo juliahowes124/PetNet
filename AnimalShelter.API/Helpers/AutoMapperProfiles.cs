@@ -22,6 +22,8 @@ namespace AnimalShelter.API.Helpers
             CreateMap<UserForRegisterDto, User>();
             CreateMap<AnimalForRegisterDto, Animal>();
             CreateMap<AnimalForUpdateDto, Animal>();
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
     }
 }

@@ -57,6 +57,7 @@ namespace AnimalShelter.API
                         ValidateAudience = false
                     };
                 });
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
         }
 

@@ -33,4 +33,16 @@ export class AnimalService {
     updateAnimal(id: number, animal: Animal) {
       return this.http.put(this.baseUrl + 'animals/' + animal.id, animal);
     }
+
+    setMainPhoto(animalId: number, id: number) {
+    return this.http.post(this.baseUrl + 'animals/' + animalId + '/photos/' + id + '/setMain', {}, httpOptions);
+    }
+
+    deletePhoto(animalId: number, id: number) {
+      return this.http.delete(this.baseUrl + 'animals/' + animalId + '/photos/' + id, httpOptions);
+    }
+
+    changeMainPhoto(photoUrl: string, animal: Animal) {
+      animal.photoUrl = photoUrl;
+    }
   }

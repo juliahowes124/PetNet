@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AnimalShelter.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,16 @@ namespace AnimalShelter.API.Data
         {
             var animals = await _context.Animals.Include(p => p.Photos).ToListAsync();
             return animals;
+        }
+
+        public async Task<Photo> GetMainPhoto(int animalId)
+        {
+            return await _context.Photos.Where(u => u.AnimalId == animalId).FirstOrDefaultAsync(p => p.IsMain);
+        }
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+            return await _context.Photos.FirstOrDefaultAsync( a=> a.Id == id );
         }
 
         public async Task<Animal> Register(Animal animal)

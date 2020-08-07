@@ -39,8 +39,8 @@ namespace AnimalShelter.API.Controllers
         {
             var animal = await _animal_repo.GetAnimal(id);
             var user = await _user_repo.GetUser(animal.UserId);
-            var firstMap= _mapper.Map<AnimalForDetailDto>(animal);
-            var animalToReturn = _mapper.Map(user, firstMap);
+            var firstMap= _mapper.Map<AnimalForDetailDto>(user);
+            var animalToReturn = _mapper.Map(animal, firstMap);
             return Ok(animalToReturn);
         }
 
