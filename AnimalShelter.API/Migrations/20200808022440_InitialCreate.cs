@@ -13,9 +13,9 @@ namespace AnimalShelter.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(nullable: false),
-                    PasswordHash = table.Column<byte[]>(nullable: false),
-                    PasswordSalt = table.Column<byte[]>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true),
                     KnownAs = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
@@ -35,11 +35,16 @@ namespace AnimalShelter.API.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
                     Species = table.Column<string>(nullable: true),
+                    Breed = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: true),
+                    AdoptionFee = table.Column<int>(nullable: false),
+                    Age = table.Column<int>(nullable: false),
                     Gender = table.Column<string>(nullable: true),
-                    Posted = table.Column<DateTime>(nullable: true),
-                    TimeLeftToAdopt = table.Column<DateTime>(nullable: true),
+                    Posted = table.Column<DateTime>(nullable: false),
+                    TimeLeftToAdopt = table.Column<DateTime>(nullable: false),
+                    Views = table.Column<int>(nullable: false),
+                    Saves = table.Column<int>(nullable: false),
+                    Inquiries = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -63,13 +68,35 @@ namespace AnimalShelter.API.Migrations
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
-                    AnimalId = table.Column<int>(nullable: false)
+                    AnimalId = table.Column<int>(nullable: false),
+                    PublicId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Photos", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Photos_Animals_AnimalId",
+                        column: x => x.AnimalId,
+                        principalTable: "Animals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Content = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
+                    AnimalId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tags_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
                         principalColumn: "Id",
@@ -85,12 +112,20 @@ namespace AnimalShelter.API.Migrations
                 name: "IX_Photos_AnimalId",
                 table: "Photos",
                 column: "AnimalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tags_AnimalId",
+                table: "Tags",
+                column: "AnimalId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Animals");

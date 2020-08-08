@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelter.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200805182431_InitialCreate")]
+    [Migration("20200808022440_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,8 +24,14 @@ namespace AnimalShelter.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AdoptionFee")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
@@ -33,11 +39,17 @@ namespace AnimalShelter.API.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Inquiries")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Posted")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Saves")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Species")
                         .HasColumnType("TEXT");
@@ -46,6 +58,9 @@ namespace AnimalShelter.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Views")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -73,6 +88,9 @@ namespace AnimalShelter.API.Migrations
                     b.Property<bool>("IsMain")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
@@ -81,6 +99,28 @@ namespace AnimalShelter.API.Migrations
                     b.HasIndex("AnimalId");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("AnimalShelter.API.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AnimalId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("AnimalShelter.API.Models.User", b =>
@@ -131,6 +171,15 @@ namespace AnimalShelter.API.Migrations
                 {
                     b.HasOne("AnimalShelter.API.Models.Animal", null)
                         .WithMany("Photos")
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AnimalShelter.API.Models.Tag", b =>
+                {
+                    b.HasOne("AnimalShelter.API.Models.Animal", null)
+                        .WithMany("Tags")
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

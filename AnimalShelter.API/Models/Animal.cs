@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnimalShelter.API.Models
 {
@@ -11,9 +12,7 @@ namespace AnimalShelter.API.Models
         public string Breed { get; set; }
         public string Description { get; set; }
         public int AdoptionFee { get; set; }
-        public string Likes { get; set; }
-        public string Qualities { get; set; }
-        public string GoodWith { get; set; }
+        public ICollection<Tag> Tags { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }

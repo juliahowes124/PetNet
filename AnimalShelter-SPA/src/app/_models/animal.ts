@@ -7,9 +7,9 @@ export interface Animal {
     breed: string;
     description: string;
     adoptionFee: number;
-    likes: string;
-    qualities: string;
-    goodWith: string;
+    likes: string[];
+    qualities: string[];
+    goodWith: string[];
     age: number;
     gender: string;
     posted: Date;

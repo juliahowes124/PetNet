@@ -12,9 +12,9 @@ namespace AnimalShelter.API.DTOs
         public string Breed { get; set; }
         public string Description { get; set; }
         public int AdoptionFee { get; set; }
-        public string Likes { get; set; }
-        public string Qualities { get; set; }
-        public string GoodWith { get; set; }
+        public string[] Likes { get; set; }
+        public string[] Qualities { get; set; }
+        public string[] GoodWith { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }
