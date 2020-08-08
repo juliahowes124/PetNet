@@ -13,21 +13,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl}}" alt="{{animal.name}}">
-        <div class="card-body">
-          <div>
-            <strong>Location: </strong>
-            <p>{{animal.city}}, {{animal.state}}</p>
-          </div>
-          <div>
-            <strong>Age:</strong>
-            <p>{{animal.age}}</p>
-          </div>
-          <div>
-            <strong>Posted since:</strong>
-            <p>{{animal.posted | date}}</p>
-          </div>
-        </div>
+        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
         <div class="card-footer">
           <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
         </div>
@@ -39,9 +25,42 @@
         <tabset class="member-tabset">
           <tab heading="Edit Profile">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
-              <h4>Description</h4>
-              <textarea name="description" rows="6" class="form-control" 
-                [(ngModel)]="animal.description"></textarea>
+              <div class="row">
+                <div class="col-sm-8">
+                  <h4>About {{animal.name}}</h4>
+                  <textarea name="description" rows="5" class="form-control" 
+                    [(ngModel)]="animal.description"></textarea>
+                  <h4>Likes</h4>
+                    <textarea name="likes" rows="5" class="form-control" 
+                      [(ngModel)]="animal.likes"></textarea>
+                  <h4>Qualities</h4>
+                    <textarea name="qualities" rows="5" class="form-control" 
+                      [(ngModel)]="animal.qualities"></textarea>
+                  <h4>Good With</h4>
+                    <textarea name="good with" rows="5" class="form-control" 
+                      [(ngModel)]="animal.goodWith"></textarea>
+                </div>
+                <div class="col-sm-4">
+                  <h6 class="mt-1">Name</h6>
+                    <textarea name="name" rows="1" class="form-control" 
+                      [(ngModel)]="animal.name"></textarea>
+                  <h6 class="mt-2">Adoption Fee</h6>
+                    <textarea name="adoptionFee" rows="1" class="form-control" 
+                      [(ngModel)]="animal.adoptionFee"></textarea>
+                  <h6 class="mt-2">Species</h6>
+                    <textarea name="species" rows="1" class="form-control" 
+                      [(ngModel)]="animal.species"></textarea>
+                  <h6 class="mt-2">Breed</h6>
+                    <textarea name="breed" rows="1" class="form-control" 
+                      [(ngModel)]="animal.breed"></textarea>
+                  <h6 class="mt-2">Gender</h6>
+                    <textarea name="gender" rows="1" class="form-control" 
+                      [(ngModel)]="animal.gender"></textarea>
+                 <h6 class="mt-2">Age</h6>
+                    <textarea name="age" rows="1" class="form-control" 
+                      [(ngModel)]="animal.age"></textarea>
+                </div>
+              </div>
             </form>
           </tab>
           <tab heading="Edit Photos">

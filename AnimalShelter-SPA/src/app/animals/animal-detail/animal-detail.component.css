@@ -1,16 +1,60 @@
 .img-thumbnail {
-    margin: 25px;
     width: auto;
     height: 325px;
     object-fit: cover;
 }
 
-.card-body {
-    padding: 0 25px;
+#mainCard {
+    border: none;
+}
+#mainCardBody {
+    height: 180px;
+}
+
+#innerCard {
+    height: 90px;
+    border: none;
+}
+#innerCardBody {
+    height: 90px;
+    overflow: scroll;
 }
 
 .card-footer {
     padding:10px 15px;
     background-color: #fff;
     border-top: none;
+}
+
+.badge-warning {
+    float: right;
+    padding: 10px;
+    font-size: medium;
+}
+
+.badge-info {
+    padding: 10px;
+    font-size: small;
+}
+
+#viewBar {
+    text-align: center;
+}
+
+.list-group-item {
+    text-align: right;
+    font-size: medium;
+}
+
+#description {
+    min-height: 200px;
+}
+
+img {
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+    padding: 1%;
+    margin-bottom: 5px;
+    border-color: lightgrey;
 }

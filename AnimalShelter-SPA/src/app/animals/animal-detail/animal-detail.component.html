@@ -1,14 +1,26 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-sm-4">
-      <div class="card">
+      <div class="card" id="mainCard">
         <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
-        <div class="card-body">
-          <div>
-            <strong>{{animal.name}}</strong>
+        <div id="mainCardBody" class="card-body">
+          <div id="viewBar">
+            <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
           </div>
-          <div>
-            <strong>Location: {{animal.city}}, {{animal.state}}</strong>
+          <hr>
+          <div id="innerCard" class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <img src="{{animal.photoUrl}}" alt="Owner Picture">
+              </div>
+              <div class="col-md-9">
+                <div id="innerCardBody" class="card-body">
+                  <h5 class="card-title">{{animal.name}}'s Owner</h5>
+                  <p class="card-text">Location: {{animal.city}}, {{animal.state}}</p>
+                  <p class="card-text"><small class="text-muted">Last active 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -19,12 +31,23 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <div class="tab-panel">
         <tabset class="animal-tabset">
-          <tab heading="About {{animal.name}}">
-            <h4>Description</h4>
-            <p>{{animal.description}}</p>
+          <tab heading="About">
+            <div class="card text-white bg-primary mb-3 mt-3" style="min-height: 250px;">
+              <div class="card-body">
+                <h5 class="card-title">About {{animal.name}}</h5>
+                <hr style="border-color: white">
+                <p class="card-text">{{animal.description}}</p>
+              </div>
+            </div>
+            <h4>Likes:</h4>
+              <span class="badge badge-info mb-2">Like</span>
+            <h4>Qualities:</h4>
+              <span class="badge badge-info mb-2">Quality{{animal.qualities}}</span>
+            <h4>Good With:</h4>
+              <span class="badge badge-info">Good With{{animal.goodWith}}</span>
           </tab>
           <tab heading="Photos">
             <ngx-gallery style="display: inline-block; margin-bottom:20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> 
@@ -34,6 +57,14 @@
           </tab>
         </tabset>
       </div>
+    </div>
+    <div class="col-sm-2">
+      <ul class="list-group list-group-flush">
+        <span class="badge badge-pill badge-warning">Adoption Fee: ${{animal.adoptionFee}}</span>
+        <li class="list-group-item">{{animal.species | titlecase}}</li>
+        <li class="list-group-item">{{animal.gender | titlecase}}</li>
+        <li class="list-group-item">{{animal.age}} yrs</li>
+      </ul>
     </div>
   </div>
 </div>
