@@ -12,5 +12,8 @@ namespace AnimalShelter.API.DTOs
         public DateTime TimeLeftToAdopt { get; set; }
         public int UserId { get; set; } 
         public string PhotoUrl { get; set; }
+        public int Views { get; set; }
+        public int Saves { get; set; }
+        public int Inquiries { get; set; }
     }
 }

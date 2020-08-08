@@ -19,11 +19,17 @@
     object-fit: cover;
 }
 
+#viewBar {
+    text-align: center;
+    color: teal;
+    size: small;
+}
+
 
 .card-img-wrapper {
     overflow: hidden;
     position: relative;
-    height: 600%;
+    height: 300%;
     object-fit: cover;
 }
 
