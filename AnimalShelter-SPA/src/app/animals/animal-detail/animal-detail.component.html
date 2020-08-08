@@ -15,7 +15,7 @@
               </div>
               <div class="col-md-8">
                   <h5 class="card-title">{{animal.userKnownAs}}</h5>
-                  <h6>{{animal.username}}</h6>
+                  <h6>@{{animal.username}}</h6>
                   <p class="card-text">{{animal.city}}, {{animal.state}}</p>
               </div>
             </div>
@@ -40,12 +40,27 @@
                 <p class="card-text">{{animal.description}}</p>
               </div>
             </div>
-            <h4>Likes:</h4>
-              <span class="badge badge-info mb-2">Like</span>
-            <h4>Qualities:</h4>
-              <span class="badge badge-info mb-2">Quality{{animal.qualities}}</span>
-            <h4>Good With:</h4>
-              <span class="badge badge-info">Good With{{animal.goodWith}}</span>
+          
+            
+            <div class="container">
+              <h4 class="row">Likes:</h4>
+              <div class="row" style="width: 100%">
+                <div *ngFor="let like of animal.likes" class="d-flex mr-1 ml-1"><span class="badge badge-info mb-2">{{like}}</span></div>
+              </div>
+              <h4 class="row">Qualities:</h4>
+              <div class="row">
+                <div *ngFor="let quality of animal.qualities" class="d-flex mr-1 ml-1"><span class="badge badge-info mb-2">{{quality}}</span></div>
+              </div>
+              <h4 class="row">Good With:</h4>
+              <div class="row">
+                <div *ngFor="let goodWith of animal.goodWith" class="d-flex mr-1 ml-1"><span class="badge badge-info mb-2">{{goodWith}}</span></div>
+              </div>
+            </div>
+            
+            
+            
+      
+            
           </tab>
           <tab heading="Photos">
             <ngx-gallery style="display: inline-block; margin-bottom:20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> 

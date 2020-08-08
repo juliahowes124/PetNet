@@ -53,3 +53,7 @@ img {
     padding: 1%;
     border-color: lightgrey;
 }
+
+div {
+    min-height: 40px;
+}

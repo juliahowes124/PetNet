@@ -15,7 +15,13 @@ namespace AnimalShelter.API.Helpers
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
             CreateMap<Animal, AnimalForDetailDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
-                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
+            .ForMember(a => a.Likes, opt =>
+                opt.MapFrom(src => src.Tags.Where(t=> t.Type == "like").Select(t => t.Content)))
+            .ForMember(a => a.Qualities, opt =>
+                opt.MapFrom(src => src.Tags.Where(t => t.Type == "quality").Select(t => t.Content)))
+            .ForMember(a => a.GoodWith, opt =>
+                opt.MapFrom(src => src.Tags.Where(t => t.Type == "good with").Select(t => t.Content)));
             CreateMap<User, AnimalForDetailDto>()
             .ForMember(u => u.UserKnownAs, opt =>
                 opt.MapFrom(src => src.KnownAs))

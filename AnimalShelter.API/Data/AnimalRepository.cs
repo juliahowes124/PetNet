@@ -26,7 +26,7 @@ namespace AnimalShelter.API.Data
 
         public async Task<Animal> GetAnimal(int id)
         {
-            var animal = await _context.Animals.Include(p => p.Photos).FirstOrDefaultAsync(a => a.Id == id);
+            var animal = await _context.Animals.Include(p => p.Photos).Include(t => t.Tags).FirstOrDefaultAsync(a => a.Id == id);
             return animal;
         }
 
@@ -44,6 +44,11 @@ namespace AnimalShelter.API.Data
         public async Task<Photo> GetPhoto(int id)
         {
             return await _context.Photos.FirstOrDefaultAsync( a=> a.Id == id );
+        }
+
+        public async Task<IEnumerable<Tag>> GetTags()
+        {
+            return await _context.Tags.ToListAsync();
         }
 
         public async Task<Animal> Register(Animal animal)
