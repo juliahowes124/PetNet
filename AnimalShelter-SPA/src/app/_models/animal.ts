@@ -20,6 +20,9 @@ export interface Animal {
     city: string;
     state: string;
     userId: number;
+    username: string;
+    userKnownAs: string;
+    userPhotoUrl: string;
     photoUrl: string;
     photos?: Photo[];
 }

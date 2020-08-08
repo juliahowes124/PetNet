@@ -10,15 +10,13 @@
           <hr>
           <div id="innerCard" class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-              <div class="col-md-3">
-                <img src="{{animal.photoUrl}}" alt="Owner Picture">
+              <div class="col-md-4">
+                <img src="{{animal.userPhotoUrl}}" alt="Owner Picture">
               </div>
-              <div class="col-md-9">
-                <div id="innerCardBody" class="card-body">
-                  <h5 class="card-title">{{animal.name}}'s Owner</h5>
-                  <p class="card-text">Location: {{animal.city}}, {{animal.state}}</p>
-                  <p class="card-text"><small class="text-muted">Last active 3 mins ago</small></p>
-                </div>
+              <div class="col-md-8">
+                  <h5 class="card-title">{{animal.userKnownAs}}</h5>
+                  <h6>{{animal.username}}</h6>
+                  <p class="card-text">{{animal.city}}, {{animal.state}}</p>
               </div>
             </div>
           </div>
@@ -26,8 +24,8 @@
       </div>
       <div class="card-footer">
         <div class="btn-group d-flex">
-          <button class="btn btn-primary w-100">Save</button>
-          <button class="btn btn-success w-100">Message Owner</button>
+          <button class="btn btn-primary w-100 mr-1">Save</button>
+          <button class="btn btn-success w-100 ml-1" [routerLink]="['/messages']" routerLinkActive="router-link-active" >Message {{animal.userKnownAs}}</button>
         </div>
       </div>
     </div>
@@ -35,9 +33,9 @@
       <div class="tab-panel">
         <tabset class="animal-tabset">
           <tab heading="About">
-            <div class="card text-white bg-primary mb-3 mt-3" style="min-height: 250px;">
+            <div class="card text-gray bg-light mb-3 mt-3" style="min-height: 250px;">
               <div class="card-body">
-                <h5 class="card-title">About {{animal.name}}</h5>
+                <h3 class="card-title">About {{animal.name}}</h3>
                 <hr style="border-color: white">
                 <p class="card-text">{{animal.description}}</p>
               </div>
@@ -61,7 +59,7 @@
     <div class="col-sm-2">
       <ul class="list-group list-group-flush">
         <span class="badge badge-pill badge-warning">Adoption Fee: ${{animal.adoptionFee}}</span>
-        <li class="list-group-item">{{animal.species | titlecase}}</li>
+        <li class="list-group-item mt-5">{{animal.species | titlecase}}</li>
         <li class="list-group-item">{{animal.gender | titlecase}}</li>
         <li class="list-group-item">{{animal.age}} yrs</li>
       </ul>

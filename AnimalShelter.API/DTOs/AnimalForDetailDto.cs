@@ -27,6 +27,7 @@ namespace AnimalShelter.API.DTOs
         public string UserKnownAs { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string UserPhotoUrl { get; set; }
         public string PhotoUrl { get; set; }
         public ICollection<Photo> Photos { get; set; }
     }

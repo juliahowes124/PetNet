@@ -8,16 +8,12 @@
     border: none;
 }
 #mainCardBody {
-    height: 180px;
+    min-height: 180px;
 }
 
 #innerCard {
     height: 90px;
     border: none;
-}
-#innerCardBody {
-    height: 90px;
-    overflow: scroll;
 }
 
 .card-footer {
@@ -51,10 +47,9 @@
 }
 
 img {
-    height: 90%;
-    width: 90%;
+    height: 90px;
+    width: 90px;
     object-fit: cover;
     padding: 1%;
-    margin-bottom: 5px;
     border-color: lightgrey;
 }
