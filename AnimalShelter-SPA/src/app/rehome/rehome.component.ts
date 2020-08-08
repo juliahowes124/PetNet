@@ -16,6 +16,9 @@ export class RehomeComponent implements OnInit {
 
   model: any = {};
   animalRegisterForm: FormGroup;
+  likes: string[] = ['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors'];
+  qualities: string[] = ['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent'];
+  goodWith: string[] = ['children', 'dogs', 'cats', 'women', 'men', 'crowds'];
 
   constructor(public authService: AuthService, private animalService: AnimalService,
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
@@ -44,6 +47,10 @@ export class RehomeComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  addToLikes(like: string) {
+    this.model.likes.push(like);
   }
 
 }

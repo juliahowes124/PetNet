@@ -16,6 +16,9 @@ export class AnimalEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   animal: Animal;
   photoUrl: string;
+  likes: string[] = ['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors'];
+  qualities: string[] = ['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent'];
+  goodWith: string[] = ['children', 'dogs', 'cats', 'women', 'men', 'crowds'];
 
   // @HostListener('window:beforeunload', ['$event'])
   // unloadNotification($event: any) {
