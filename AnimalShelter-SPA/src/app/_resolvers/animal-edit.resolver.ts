@@ -12,7 +12,6 @@ export class AnimalEditResolver implements Resolve<Animal> {
                 private router: Router, private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Animal> {
-        debugger;
         return this.animalService.getAnimal(route.params.id).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');

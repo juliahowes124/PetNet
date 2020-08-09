@@ -52,6 +52,7 @@ import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
 import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
 import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { TagEditorComponent } from './tag-editor/tag-editor.component';
 
 
 
@@ -73,7 +74,8 @@ export function tokenGetter() {
       AnimalDetailComponent,
       YourAnimalsComponent,
       AnimalEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TagEditorComponent
    ],
    imports: [
       BrowserModule,

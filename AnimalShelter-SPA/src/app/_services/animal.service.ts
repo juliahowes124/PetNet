@@ -3,6 +3,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Animal } from '../_models/animal';
+import { Tag } from '../_models/tag';
+import { TagDefinition } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -44,5 +46,13 @@ export class AnimalService {
 
     changeMainPhoto(photoUrl: string, animal: Animal) {
       animal.photoUrl = photoUrl;
+    }
+
+    addTag(tag: Tag, animalId: number) {
+      return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, tag);
+    }
+
+    removeTag(tag: Tag, animalId: number) {
+      return this.http.delete(this.baseUrl + 'animals/' + 'tags/' + animalId + '/delete');
     }
   }

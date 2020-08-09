@@ -56,6 +56,20 @@ namespace AnimalShelter.API.Controllers
             return StatusCode(201);
         }
 
+        [HttpPost("tags/{id}")]
+        public async Task<IActionResult> AddTag(int id, TagForCreationDto tagForCreationDto)
+        {
+            var tag = _mapper.Map<Tag>(tagForCreationDto);
+            var animalFromRepo = await _animal_repo.GetAnimal(id);
+            animalFromRepo.Tags.Add(tag);
+            if (await _animal_repo.SaveAll())
+            {
+                return Ok(tag);
+            }
+
+            return BadRequest("Could not add tag.");
+        }
+
         [HttpPut("{id}", Name="GetAnimal")]
         public async Task<IActionResult> UpdateAnimal(int id, AnimalForUpdateDto animalForUpdateDto) 
         {
