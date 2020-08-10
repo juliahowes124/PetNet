@@ -11,9 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TagEditorComponent implements OnInit {
   @Input() animal: Animal;
-  likes: string[] = ['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors'];
-  qualities: string[] = ['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent'];
-  goodWith: string[] = ['children', 'dogs', 'cats', 'women', 'men', 'crowds'];
+
+  likes = new Set(['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors']);
+  qualities = new Set(['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent']);
+  goodWith = new Set(['children', 'dogs', 'cats', 'women', 'men', 'crowds']);
 
   constructor(private animalService: AnimalService, private route: ActivatedRoute) { }
 
@@ -23,16 +24,17 @@ export class TagEditorComponent implements OnInit {
     });
   }
 
-  addTag(clickedTag: string, animalId: number) {
-    console.log('poop');
-    const tag: Tag = new Tag(clickedTag, 'like');
+  addTag(clickedTag: string, animalId: number, type: string) {
+    console.log(type);
+    const tag: Tag = new Tag(clickedTag, type);
     this.animalService.addTag(tag, this.animal.id).subscribe();
   }
+
 
   // removeTag(clickedTag: string, animalId: number) {
   //   console.log('removing tag');
   //   const tag: Tag = new Tag(clickedTag, 'like');
   //   this.animalService.removeTag(tag, this.animal.id).subscribe();
   // }
-
 }
+
