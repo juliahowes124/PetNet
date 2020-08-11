@@ -27,29 +27,39 @@
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
               <div class="row mt-2">
                 <div class="col-sm-8">
-                  <h4>About {{animal.name}}</h4>
+                  <h5 class="mt-1">Name</h5>
+                    <textarea name="name" rows="1" class="form-control mb-3" [(ngModel)]="animal.name"></textarea>
+                  <h5>Description</h5>
                   <textarea name="description" rows="5" class="form-control" 
                     [(ngModel)]="animal.description"></textarea>
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="mt-2">Species</h6>
+                      <select class="form-control" id="species" name="species" rows="1" [(ngModel)]="animal.species">
+                        <option>Dog</option>
+                        <option>Cat</option>
+                        <option>Fish</option>
+                        <option>Tortoise</option>
+                        <option>Hamster</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <h6 class="mt-2">Breed</h6>
+                      <textarea name="breed" rows="1" class="form-control" [(ngModel)]="animal.breed"></textarea>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-4">
-                  <h6 class="mt-1">Name</h6>
-                    <textarea name="name" rows="1" class="form-control" 
-                      [(ngModel)]="animal.name"></textarea>
-                  <h6 class="mt-2">Adoption Fee</h6>
-                    <textarea name="adoptionFee" rows="1" class="form-control" 
-                      [(ngModel)]="animal.adoptionFee"></textarea>
-                  <h6 class="mt-2">Species</h6>
-                    <textarea name="species" rows="1" class="form-control" 
-                      [(ngModel)]="animal.species"></textarea>
-                  <h6 class="mt-2">Breed</h6>
-                    <textarea name="breed" rows="1" class="form-control" 
-                      [(ngModel)]="animal.breed"></textarea>
                   <h6 class="mt-2">Gender</h6>
-                    <textarea name="gender" rows="1" class="form-control" 
-                      [(ngModel)]="animal.gender"></textarea>
-                 <h6 class="mt-2">Age</h6>
-                    <textarea name="age" rows="1" class="form-control" 
-                      [(ngModel)]="animal.age"></textarea>
+                    <select name="gender" rows="1" class="form-control" [(ngModel)]="animal.gender">
+                      <option>Female</option>
+                      <option>Male</option>
+                    </select>
+                  <h6 class="mt-2">Age</h6>
+                    <textarea name="age" rows="1" class="form-control" [(ngModel)]="animal.age"></textarea>
+                  <h6 class="mt-2">Adoption Fee</h6>
+                    <textarea name="adoptionFee" rows="1" class="form-control" [(ngModel)]="animal.adoptionFee"></textarea>
                 </div>
               </div>
             </form>
