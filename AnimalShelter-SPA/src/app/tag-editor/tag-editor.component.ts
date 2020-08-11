@@ -11,14 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TagEditorComponent implements OnInit {
   @Input() animal: Animal;
-  likesChecks: any;
-  qualitiesChecks: any;
-  goodWithChecks: any;
+  likesChecks = {};
+  qualitiesChecks = {};
+  goodWithChecks = {};
   tags: Tag[];
 
-  likes = new Set(['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors']);
-  qualities = new Set(['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent']);
-  goodWith = new Set(['children', 'dogs', 'cats', 'women', 'men', 'crowds']);
+  likes = ['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors'];
+  qualities = ['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent'];
+  goodWith = ['children', 'dogs', 'cats', 'women', 'men', 'crowds'];
 
   currentLikes = new Set();
   currentQualities = new Set();
@@ -28,25 +28,21 @@ export class TagEditorComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.animal = data.animal; // this returned animal has its tags included -- except it doesnt return goodWiths in the array
+      this.animal = data.animal;
     });
     this.currentLikes = new Set(this.animal.likes);
     this.currentQualities = new Set(this.animal.qualities);
     this.currentGoodWith = new Set(this.animal.goodWith);
 
-    this.likesChecks = {'walks': this.currentLikes.has('walks'),
-      'cuddles': this.currentLikes.has('cuddles'),'food': this.currentLikes.has('food'),
-      'toys': this.currentLikes.has('toys'),'sleeping': this.currentLikes.has('sleeping'),
-      'outdoors': this.currentLikes.has('outdoors')};
-
-    this.qualitiesChecks = {'friendly': this.currentQualities.has('friendly'),
-      'energetic': this.currentQualities.has('energetic'), 'smart': this.currentQualities.has('smart'),
-      'funny': this.currentQualities.has('funny'), 'loving': this.currentQualities.has('loving'),
-      'independent': this.currentQualities.has('independent')};
-
-    this.goodWithChecks = {'children': this.currentGoodWith.has('children'), 'dogs': this.currentGoodWith.has('dogs'),
-     'cats': this.currentGoodWith.has('cats'), 'women': this.currentGoodWith.has('women'),
-     'men': this.currentGoodWith.has('men'), 'crowds': this.currentGoodWith.has('crowds')};
+    for (const like of this.likes) {
+      this.likesChecks[like] = this.currentLikes.has(like);
+    }
+    for (const quality of this.qualities) {
+      this.qualitiesChecks[quality] = this.currentQualities.has(quality);
+    }
+    for (const goodWith of this.goodWith) {
+      this.goodWithChecks[goodWith] = this.currentGoodWith.has(goodWith);
+    }
   }
 
   addTag(clickedTag: string, animalId: number, type: string) {
