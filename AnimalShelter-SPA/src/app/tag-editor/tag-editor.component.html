@@ -2,8 +2,8 @@
   <h5>{{animal.name}} likes: </h5>
   <div class="row">
     <div class="col-sm-4" *ngFor="let like of this.likes">
-      <div class="form-check" (click)="addTag(like, animal.id, 'like')" >
-        <input class="form-check-input" type="checkbox" [(ngModel)]="this.likesChecks[like]" value="" id="defaultCheck1" >
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (click)="addOrRemove(like, animal.id, 'like')" [(ngModel)]="this.likesChecks[like]" value="" id="Check1" >
         <label class="form-check-label" for="defaultCheck1">
           {{like}}
         </label>
@@ -15,8 +15,8 @@
   <h5>{{animal.name}} is: </h5>
   <div class="row">
     <div class="col-sm-4" *ngFor="let quality of this.qualities">
-      <div class="form-check" (click)="addTag(quality, animal.id, 'quality')" >
-        <input class="form-check-input" type="checkbox" [(ngModel)]="this.qualitiesChecks[quality]" value="" id="defaultCheck1">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (click)="addOrRemove(quality, animal.id, 'quality')" [(ngModel)]="this.qualitiesChecks[quality]" value="" id="defaultCheck1">
         <label class="form-check-label" for="defaultCheck1">
           {{quality}}
         </label>
@@ -28,8 +28,8 @@
   <h5>{{animal.name}} is good with:</h5>
   <div class="row">
     <div class="col-sm-4" *ngFor="let goodWith of this.goodWith">
-      <div class="form-check" (click)="addTag(goodWith, animal.id, 'goodWith')" >
-        <input class="form-check-input" type="checkbox" [(ngModel)]="this.goodWithChecks[goodWith]" value="" id="defaultCheck1">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" (click)="addOrRemove(goodWith, animal.id, 'goodWith')" [(ngModel)]="this.goodWithChecks[goodWith]" value="" id="defaultCheck1">
         <label class="form-check-label" for="defaultCheck1">
           {{goodWith}}
         </label>

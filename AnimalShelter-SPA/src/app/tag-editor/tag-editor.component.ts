@@ -49,24 +49,52 @@ export class TagEditorComponent implements OnInit {
     console.log(type);
     const tag: Tag = new Tag(clickedTag, type);
     this.animalService.addTag(tag, this.animal.id).subscribe();
+    if (type === 'like') {
+      this.currentLikes.add(clickedTag);
+    } else if (type === 'quality') {
+      this.currentQualities.add(clickedTag);
+    } else if (type === 'goodWith') {
+      this.currentGoodWith.add(clickedTag);
+    }
   }
 
 
-  // removeTag(clickedTag: string, animalId: number, type: string) {
-  //   console.log('removing tag');
-  //   const tag: Tag = new Tag(clickedTag, 'like');
-  //   this.animalService.removeTag(tag, this.animal.id).subscribe();
-  // }
+  removeTag(clickedTag: string, animalId: number, type: string) {
+    // debugger;
+    this.animalService.removeTag(clickedTag, this.animal.id).subscribe(() => {
+      if (type === 'like') {
+        this.currentLikes.delete(clickedTag);
+      } else if (type === 'quality') {
+        this.currentQualities.delete(clickedTag);
+      } else if (type === 'goodWith') {
+        this.currentGoodWith.delete(clickedTag);
+      }
+      console.log('tag has been deleted');
+    }, error => {
+      console.log('failed to remove tag');
+    });
+  }
 
-  // deletePhoto(id: number) {
-  //   this.alertify.confirm('Are you sure you want to delete this photo?', () => {
-  //     this.animalService.deletePhoto(this.animal.id, id).subscribe(() => {
-  //       this.animal.photos.splice(this.animal.photos.findIndex(p => p.id === id), 1);
-  //       this.alertify.success('Photo has been deleted');
-  //     }, error => {
-  //       this.alertify.error('Failed to delete the photo');
-  //     });
-  //   });
+  addOrRemove(clickedTag: string, animalId: number, type: string) {
+    if (this.currentLikes.has(clickedTag) || this.currentQualities.has(clickedTag) || this.currentGoodWith.has(clickedTag))
+    {
+      this.removeTag(clickedTag, animalId, type);
+    }
+    else
+    {
+      this.addTag(clickedTag, animalId, type);
+    }
+  }
+
+  // addOrDelete(checkbox, clickedTag: string, animalId: number, type: string) {
+  //   debugger;
+  //   if (checkbox.checked)
+  //   {
+  //     this.addTag(clickedTag, animalId, type);
+  //   }
+  //   else {
+  //     this.removeTag(clickedTag, animalId, type);
+  //   }
   // }
 }
 

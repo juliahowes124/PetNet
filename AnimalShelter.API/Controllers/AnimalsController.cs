@@ -93,6 +93,18 @@ namespace AnimalShelter.API.Controllers
             return Ok(tags); //returns eithera no content or a Tag object
         }
 
+        [HttpDelete("{id}/tags")]
+        public async Task<IActionResult> DeleteTag(string tagContent, int animalId)
+        {
+            var tagToDelete = await _animal_repo.GetTag(tagContent, animalId);
+            _animal_repo.Delete(tagToDelete);
+
+            if (await _animal_repo.SaveAll())
+                return Ok();
+            
+            return BadRequest("Failed to delete the tag");
+        }
+
     }
 
 }

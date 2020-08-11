@@ -43,7 +43,7 @@ export class AnimalService {
     }
 
     setMainPhoto(animalId: number, id: number) {
-    return this.http.post(this.baseUrl + 'animals/' + animalId + '/photos/' + id + '/setMain', {}, httpOptions);
+      return this.http.post(this.baseUrl + 'animals/' + animalId + '/photos/' + id + '/setMain', {}, httpOptions);
     }
 
     deletePhoto(animalId: number, id: number) {
@@ -58,12 +58,11 @@ export class AnimalService {
       return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, tag);
     }
 
-    // getTags(animalId: number): Observable<Tag[]> {
-    //   var result = this.http.get<Tag[]>(this.baseUrl + 'animals' + animalId + '/tags');
-    //   return result;
-    // }
-
-    // removeTag(tag: Tag, animalId: number) {
-    //   return this.http.delete(this.baseUrl + 'animals/' + 'tags/' + animalId + '/delete');
-    // }
+    removeTag(content: string, animalId: number) {
+      // debugger;
+      let params = new HttpParams();
+      params = params.append('tagContent', content);
+      params = params.append('animalId', animalId.toString());
+      return this.http.delete(this.baseUrl + 'animals/' + animalId + '/tags/', {params});
+    }
   }
