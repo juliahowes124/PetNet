@@ -85,12 +85,6 @@ namespace AnimalShelter.API.Controllers
             throw new System.Exception($"Updating user {id} failed on save");
         }
 
-        [HttpGet("{id}/tag")]
-        public async Task<IActionResult> GetTag(string content, int animalId)
-        {
-            var tag = await _animal_repo.GetTag(content, animalId);
-            return Ok(tag); //returns either no content or a Tag object
-        }
 
         [HttpGet("{id}/tags")]
         public async Task<IActionResult> GetTags(int id)

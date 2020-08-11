@@ -15,6 +15,6 @@ namespace AnimalShelter.API.Data
          Task<Photo> GetPhoto(int id);
          Task<Photo> GetMainPhoto(int animalId);
          Task<IEnumerable<Tag>> GetTags(int animalId);
-         Task<Tag> GetTag(string content, int animalId);
+        //  Task<Tag> GetTag(string content, int animalId);
     }
 }

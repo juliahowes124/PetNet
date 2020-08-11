@@ -22,29 +22,31 @@ export class TagEditorComponent implements OnInit {
 
   currentLikes = new Set();
   currentQualities = new Set();
+  currentGoodWith = new Set();
 
   constructor(private animalService: AnimalService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.animal = data.animal; // this returned animal has its tags included
+      this.animal = data.animal; // this returned animal has its tags included -- except it doesnt return goodWiths in the array
     });
     this.currentLikes = new Set(this.animal.likes);
     this.currentQualities = new Set(this.animal.qualities);
+    this.currentGoodWith = new Set(this.animal.goodWith);
 
     this.likesChecks = {'walks': this.currentLikes.has('walks'),
       'cuddles': this.currentLikes.has('cuddles'),'food': this.currentLikes.has('food'),
       'toys': this.currentLikes.has('toys'),'sleeping': this.currentLikes.has('sleeping'),
       'outdoors': this.currentLikes.has('outdoors')};
 
-    // this.qualitiesChecks = {'friendly': this.currentQualities.has('friendly'),
-    //   'energetic': this.currentQualities.has('energeitc'), 'smart': this.currentQualities.has('smart'),
-    //   'funny': this.currentQualities.has('funny'), 'loving': this.currentQualities.has('loving'),
-    //   'independent': this.currentQualities.has('independent')};
+    this.qualitiesChecks = {'friendly': this.currentQualities.has('friendly'),
+      'energetic': this.currentQualities.has('energetic'), 'smart': this.currentQualities.has('smart'),
+      'funny': this.currentQualities.has('funny'), 'loving': this.currentQualities.has('loving'),
+      'independent': this.currentQualities.has('independent')};
 
-    // this.goodWithChecks = {'children': this.goodWithChecks.has('children'), 'dogs': this.goodWithChecks.has('dogs'),
-    //  'cats': this.goodWithChecks.has('cats'), 'women': this.goodWithChecks.has('women'),
-    //  'men': this.goodWithChecks.has('men'), 'crowds': this.goodWithChecks.has('crowds')};
+    this.goodWithChecks = {'children': this.currentGoodWith.has('children'), 'dogs': this.currentGoodWith.has('dogs'),
+     'cats': this.currentGoodWith.has('cats'), 'women': this.currentGoodWith.has('women'),
+     'men': this.currentGoodWith.has('men'), 'crowds': this.currentGoodWith.has('crowds')};
   }
 
   addTag(clickedTag: string, animalId: number, type: string) {

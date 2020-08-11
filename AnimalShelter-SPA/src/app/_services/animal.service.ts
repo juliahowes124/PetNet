@@ -58,10 +58,10 @@ export class AnimalService {
       return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, tag);
     }
 
-    getTags(animalId: number): Observable<Tag[]> {
-      var result = this.http.get<Tag[]>(this.baseUrl + 'animals' + animalId + '/tags');
-      return result;
-    }
+    // getTags(animalId: number): Observable<Tag[]> {
+    //   var result = this.http.get<Tag[]>(this.baseUrl + 'animals' + animalId + '/tags');
+    //   return result;
+    // }
 
     // removeTag(tag: Tag, animalId: number) {
     //   return this.http.delete(this.baseUrl + 'animals/' + 'tags/' + animalId + '/delete');
