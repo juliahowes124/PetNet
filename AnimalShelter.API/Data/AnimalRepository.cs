@@ -46,9 +46,14 @@ namespace AnimalShelter.API.Data
             return await _context.Photos.FirstOrDefaultAsync( a=> a.Id == id );
         }
 
-        public async Task<IEnumerable<Tag>> GetTags()
+        public async Task<Tag> GetTag(string content, int animalId)
         {
-            return await _context.Tags.ToListAsync();
+            return await _context.Tags.Where(t => t.AnimalId == animalId).FirstOrDefaultAsync(t => t.Content == content);
+        }
+
+        public async Task<IEnumerable<Tag>> GetTags(int animalId)
+        {
+            return await _context.Tags.Where(t => t.AnimalId == animalId).ToListAsync();
         }
 
         public async Task<Animal> Register(Animal animal)

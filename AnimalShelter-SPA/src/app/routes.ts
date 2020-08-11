@@ -25,6 +25,7 @@ export const appRoutes: Routes = [
             { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]},
             { path: 'your-animals', component: YourAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: YourAnimalsResolver}},
             { path: 'animal/edit/:id', component: AnimalEditComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
+            // tslint:disable-next-line: max-line-length
             { path: 'animal/edit/:id/tag', component: TagEditorComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}}
         ]
     },

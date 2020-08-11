@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Animal } from '../_models/animal';
-import { Tag } from '../_models/tag';
 import { TagDefinition } from '@angular/compiler';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 const httpOptions = {
   headers: new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token')
   })
 };
+
+export interface Tag {
+  id: number;
+  content: string;
+  type: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +58,12 @@ export class AnimalService {
       return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, tag);
     }
 
-    removeTag(tag: Tag, animalId: number) {
-      return this.http.delete(this.baseUrl + 'animals/' + 'tags/' + animalId + '/delete');
+    getTags(animalId: number): Observable<Tag[]> {
+      var result = this.http.get<Tag[]>(this.baseUrl + 'animals' + animalId + '/tags');
+      return result;
     }
+
+    // removeTag(tag: Tag, animalId: number) {
+    //   return this.http.delete(this.baseUrl + 'animals/' + 'tags/' + animalId + '/delete');
+    // }
   }
