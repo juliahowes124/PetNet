@@ -4,6 +4,8 @@ import { AnimalService } from 'src/app/_services/animal.service';
 import { ActivatedRoute } from '@angular/router';
 import { Animal } from 'src/app/_models/animal';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
+import { UserService } from 'src/app/_services/user.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-animal-detail',
@@ -15,7 +17,8 @@ export class AnimalDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
+              private userService: UserService, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -48,6 +51,14 @@ export class AnimalDetailComponent implements OnInit {
       });
     }
     return imageUrls;
+  }
+
+  saveAnimal(animalId: number) {
+    this.userService.saveAnimal(this.authService.decodedToken.nameid, animalId).subscribe(data => {
+      this.alertify.success('You have liked: ' + this.animal.name);
+    }, error => {
+      this.alertify.error(error);
+    });
   }
 
 }

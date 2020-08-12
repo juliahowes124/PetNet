@@ -64,7 +64,7 @@ namespace AnimalShelter.API.Controllers
             //     return Unauthorized();
             var save = await _repo.GetSave(userId, animalId);
             if (save != null)
-                return BadRequest("You already like this user");
+                return BadRequest("You already like this pet");
 
             if (await _animal_repo.GetAnimal(animalId) == null)
                 return NotFound();

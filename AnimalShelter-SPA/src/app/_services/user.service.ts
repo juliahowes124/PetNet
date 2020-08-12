@@ -20,4 +20,8 @@ updateUser(id: number, user: User) {
   return this.http.put(this.baseUrl + 'users/' + id, user);
 }
 
+saveAnimal(userId: number, animalId: number) {
+  return this.http.post(this.baseUrl + 'users/' + userId + '/save/' + animalId, {});
+}
+
 }
