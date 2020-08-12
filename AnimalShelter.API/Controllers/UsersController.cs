@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AnimalShelter.API.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -37,6 +37,21 @@ namespace AnimalShelter.API.Controllers
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForInfoDto>(user);
             return Ok(userToReturn);
+        }
+
+        [HttpPut("{id}", Name="GetUser")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto) 
+        {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            
+            var userFromRepo = await _repo.GetUser(id);
+
+            _mapper.Map(userForUpdateDto, userFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+            throw new System.Exception($"Updating user {id} failed on save");
         }
     }
 }

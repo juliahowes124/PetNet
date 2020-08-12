@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card" id="mainCard">
-        <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
+        <div class="container" id="picContainer">
+          <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
+          <button class="btn btn-primary"><i class="fa fa-heart"></i></button>
+        </div>
         <div id="mainCardBody" class="card-body">
           <div id="viewBar">
             <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
@@ -11,21 +14,24 @@
           <div id="innerCard" class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="{{animal.userPhotoUrl}}" alt="Owner Picture">
+                  <img src="{{animal.userPhotoUrl}}" alt="Owner Picture">
               </div>
               <div class="col-md-8">
-                  <h5 class="card-title">{{animal.userKnownAs}}</h5>
-                  <h6>@{{animal.username}}</h6>
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title">{{animal.userKnownAs}}</h5>
+                    <h6>@{{animal.username}}</h6>
+                  </div>
+                  <div class="col">
+                    <button id="messageButton" class="btn btn-primary" [routerLink]="['/messages']" routerLinkActive="router-link-active" ><i class="fa fa-envelope"></i></button>
+                  </div>
+                </div>
+                  
+                  
                   <p class="card-text">{{animal.city}}, {{animal.state}}</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="btn-group d-flex">
-          <button class="btn btn-primary w-100 mr-1">Save</button>
-          <button class="btn btn-success w-100 ml-1" [routerLink]="['/messages']" routerLinkActive="router-link-active" >Message {{animal.userKnownAs}}</button>
         </div>
       </div>
     </div>
@@ -75,6 +81,7 @@
       <ul class="list-group list-group-flush">
         <span class="badge badge-pill badge-warning">Adoption Fee: ${{animal.adoptionFee}}</span>
         <li class="list-group-item mt-5">{{animal.species | titlecase}}</li>
+        <li class="list-group-item">{{animal.breed | titlecase}}</li>
         <li class="list-group-item">{{animal.gender | titlecase}}</li>
         <li class="list-group-item">{{animal.age}} yrs</li>
       </ul>

@@ -14,22 +14,31 @@ import { User } from '../_models/user';
 })
 export class RehomeComponent implements OnInit {
 
-  model: any = {};
+  animal: Animal;
   animalRegisterForm: FormGroup;
-  likes: string[] = ['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors'];
-  qualities: string[] = ['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent'];
-  goodWith: string[] = ['children', 'dogs', 'cats', 'women', 'men', 'crowds'];
+  likes = new Set();
+  qualities = new Set();
+  goodWith: string[] = [];
 
   constructor(public authService: AuthService, private animalService: AnimalService,
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.createRegisterForm();
   }
 
   createRegisterForm() {
     this.animalRegisterForm = this.fb.group({
       name: [''],
       gender: [''],
+      age: 0,
+      species: [''],
+      breed: [''],
+      adoptionFee: 0,
+      likes: [],
+      qualties: [],
+      goodWith: [],
+
     });
   }
 
@@ -40,8 +49,8 @@ export class RehomeComponent implements OnInit {
 
   registerAnimal() {
     const id = this.authService.decodedToken.nameid;
-    this.model.userId = id;
-    this.animalService.registerAnimal(this.model).subscribe(() => {
+    this.animal.userId = id;
+    this.animalService.registerAnimal(this.animal).subscribe(() => {
       this.alertify.success('Registration successful');
       this.router.navigate(['/home']);
     }, error => {
@@ -49,8 +58,32 @@ export class RehomeComponent implements OnInit {
     });
   }
 
-  addToLikes(like: string) {
-    this.model.likes.push(like);
+  addToTags(checkedTag: string, type: string) {
+    if (type === 'like') {
+      this.likes.add(checkedTag);
+    } else if (type === 'quality') {
+      this.qualities.add(checkedTag);
+    } else if (type === 'goodWith') {
+      this.goodWith.push(checkedTag);
+    }
+  }
+
+  removeFromTags(checkedTag: string, type: string) {
+    if (type === 'like') {
+      this.animal.likes.splice(this.animal.likes.findIndex(l => l === checkedTag));
+    } else if (type === 'quality') {
+      this.animal.qualities.splice(this.animal.qualities.findIndex(q => q === checkedTag));
+    } else if (type === 'goodWith') {
+      this.animal.goodWith.splice(this.animal.goodWith.findIndex(g => g === checkedTag));
+    }
+  }
+
+  addOrRemove(checkedTag: string, type: string) {
+    if (this.likes.has(checkedTag) || this.qualities.has(checkedTag)) {
+      this.removeFromTags(checkedTag, type);
+    } else {
+      this.addToTags(checkedTag, type);
+    }
   }
 
 }

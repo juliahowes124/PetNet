@@ -14,6 +14,8 @@ import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
 import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
 import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -26,7 +28,8 @@ export const appRoutes: Routes = [
             { path: 'your-animals', component: YourAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: YourAnimalsResolver}},
             { path: 'animal/edit/:id', component: AnimalEditComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
             // tslint:disable-next-line: max-line-length
-            { path: 'animal/edit/:id/tag', component: TagEditorComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}}
+            { path: 'animal/edit/:id/tag', component: TagEditorComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
+            { path: 'user-edit', component: UserEditComponent, canActivate: [AuthGuard], resolve: {user: UserEditResolver}}
         ]
     },
     { path: 'animals/:id', component: AnimalDetailComponent, resolve: {animal: AnimalDetailResolver}},

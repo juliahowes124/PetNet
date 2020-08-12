@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   model: any = {};
   loginMode = false;
+  userId: number;
 
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
+
 
   login() {
     this.authService.login(this.model).subscribe(next => {

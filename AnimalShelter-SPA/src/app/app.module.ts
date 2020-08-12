@@ -53,6 +53,8 @@ import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component
 import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
 
 
 
@@ -61,7 +63,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-   declarations: [
+   declarations: [	
       AppComponent,
       NavComponent,
       HomeComponent,
@@ -75,7 +77,8 @@ export function tokenGetter() {
       YourAnimalsComponent,
       AnimalEditComponent,
       PhotoEditorComponent,
-      TagEditorComponent
+      TagEditorComponent,
+      UserEditComponent
    ],
    imports: [
       BrowserModule,
@@ -105,6 +108,7 @@ export function tokenGetter() {
       AnimalListResolver,
       YourAnimalsResolver,
       AnimalEditResolver,
+      UserEditResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [
