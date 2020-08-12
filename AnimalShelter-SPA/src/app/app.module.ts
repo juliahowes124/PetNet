@@ -63,7 +63,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-   declarations: [	
+   declarations: [
       AppComponent,
       NavComponent,
       HomeComponent,
@@ -95,7 +95,7 @@ export function tokenGetter() {
       FileUploadModule,
       JwtModule.forRoot({
          config: {
-            tokenGetter,
+            tokenGetter
          }
       }),
       RouterModule.forRoot(appRoutes),

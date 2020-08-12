@@ -31,7 +31,7 @@ login(model: any) {
               const user = response;
               if (user) {
                 localStorage.setItem('token', user.token);
-                localStorage.setItem('user', JSON.stringify(user.user));
+                localStorage.setItem('user', JSON.stringify(user.userFromRepo));
                 this.decodedToken = this.jwtHelper.decodeToken(user.token);
                 this.currentUser = user.user;
               }
@@ -44,8 +44,8 @@ loggedIn() {
   return !this.jwtHelper.isTokenExpired(token);
 }
 
-register(model: any) {
-  return this.http.post(this.baseUrl + 'register', model);
+register(user: User) {
+  return this.http.post(this.baseUrl + 'register', user);
 }
 
 }
