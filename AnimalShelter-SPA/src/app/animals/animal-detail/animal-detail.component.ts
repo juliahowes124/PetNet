@@ -16,6 +16,8 @@ export class AnimalDetailComponent implements OnInit {
   animal: Animal;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  timeLeft: number;
+
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
               private userService: UserService, private authService: AuthService) { }
@@ -24,6 +26,12 @@ export class AnimalDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.animal = data.animal;
     });
+
+    const adoptby = this.animal.adoptBy.valueOf();
+    this.timeLeft = Math.round((new Date(adoptby).getTime() - Date.now()) / (60 * 60 * 24 * 1000));
+    if (this.timeLeft < 0) {
+      this.timeLeft = 0;
+    }
 
     this.galleryOptions = [
       {

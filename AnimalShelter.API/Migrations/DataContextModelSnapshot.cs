@@ -22,6 +22,9 @@ namespace AnimalShelter.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("AdoptBy")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("AdoptionFee")
                         .HasColumnType("INTEGER");
 
@@ -50,9 +53,6 @@ namespace AnimalShelter.API.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Species")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("TimeLeftToAdopt")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")

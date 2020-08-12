@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalShelter.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200812175544_AddedSaveEntity")]
-    partial class AddedSaveEntity
+    [Migration("20200812202509_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,9 @@ namespace AnimalShelter.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AdoptBy")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("AdoptionFee")
                         .HasColumnType("INTEGER");
@@ -52,9 +55,6 @@ namespace AnimalShelter.API.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Species")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("TimeLeftToAdopt")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")

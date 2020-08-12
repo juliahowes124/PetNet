@@ -41,7 +41,14 @@
           <tab heading="About">
             <div class="card text-gray bg-light mb-3 mt-3" style="min-height: 250px;">
               <div class="card-body">
-                <h3 class="card-title">About {{animal.name}}</h3>
+                <div class="row">
+                  <div class="col">
+                    <h3 class="card-title">About {{animal.name}}</h3>
+                  </div>
+                  <div class="col" id="timeLeft">
+                    <i class="fa fa-hourglass"> {{timeLeft}} Days</i> 
+                  </div>
+                </div>
                 <hr style="border-color: white">
                 <p class="card-text">{{animal.description}}</p>
               </div>

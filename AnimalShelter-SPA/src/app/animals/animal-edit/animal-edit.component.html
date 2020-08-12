@@ -24,7 +24,7 @@
       <div class="tab-panel">
         <tabset class="member-tabset">
           <tab heading="Edit Profile">
-            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateAnimal()">
               <div class="row mt-2">
                 <div class="col-sm-8">
                   <h5 class="mt-1">Name</h5>
@@ -60,6 +60,8 @@
                     <textarea name="age" rows="1" class="form-control" [(ngModel)]="animal.age"></textarea>
                   <h6 class="mt-2">Adoption Fee</h6>
                     <textarea name="adoptionFee" rows="1" class="form-control" [(ngModel)]="animal.adoptionFee"></textarea>
+                  <h6 class="mt-2">Adopt By</h6>
+                    <input type="date" name="adoptBy" rows="1" class="form-control" [(ngModel)]="animal.adoptBy">
                 </div>
               </div>
             </form>

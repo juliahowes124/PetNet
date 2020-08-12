@@ -13,7 +13,7 @@ namespace AnimalShelter.API.DTOs
         public string Gender { get; set; }
         public int AdoptionFee { get; set; }
         public int Age { get; set; }
-        public DateTime TimeLeftToAdopt { get; set; }
+        public DateTime AdoptBy { get; set; }
         public int UserId { get; set; } 
         public string PhotoUrl { get; set; }
         public ICollection<Photo> Photos { get; set; }

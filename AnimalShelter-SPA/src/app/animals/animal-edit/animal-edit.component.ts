@@ -36,7 +36,7 @@ export class AnimalEditComponent implements OnInit {
     });
   }
 
-  updateUser() {
+  updateAnimal() {
     this.animalService.updateAnimal(this.authService.decodedToken.nameid, this.animal).subscribe(next => {
       this.alertify.success('Profile updated successfully');
       this.editForm.reset(this.animal);

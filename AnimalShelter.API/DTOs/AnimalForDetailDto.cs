@@ -18,7 +18,7 @@ namespace AnimalShelter.API.DTOs
         public int Age { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }
-        public DateTime TimeLeftToAdopt { get; set; }
+        public DateTime AdoptBy { get; set; }
         public int Views { get; set; }
         public int Saves { get; set; }
         public int Inquiries { get; set; }

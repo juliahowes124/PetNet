@@ -13,7 +13,7 @@ export interface Animal {
     age: number;
     gender: string;
     posted: Date;
-    timeLeftToAdopt: Date;
+    adoptBy: Date;
     views: number;
     saves: number;
     inquiries: number;

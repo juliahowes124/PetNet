@@ -12,12 +12,15 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./animal-card.component.css']
 })
 export class AnimalCardComponent implements OnInit {
+  debugger;
   @Input() animal: Animal;
+  timeLeft: number;
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService,
               private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
+    this.timeLeft = this.animal.adoptBy.valueOf() - Date.now();
   }
 
   saveAnimal(animalId: number) {

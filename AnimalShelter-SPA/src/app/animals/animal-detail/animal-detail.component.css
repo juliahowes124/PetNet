@@ -32,6 +32,11 @@
     background-color: lightskyblue;
 }
 
+#timeLeft {
+    text-align: right;
+}
+
+
 #mainCard {
     border: none;
 }

@@ -41,7 +41,7 @@ namespace AnimalShelter.API.Migrations
                     Age = table.Column<int>(nullable: false),
                     Gender = table.Column<string>(nullable: true),
                     Posted = table.Column<DateTime>(nullable: false),
-                    TimeLeftToAdopt = table.Column<DateTime>(nullable: false),
+                    AdoptBy = table.Column<DateTime>(nullable: false),
                     Views = table.Column<int>(nullable: false),
                     Saves = table.Column<int>(nullable: false),
                     Inquiries = table.Column<int>(nullable: false),
@@ -83,6 +83,30 @@ namespace AnimalShelter.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Saves",
+                columns: table => new
+                {
+                    SaverId = table.Column<int>(nullable: false),
+                    SaveeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Saves", x => new { x.SaverId, x.SaveeId });
+                    table.ForeignKey(
+                        name: "FK_Saves_Animals_SaveeId",
+                        column: x => x.SaveeId,
+                        principalTable: "Animals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Saves_Users_SaverId",
+                        column: x => x.SaverId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tags",
                 columns: table => new
                 {
@@ -114,6 +138,11 @@ namespace AnimalShelter.API.Migrations
                 column: "AnimalId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Saves_SaveeId",
+                table: "Saves",
+                column: "SaveeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tags_AnimalId",
                 table: "Tags",
                 column: "AnimalId");
@@ -123,6 +152,9 @@ namespace AnimalShelter.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "Saves");
 
             migrationBuilder.DropTable(
                 name: "Tags");
