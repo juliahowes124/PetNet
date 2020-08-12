@@ -41,5 +41,10 @@ namespace AnimalShelter.API.Data
             .FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
+
+        public async Task<Save> GetSave(int userId, int animalId)
+        {
+            return await _context.Saves.FirstOrDefaultAsync(u => u.SaverId == userId && u.SaveeId == animalId);
+        }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AnimalShelter.API.DTOs;
 using System.Collections.Generic;
+using AnimalShelter.API.Models;
 
 namespace AnimalShelter.API.Controllers
 {
@@ -15,8 +16,10 @@ namespace AnimalShelter.API.Controllers
     {
         private readonly IUserRepository _repo;
         private readonly IMapper _mapper;
-        public UsersController(IUserRepository repo, IMapper mapper)
+        private readonly IAnimalRepository _animal_repo;
+        public UsersController(IUserRepository repo, IMapper mapper, IAnimalRepository animal_repo)
         {
+            _animal_repo = animal_repo;
             _mapper = mapper;
             _repo = repo;
 
@@ -39,12 +42,12 @@ namespace AnimalShelter.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut("{id}", Name="GetUser")]
-        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto) 
+        [HttpPut("{id}", Name = "GetUser")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             //     return Unauthorized();
-            
+
             var userFromRepo = await _repo.GetUser(id);
 
             _mapper.Map(userForUpdateDto, userFromRepo);
@@ -52,6 +55,32 @@ namespace AnimalShelter.API.Controllers
             if (await _repo.SaveAll())
                 return NoContent();
             throw new System.Exception($"Updating user {id} failed on save");
+        }
+
+        [HttpPost("{userId}/save/{animalId}")]
+        public async Task<IActionResult> SaveAnimal(int userId, int animalId)
+        {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            var save = await _repo.GetSave(userId, animalId);
+            if (save != null)
+                return BadRequest("You already like this user");
+
+            if (await _animal_repo.GetAnimal(animalId) == null)
+                return NotFound();
+
+            save = new Save
+            {
+                SaverId = userId,
+                SaveeId = animalId
+            };
+
+            _repo.Add<Save>(save);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to save animal");
         }
     }
 }
