@@ -22,7 +22,6 @@ namespace AnimalShelter.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-
         private readonly IMapper _mapper;
 
         public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
@@ -45,7 +44,8 @@ namespace AnimalShelter.API.Controllers
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
+            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
         }
 
 
@@ -82,6 +82,7 @@ namespace AnimalShelter.API.Controllers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
 
             //return as an object
             return Ok(new

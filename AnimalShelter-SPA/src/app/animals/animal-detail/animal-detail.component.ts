@@ -55,7 +55,7 @@ export class AnimalDetailComponent implements OnInit {
 
   saveAnimal(animalId: number) {
     this.userService.saveAnimal(this.authService.decodedToken.nameid, animalId).subscribe(data => {
-      this.alertify.success('You have liked: ' + this.animal.name);
+      this.alertify.success('You have liked ' + this.animal.name);
     }, error => {
       this.alertify.error(error);
     });
