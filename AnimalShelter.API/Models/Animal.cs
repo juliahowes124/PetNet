@@ -22,5 +22,6 @@ namespace AnimalShelter.API.Models
         public int UserId { get; set; } 
         public ICollection<Tag> Tags { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public ICollection<Save> Savers { get; set; }
     }
 }
