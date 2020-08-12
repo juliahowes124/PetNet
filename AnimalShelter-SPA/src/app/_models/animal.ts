@@ -26,3 +26,4 @@ export interface Animal {
     photoUrl: string;
     photos?: Photo[];
 }
+

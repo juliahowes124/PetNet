@@ -11,6 +11,7 @@ import { User } from '../_models/user';
 })
 export class YourAnimalsComponent implements OnInit {
   animals: Animal[];
+  timeLefts: {[animalId: number]: number} = {};
 
   constructor(private route: ActivatedRoute, public authService: AuthService) { }
 
@@ -18,6 +19,14 @@ export class YourAnimalsComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.animals = data.animals.filter(animal => animal.userId == this.authService.decodedToken.nameid);
     });
+
+    for (const animal of this.animals) {
+      const adoptby = animal.adoptBy.valueOf();
+      this.timeLefts[animal.id] = Math.round((new Date(adoptby).getTime() - Date.now()) / (60 * 60 * 24 * 1000));
+      if (this.timeLefts[animal.id] < 0) {
+        this.timeLefts[animal.id] = 0;
+      }
+    }
   }
 
 }

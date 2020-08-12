@@ -20,7 +20,11 @@ export class AnimalCardComponent implements OnInit {
               private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
-    this.timeLeft = this.animal.adoptBy.valueOf() - Date.now();
+    const adoptby = this.animal.adoptBy.valueOf();
+    this.timeLeft = Math.round((new Date(adoptby).getTime() - Date.now()) / (60 * 60 * 24 * 1000));
+    if (this.timeLeft < 0) {
+      this.timeLeft = 0;
+    }
   }
 
   saveAnimal(animalId: number) {

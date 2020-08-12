@@ -59,3 +59,16 @@ div {
     height:100%;
     overflow: hidden;
 }
+
+.container {
+    position: relative;
+    
+}
+
+#timeLeft {
+    color: rgb(255, 0, 0);
+    padding: 2%;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+  }
