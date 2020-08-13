@@ -48,7 +48,7 @@ export class TagEditorComponent implements OnInit {
   addTag(clickedTag: string, animalId: number, type: string) {
     console.log(type);
     const tag: Tag = new Tag(clickedTag, type);
-    this.animalService.addTag(tag, this.animal.id).subscribe();
+    this.animalService.addTag(tag, this.animal.id, this.animal.userId).subscribe();
     if (type === 'like') {
       this.currentLikes.add(clickedTag);
     } else if (type === 'quality') {

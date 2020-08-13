@@ -32,7 +32,7 @@ export class RehomeComponent implements OnInit {
       name: [''],
       gender: [''],
       age: 0,
-      species: [''],
+      petType: [''],
       breed: [''],
       adoptionFee: 0,
       likes: [],
@@ -47,10 +47,9 @@ export class RehomeComponent implements OnInit {
     return this.authService.loggedIn();
   }
 
-  registerAnimal() {
+  registerAnimal( animal: Animal ) {
     const id = this.authService.decodedToken.nameid;
-    this.animal.userId = id;
-    this.animalService.registerAnimal(this.animal).subscribe(() => {
+    this.animalService.registerAnimal(id, animal).subscribe(() => {
       this.alertify.success('Registration successful');
       this.router.navigate(['/home']);
     }, error => {

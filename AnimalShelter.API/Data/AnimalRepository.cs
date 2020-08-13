@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AnimalShelter.API.Helpers;
 using AnimalShelter.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +31,10 @@ namespace AnimalShelter.API.Data
             return animal;
         }
 
-        public async Task<IEnumerable<Animal>> GetAnimals()
+        public async Task<PagedList<Animal>> GetAnimals(AnimalParams animalParams)
         {
-            var animals = await _context.Animals.Include(p => p.Photos).ToListAsync();
-            return animals;
+            var animals = _context.Animals.Include(p => p.Photos);
+            return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 
         public async Task<Photo> GetMainPhoto(int animalId)

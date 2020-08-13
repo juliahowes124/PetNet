@@ -13,7 +13,7 @@
 <div *ngIf="loggedIn()" class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-4">
-      <form #animalRegisterForm="ngForm" (ngSubmit)="registerAnimal()">
+      <form #animalRegisterForm="ngForm" (ngSubmit)="registerAnimal(animal)">
         <h2 class="text-center text-primary">Create Your Pet's Profile</h2>
         <hr>
 
@@ -27,7 +27,7 @@
           <input type="text" class="form-control" required name="age" placeholder="Age">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" required name="species" placeholder="Species">
+          <input type="text" class="form-control" required name="petType" placeholder="Pet Type">
         </div>
         <div class="form-group">
           <input type="text" class="form-control" required name="breed"  placeholder="Breed">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group text-center">
-          <button class="btn btn-success" type="submit" (click)="registerAnimal()">Register</button>
+          <button class="btn btn-success" type="submit" (click)="registerAnimal(animal)">Register</button>
           <button class="btn btn-default" type="button">Cancel</button>
         </div>
       </form>

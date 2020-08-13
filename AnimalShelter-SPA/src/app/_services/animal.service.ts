@@ -34,8 +34,8 @@ export class AnimalService {
       return this.http.get<Animal>(this.baseUrl + 'animals/' + id);
     }
 
-    registerAnimal(animal: Animal) {
-      return this.http.post(this.baseUrl + 'animals/' + 'register', animal);
+    registerAnimal(userId: number, animal: Animal) {
+      return this.http.post(this.baseUrl + 'animals/' + userId + '/register', animal);
     }
 
     updateAnimal(id: number, animal: Animal) {
@@ -54,12 +54,11 @@ export class AnimalService {
       animal.photoUrl = photoUrl;
     }
 
-    addTag(tag: Tag, animalId: number) {
-      return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, tag);
+    addTag(tag: Tag, animalId: number, userId: number) {
+      return this.http.post(this.baseUrl + 'animals/' + 'tags/' + animalId, {tag, userId});
     }
 
     removeTag(content: string, animalId: number) {
-      // debugger;
       let params = new HttpParams();
       params = params.append('tagContent', content);
       params = params.append('animalId', animalId.toString());

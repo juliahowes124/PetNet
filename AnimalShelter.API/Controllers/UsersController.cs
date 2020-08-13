@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using AnimalShelter.API.DTOs;
 using System.Collections.Generic;
 using AnimalShelter.API.Models;
+using System.Security.Claims;
 
 namespace AnimalShelter.API.Controllers
 {
@@ -42,7 +43,7 @@ namespace AnimalShelter.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut("{id}", Name = "GetUser")]
+        [HttpPut("{id}", Name = "UpdateUser")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
@@ -60,8 +61,9 @@ namespace AnimalShelter.API.Controllers
         [HttpPost("{userId}/save/{animalId}")]
         public async Task<IActionResult> SaveAnimal(int userId, int animalId)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             //     return Unauthorized();
+
             var save = await _repo.GetSave(userId, animalId);
             if (save != null)
                 return BadRequest("You already like this pet");

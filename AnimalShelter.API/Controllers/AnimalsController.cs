@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AnimalShelter.API.Data;
 using AnimalShelter.API.DTOs;
+using AnimalShelter.API.Helpers;
 using AnimalShelter.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -27,10 +28,15 @@ namespace AnimalShelter.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAnimals()
+        public async Task<IActionResult> GetAnimals([FromQuery]AnimalParams animalParams)
         {
-            var animals = await _animal_repo.GetAnimals();
+            var animals = await _animal_repo.GetAnimals(animalParams);
+
             var animalsToReturn = _mapper.Map<IEnumerable<AnimalForListDto>>(animals);
+
+            Response.AddPagination(animals.CurrentPage, animals.PageSize, 
+                animals.TotalCount, animals.TotalPages);
+
             return Ok(animalsToReturn);
         }
 
@@ -48,19 +54,24 @@ namespace AnimalShelter.API.Controllers
             return Ok(animalToReturn);
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(AnimalForRegisterDto animalForRegisterDto)
+        [HttpPost("{userId}/register")]
+        public async Task<IActionResult> Register(int userId, AnimalForRegisterDto animalForRegisterDto)
         {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
             var animalToCreate = _mapper.Map<Animal>(animalForRegisterDto);
             var createdAnimal = await _animal_repo.Register(animalToCreate);
             return StatusCode(201);
         }
 
-        [HttpPost("tags/{id}")]
-        public async Task<IActionResult> AddTag(int id, TagForCreationDto tagForCreationDto)
+        [HttpPost("tags/{animalId}")]
+        public async Task<IActionResult> AddTag(int animalId, TagForCreationDto tagForCreationDto, int userId)
         {
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+
             var tag = _mapper.Map<Tag>(tagForCreationDto);
-            var animalFromRepo = await _animal_repo.GetAnimal(id);
+            var animalFromRepo = await _animal_repo.GetAnimal(animalId);
             animalFromRepo.Tags.Add(tag);
             if (await _animal_repo.SaveAll())
             {
@@ -90,12 +101,15 @@ namespace AnimalShelter.API.Controllers
         public async Task<IActionResult> GetTags(int id)
         {
             var tags = await _animal_repo.GetTags(id);
-            return Ok(tags); //returns eithera no content or a Tag object
+            return Ok(tags); //returns either no content or a Tag object
         }
 
         [HttpDelete("{id}/tags")]
         public async Task<IActionResult> DeleteTag(string tagContent, int animalId)
         {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            
             var tagToDelete = await _animal_repo.GetTag(tagContent, animalId);
             _animal_repo.Delete(tagToDelete);
 
