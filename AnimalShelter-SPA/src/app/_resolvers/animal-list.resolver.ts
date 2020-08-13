@@ -8,11 +8,14 @@ import { Animal } from '../_models/animal';
 
 @Injectable()
 export class AnimalListResolver implements Resolve<Animal[]> {
+    pageNumber = 1;
+    pageSize = 5;
+
     constructor(private animalService: AnimalService,
                 private router: Router, private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Animal[]> {
-        return this.animalService.getAnimals().pipe(
+        return this.animalService.getAnimals(this.pageNumber, this.pageSize).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
                 this.router.navigate(['/home']);

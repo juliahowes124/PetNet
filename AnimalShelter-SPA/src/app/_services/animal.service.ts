@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Animal } from '../_models/animal';
 import { TagDefinition } from '@angular/compiler';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { PaginatedResult } from '../_models/pagination';
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,8 +28,27 @@ export class AnimalService {
 
     constructor(private http: HttpClient) { }
 
-    getAnimals(): Observable<Animal[]> {
-      return this.http.get<Animal[]>(this.baseUrl + 'animals', httpOptions);
+    getAnimals(page?, itemsPerPage?): Observable<PaginatedResult<Animal[]>> {
+      const paginatedResult: PaginatedResult<Animal[]> = new PaginatedResult<Animal[]>();
+
+      let params = new HttpParams();
+
+      if (page != null && itemsPerPage != null) {
+        params = params.append('pageNumber', page);
+        params = params.append('pageSize', itemsPerPage);
+      }
+      return this.http.get<Animal[]>(this.baseUrl + 'animals', { observe: 'response', params})
+        .pipe(
+          map(response => {
+            paginatedResult.result = response.body;
+            if (response.headers.get('Pagination') != null)
+            {
+              paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+            }
+
+            return paginatedResult;
+          })
+        );
     }
 
     getAnimal(id): Observable<Animal> {

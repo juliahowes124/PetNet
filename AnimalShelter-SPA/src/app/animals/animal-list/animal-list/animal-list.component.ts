@@ -16,7 +16,7 @@ export class AnimalListComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.animals = data.animals;
+      this.animals = data.animals.result;
     });
   }
 
