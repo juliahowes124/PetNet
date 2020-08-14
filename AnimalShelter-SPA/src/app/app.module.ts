@@ -87,6 +87,7 @@ export function tokenGetter() {
       ReactiveFormsModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
       BrowserAnimationsModule,
       ButtonsModule.forRoot(),
       PaginationModule.forRoot(),
