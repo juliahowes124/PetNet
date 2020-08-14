@@ -41,7 +41,14 @@ namespace AnimalShelter.API.Data
                 var maxAge = animalParams.MaxAge;
                 animals = animals.Where(a => a.Age >= minAge && a.Age <= maxAge);
             }
-            
+            if (animalParams.Gender != null) {
+                var gender = animalParams.Gender;
+                animals = animals.Where(a => a.Gender == gender);
+            }
+            if (animalParams.Species != null) {
+                var species = animalParams.Species;
+                animals = animals.Where(a => a.Species == species);
+            }
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 
