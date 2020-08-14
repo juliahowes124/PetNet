@@ -47,21 +47,21 @@ namespace AnimalShelter.API.Data
                 switch(animalParams.OrderBy)
                 {
                     case "Saves":
-                        animals = animals.OrderByDescending(a => a.Saves);
+                        animals = animals.OrderBy(a => a.Saves);
                         break;
                     default:
                         animals = animals.OrderBy(a => a.AdoptBy);
                         break;
                 }
             }
-            // if (animalParams.Gender != "Both") {
-            //     var gender = animalParams.Gender;
-            //     animals = animals.Where(a => a.Gender == gender);
-            // }
-            // if (animalParams.Species != "All") {
-            //     var species = animalParams.Species;
-            //     animals = animals.Where(a => a.Species == species);
-            // }
+            if (!string.IsNullOrEmpty(animalParams.Gender)) {
+                var gender = animalParams.Gender;
+                animals = animals.Where(a => a.Gender == gender);
+            }
+            if (!string.IsNullOrEmpty(animalParams.Species)) {
+                var species = animalParams.Species;
+                animals = animals.Where(a => a.Species == species);
+            }
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 

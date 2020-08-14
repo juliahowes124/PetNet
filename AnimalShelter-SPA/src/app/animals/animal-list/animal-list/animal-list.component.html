@@ -1,5 +1,5 @@
 <div class="text-center mt-3">
-  <h2>Available Pets</h2>
+  <h2>Available Pets: {{pagination.totalItems}} </h2>
 </div>
 
 
@@ -31,9 +31,9 @@
       <label for="gender">Pet Type: </label>
       <select class="form-control ml-1" style="width: 130px" id="species" 
           [(ngModel)]="animalParams.species" name="species">
-        <option>Dog</option>
-        <option>Cat</option>
-        <option>Tortoise</option>
+        <option>dog</option>
+        <option>cat</option>
+        <option>tortoise</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>

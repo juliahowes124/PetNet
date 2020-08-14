@@ -25,8 +25,6 @@ export class AnimalListComponent implements OnInit {
       this.pagination = data.animals.pagination;
     });
 
-    this.animalParams.gender = 'Both';
-    this.animalParams.species = 'All';
     this.animalParams.minAge = 0;
     this.animalParams.maxAge = 100;
     this.animalParams.orderBy = 'AdoptBy';
@@ -38,8 +36,8 @@ export class AnimalListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.animalParams.gender = 'Both';
-    this.animalParams.species = 'All';
+    this.animalParams.gender = '';
+    this.animalParams.species = '';
     this.animalParams.minAge = 0;
     this.animalParams.maxAge = 100;
     this.loadAnimals();
