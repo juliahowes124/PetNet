@@ -35,6 +35,12 @@ namespace AnimalShelter.API.Data
         {
             var animals = _context.Animals.Include(p => p.Photos).OrderBy(a => a.AdoptBy).AsQueryable();
 
+            if (animalParams.Savees)
+            {
+                var userSavees = await GetUserSavees(animalParams.UserId);
+                animals = animals.Where(a => userSavees.Contains(a.Id));
+            }
+
             if (animalParams.MinAge != 18 || animalParams.MaxAge != 100)
             {
                 var minAge = animalParams.MinAge;
@@ -63,6 +69,14 @@ namespace AnimalShelter.API.Data
                 animals = animals.Where(a => a.Species == species);
             }
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
+        }
+
+        private async Task<IEnumerable<int>> GetUserSavees(int id)
+        {
+            var user = await _context.Users.Include(x => x.Savees)
+            .FirstOrDefaultAsync(u => u.Id == id);
+
+            return user.Savees.Where(a => a.SaverId == id).Select(i => i.SaveeId);
         }
 
         public async Task<Photo> GetMainPhoto(int animalId)

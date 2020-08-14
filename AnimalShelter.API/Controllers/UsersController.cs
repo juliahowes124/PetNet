@@ -7,6 +7,7 @@ using AnimalShelter.API.DTOs;
 using System.Collections.Generic;
 using AnimalShelter.API.Models;
 using System.Security.Claims;
+using AnimalShelter.API.Helpers;
 
 namespace AnimalShelter.API.Controllers
 {
@@ -27,10 +28,13 @@ namespace AnimalShelter.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]AnimalParams animalParams)
         {
-            var users = await _repo.GetUsers();
+            var users = await _repo.GetUsers(animalParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserForInfoDto>>(users);
+
+            Response.AddPagination(users.CurrentPage, users.PageSize, 
+                users.TotalCount, users.TotalPages);
 
             return Ok(usersToReturn);
         }
