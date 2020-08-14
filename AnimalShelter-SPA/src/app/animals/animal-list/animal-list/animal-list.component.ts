@@ -13,6 +13,8 @@ import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 })
 export class AnimalListComponent implements OnInit {
   animals: Animal[];
+  genderList = [{value: 'male', display: 'Males'}, {value: 'female', display: 'Females'}];
+  animalParams: any = {};
   pagination: Pagination;
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute) { }
@@ -22,19 +24,34 @@ export class AnimalListComponent implements OnInit {
       this.animals = data.animals.result;
       this.pagination = data.animals.pagination;
     });
+
+    this.animalParams.gender = 'Both';
+    this.animalParams.species = 'All';
+    this.animalParams.minAge = 0;
+    this.animalParams.maxAge = 100;
+    this.animalParams.orderBy = 'AdoptBy';
   }
 
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
-    console.log(this.pagination.currentPage);
+    this.loadAnimals();
+  }
+
+  resetFilters() {
+    this.animalParams.gender = 'Both';
+    this.animalParams.species = 'All';
+    this.animalParams.minAge = 0;
+    this.animalParams.maxAge = 100;
     this.loadAnimals();
   }
 
   loadAnimals() {
-    this.animalService.getAnimals(this.pagination.currentPage, this.pagination.itemsPerPage
-      ).subscribe((res: PaginatedResult<Animal[]>) => {
+    this.animalService.getAnimals(this.pagination.currentPage, this.pagination.itemsPerPage, this.animalParams)
+    .subscribe((res: PaginatedResult<Animal[]>) => {
       this.animals = res.result;
       this.pagination = res.pagination;
+      console.log(this.animals);
+      console.log(this.pagination);
     }, error => {
       this.alertify.error(error);
     });

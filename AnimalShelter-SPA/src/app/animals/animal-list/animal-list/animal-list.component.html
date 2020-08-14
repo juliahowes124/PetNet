@@ -1,16 +1,66 @@
-<div class="container mt-5">
+<div class="text-center mt-3">
+  <h2>Available Pets</h2>
+</div>
+
+
+
+<div class="container mt-3">
+  <form class="form-inline" #form="ngForm" (ngSubmit)="loadAnimals()" novalidate>
+    <div class="form-group">
+      <label for="minAge">Age From</label>
+      <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" 
+        [(ngModel)]="animalParams.minAge" name="minAge">
+    </div>
+  
+    <div class="form-group px-2">
+      <label for="maxAge">To</label>
+      <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" 
+         [(ngModel)]="animalParams.maxAge" name="maxAge">
+    </div>
+  
+    <div class="form-group px-2">
+      <label for="gender">Gender: </label>
+      <select class="form-control ml-1" style="width: 130px" id="gender" 
+        [(ngModel)]="animalParams.gender" name="gender">
+        <option *ngFor="let gender of genderList" [value]="gender.value">
+          {{gender.display}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group px-2">
+      <label for="gender">Pet Type: </label>
+      <select class="form-control ml-1" style="width: 130px" id="species" 
+          [(ngModel)]="animalParams.species" name="species">
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Tortoise</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+    <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">Reset Filter</button>
+    <div class="col">
+      <div class="btn-group float-right">
+        <button type="button" name="orderBy" class="btn btn-primary" 
+          [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="AdoptBy">Time Left To Adopt</button>
+        <button type="button" name="orderBy" class="btn btn-primary" 
+          [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="Saves">Number of Saves</button>
+      </div>
+    </div>
+  </form>
+  <br>  
+
   <div class="row">
     <div *ngFor="let animal of animals" class="col-lg-2 col-md-3 col-sm-6">
       <app-animal-card [animal]="animal"></app-animal-card>
     </div>
   </div>
-</div>
-<div class="d-flex justify-content-center">
-  <pagination [boundaryLinks]="true" 
-            [totalItems]="pagination.totalItems"
-            [(ngModel)]="pagination.currentPage"
-            [itemsPerPage]="pagination.itemsPerPage"
-            (pageChanged)="pageChanged($event)"
-            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-  </pagination>
+  <div class="d-flex justify-content-center">
+    <pagination [boundaryLinks]="true" 
+              [totalItems]="pagination.totalItems"
+              [(ngModel)]="pagination.currentPage"
+              [itemsPerPage]="pagination.itemsPerPage"
+              (pageChanged)="pageChanged($event)"
+              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+  </div>
 </div>

@@ -28,7 +28,7 @@ export class AnimalService {
 
     constructor(private http: HttpClient) { }
 
-    getAnimals(page?, itemsPerPage?): Observable<PaginatedResult<Animal[]>> {
+    getAnimals(page?, itemsPerPage?, animalParams?): Observable<PaginatedResult<Animal[]>> {
       const paginatedResult: PaginatedResult<Animal[]> = new PaginatedResult<Animal[]>();
 
       let params = new HttpParams();
@@ -37,6 +37,15 @@ export class AnimalService {
         params = params.append('pageNumber', page);
         params = params.append('pageSize', itemsPerPage);
       }
+
+      if (animalParams != null) {
+        params = params.append('minAge', animalParams.minAge);
+        params = params.append('maxAge', animalParams.maxAge);
+        params = params.append('gender', animalParams.gender);
+        params = params.append('species', animalParams.species);
+        params = params.append('orderBy', animalParams.orderBy);
+      }
+
       return this.http.get<Animal[]>(this.baseUrl + 'animals', { observe: 'response', params})
         .pipe(
           map(response => {
@@ -45,7 +54,7 @@ export class AnimalService {
             {
               paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
             }
-
+            console.log(paginatedResult);
             return paginatedResult;
           })
         );

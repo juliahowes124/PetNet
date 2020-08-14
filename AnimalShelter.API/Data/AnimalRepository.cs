@@ -33,7 +33,7 @@ namespace AnimalShelter.API.Data
 
         public async Task<PagedList<Animal>> GetAnimals(AnimalParams animalParams)
         {
-            var animals = _context.Animals.Include(p => p.Photos).AsQueryable();
+            var animals = _context.Animals.Include(p => p.Photos).OrderBy(a => a.AdoptBy).AsQueryable();
 
             if (animalParams.MinAge != 18 || animalParams.MaxAge != 100)
             {
@@ -41,14 +41,27 @@ namespace AnimalShelter.API.Data
                 var maxAge = animalParams.MaxAge;
                 animals = animals.Where(a => a.Age >= minAge && a.Age <= maxAge);
             }
-            if (animalParams.Gender != null) {
-                var gender = animalParams.Gender;
-                animals = animals.Where(a => a.Gender == gender);
+
+            if (!string.IsNullOrEmpty(animalParams.OrderBy))
+            {
+                switch(animalParams.OrderBy)
+                {
+                    case "Saves":
+                        animals = animals.OrderByDescending(a => a.Saves);
+                        break;
+                    default:
+                        animals = animals.OrderBy(a => a.AdoptBy);
+                        break;
+                }
             }
-            if (animalParams.Species != null) {
-                var species = animalParams.Species;
-                animals = animals.Where(a => a.Species == species);
-            }
+            // if (animalParams.Gender != "Both") {
+            //     var gender = animalParams.Gender;
+            //     animals = animals.Where(a => a.Gender == gender);
+            // }
+            // if (animalParams.Species != "All") {
+            //     var species = animalParams.Species;
+            //     animals = animals.Where(a => a.Species == species);
+            // }
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 
