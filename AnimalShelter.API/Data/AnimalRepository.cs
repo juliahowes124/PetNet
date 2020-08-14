@@ -33,7 +33,15 @@ namespace AnimalShelter.API.Data
 
         public async Task<PagedList<Animal>> GetAnimals(AnimalParams animalParams)
         {
-            var animals = _context.Animals.Include(p => p.Photos);
+            var animals = _context.Animals.Include(p => p.Photos).AsQueryable();
+
+            if (animalParams.MinAge != 18 || animalParams.MaxAge != 100)
+            {
+                var minAge = animalParams.MinAge;
+                var maxAge = animalParams.MaxAge;
+                animals = animals.Where(a => a.Age >= minAge && a.Age <= maxAge);
+            }
+            
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 

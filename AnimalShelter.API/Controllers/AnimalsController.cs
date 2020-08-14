@@ -30,6 +30,7 @@ namespace AnimalShelter.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAnimals([FromQuery]AnimalParams animalParams)
         {
+
             var animals = await _animal_repo.GetAnimals(animalParams);
 
             var animalsToReturn = _mapper.Map<IEnumerable<AnimalForListDto>>(animals);
