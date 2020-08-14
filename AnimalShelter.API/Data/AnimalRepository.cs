@@ -27,13 +27,13 @@ namespace AnimalShelter.API.Data
 
         public async Task<Animal> GetAnimal(int id)
         {
-            var animal = await _context.Animals.Include(p => p.Photos).Include(t => t.Tags).FirstOrDefaultAsync(a => a.Id == id);
+            var animal = await _context.Animals.Include(p => p.Photos).Include(t => t.Tags).Include(s => s.Savers).FirstOrDefaultAsync(a => a.Id == id);
             return animal;
         }
 
         public async Task<PagedList<Animal>> GetAnimals(AnimalParams animalParams)
         {
-            var animals = _context.Animals.Include(p => p.Photos).OrderBy(a => a.AdoptBy).AsQueryable();
+            var animals = _context.Animals.Include(p => p.Photos).Include(s => s.Savers).OrderBy(a => a.AdoptBy).AsQueryable();
 
             if (animalParams.Savees)
             {
@@ -53,7 +53,7 @@ namespace AnimalShelter.API.Data
                 switch(animalParams.OrderBy)
                 {
                     case "Saves":
-                        animals = animals.OrderBy(a => a.Saves);
+                        animals = animals.OrderBy(a => a.Savers.Count);
                         break;
                     default:
                         animals = animals.OrderBy(a => a.AdoptBy);

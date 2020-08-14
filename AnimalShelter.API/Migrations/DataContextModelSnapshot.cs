@@ -40,17 +40,11 @@ namespace AnimalShelter.API.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Inquiries")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Posted")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Saves")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Species")
                         .HasColumnType("TEXT");

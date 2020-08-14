@@ -43,8 +43,6 @@ namespace AnimalShelter.API.Migrations
                     Posted = table.Column<DateTime>(nullable: false),
                     AdoptBy = table.Column<DateTime>(nullable: false),
                     Views = table.Column<int>(nullable: false),
-                    Saves = table.Column<int>(nullable: false),
-                    Inquiries = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

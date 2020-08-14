@@ -17,8 +17,6 @@ namespace AnimalShelter.API.Models
         public DateTime Posted { get; set; }
         public DateTime AdoptBy { get; set; }
         public int Views { get; set; }
-        public int Saves { get; set; }
-        public int Inquiries { get; set; }
         public int UserId { get; set; } 
         public ICollection<Tag> Tags { get; set; }
         public ICollection<Photo> Photos { get; set; }

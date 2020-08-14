@@ -12,7 +12,9 @@ namespace AnimalShelter.API.Helpers
             CreateMap<User, UserForInfoDto>();
             CreateMap<Animal, AnimalForListDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
-                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+                opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
+            .ForMember(a => a.Saves, opt =>
+                opt.MapFrom(src => src.Savers.Count));
             CreateMap<Animal, AnimalForDetailDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
@@ -21,7 +23,9 @@ namespace AnimalShelter.API.Helpers
             .ForMember(a => a.Qualities, opt =>
                 opt.MapFrom(src => src.Tags.Where(t => t.Type == "quality").Select(t => t.Content)))
             .ForMember(a => a.GoodWith, opt =>
-                opt.MapFrom(src => src.Tags.Where(t => t.Type == "goodWith").Select(t => t.Content)));
+                opt.MapFrom(src => src.Tags.Where(t => t.Type == "goodWith").Select(t => t.Content)))
+            .ForMember(a => a.Saves, opt =>
+                opt.MapFrom(src => src.Savers.Count));
             CreateMap<User, AnimalForDetailDto>()
             .ForMember(u => u.UserKnownAs, opt =>
                 opt.MapFrom(src => src.KnownAs))

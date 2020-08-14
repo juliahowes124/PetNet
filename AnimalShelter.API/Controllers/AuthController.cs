@@ -83,12 +83,12 @@ namespace AnimalShelter.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-
+            var userToReturn = _mapper.Map<UserForInfoDto>(userFromRepo);
             //return as an object
             return Ok(new
             {
                 token = tokenHandler.WriteToken(token),
-                userFromRepo
+                userToReturn
             });
         }
 

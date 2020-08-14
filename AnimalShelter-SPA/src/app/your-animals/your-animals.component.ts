@@ -17,7 +17,7 @@ export class YourAnimalsComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.animals = data.animals.filter(animal => animal.userId == this.authService.decodedToken.nameid);
+      this.animals = data.animals.result.filter(animal => animal.userId == this.authService.decodedToken.nameid);
     });
 
     for (const animal of this.animals) {
