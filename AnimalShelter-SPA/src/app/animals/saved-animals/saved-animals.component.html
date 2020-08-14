@@ -1,0 +1,26 @@
+<div class="text-center mt-3">
+  <h2>My Saved Animals: {{pagination.totalItems}}</h2>
+</div>
+
+<div class="container mt-3">
+
+<br>
+
+<div class="row">
+  <div *ngFor="let animal of animals" class="col-lg-2 col-md-3 col-sm-6">
+    <app-animal-card [animal]="animal"></app-animal-card>
+  </div>
+  
+</div>
+
+
+
+</div>
+
+<div class="d-flex justify-content-center">
+<pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+  (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+  >
+
+</pagination>
+</div>

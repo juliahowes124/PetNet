@@ -1,4 +1,4 @@
-import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -26,12 +26,6 @@ import { ErrorInterceptorProvider } from './_services/error-interceptor.service'
 // import { ListsComponent } from './lists/lists.component';
 // import { MessagesComponent } from './messages/messages.component';
 // import { appRoutes } from './routes';
-// import { MemberCardComponent } from './members/member-card/member-card.component';
-// import { MemberDetailComponent } from './members/member-detail/member-detail.component';
-// import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
-// import { MemberListResolver } from './_resolvers/member-list.resolver';
-// import { MemberEditComponent } from './members/member-edit/member-edit.component';
-// import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 // import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 // import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 // import { ListsResolver } from './_resolvers/lists.resolver';
@@ -55,6 +49,9 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { SavedAnimalsResolver } from './_resolvers/saved-animals.resolver';
+import { CommonModule } from '@angular/common';
+import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
 
 
 
@@ -72,19 +69,22 @@ export function tokenGetter() {
       MessagesComponent,
       RehomeComponent,
       LoginComponent,
+      SavedAnimalsComponent,
       AnimalCardComponent,
       AnimalDetailComponent,
       YourAnimalsComponent,
       AnimalEditComponent,
       PhotoEditorComponent,
       TagEditorComponent,
-      UserEditComponent
+      UserEditComponent,
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
+      CommonModule,
       FormsModule,
       ReactiveFormsModule,
+      RouterModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
       PaginationModule.forRoot(),
@@ -110,6 +110,7 @@ export function tokenGetter() {
       YourAnimalsResolver,
       AnimalEditResolver,
       UserEditResolver,
+      SavedAnimalsResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [

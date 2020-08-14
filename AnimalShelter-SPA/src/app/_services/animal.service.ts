@@ -44,6 +44,8 @@ export class AnimalService {
         params = params.append('gender', animalParams.gender);
         params = params.append('species', animalParams.species);
         params = params.append('orderBy', animalParams.orderBy);
+        params = params.append('savees', animalParams.savees);
+        params = params.append('userId', animalParams.userId);
       }
 
       return this.http.get<Animal[]>(this.baseUrl + 'animals', { observe: 'response', params})
