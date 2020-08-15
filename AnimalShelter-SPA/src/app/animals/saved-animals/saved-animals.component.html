@@ -7,8 +7,11 @@
 <br>
 
 <div class="row">
-  <div *ngFor="let animal of animals" class="col-lg-2 col-md-3 col-sm-6">
-    <app-animal-card [animal]="animal"></app-animal-card>
+  <div *ngFor="let animal of animals" class="col-lg-3 col-md-4 col-sm-6">
+    <div class="container" id="cardContainer">
+      <app-animal-card [animal]="animal"></app-animal-card>
+      <button class="btn btn-primary" (click)="removeSave(animal.id)"><i class="fa fa-minus-square"></i></button>
+    </div>
   </div>
   
 </div>
@@ -19,8 +22,7 @@
 
 <div class="d-flex justify-content-center">
 <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
-  (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-  >
+  (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
 </pagination>
 </div>

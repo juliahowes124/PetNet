@@ -6,6 +6,7 @@ import { AnimalService } from 'src/app/_services/animal.service';
 import { Animal } from 'src/app/_models/animal';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 import { CommonModule } from '@angular/common';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-saved-animals',
@@ -19,7 +20,7 @@ export class SavedAnimalsComponent implements OnInit {
 
 
   constructor(private authService: AuthService, private animalService: AnimalService,
-              private route: ActivatedRoute, private alertify: AlertifyService) { }
+              private route: ActivatedRoute, private alertify: AlertifyService, private userService: UserService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: no-unused-expression
@@ -56,6 +57,16 @@ export class SavedAnimalsComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  removeSave(animalId: number) {
+    this.userService.removeSave(this.authService.decodedToken.nameid, animalId).subscribe(() => {
+      // this.animals.splice();
+      this.alertify.success('You have unsaved this pet');
+    }, error => {
+      this.alertify.error(error);
+    });
+
   }
 
 }

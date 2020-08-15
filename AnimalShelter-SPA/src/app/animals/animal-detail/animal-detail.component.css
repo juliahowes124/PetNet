@@ -5,10 +5,8 @@
 }
 
 #picContainer .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-325%, 25%);
+    position: relative;
+    transform: translate(20%, -120%);
     background-color: darksalmon;
     color: white;
     font-size: 16px;

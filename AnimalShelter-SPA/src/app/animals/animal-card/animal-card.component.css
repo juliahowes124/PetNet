@@ -7,8 +7,8 @@
 }
 
 .card {
-    height: 200px;
-    width: 150px;
+    height: 350px;
+    width: 250px;
 }
 
 .card img {
@@ -20,7 +20,7 @@
 }
 
 #viewBar {
-    text-align: center;
+    text-align: right;
     color: teal;
     size: small;
 }
@@ -66,9 +66,12 @@ div {
 }
 
 #timeLeft {
-    color: rgb(255, 0, 0);
+    color: rgb(197, 98, 5);
     padding: 2%;
-    position: absolute;
-    top: 8px;
-    left: 5px;
+    position: relative;
+    float: left;
   }
+
+h6 {
+    text-align: center;
+}

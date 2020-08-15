@@ -16,5 +16,6 @@ namespace AnimalShelter.API.DTOs
         public int Views { get; set; }
         public int Saves { get; set; }
         public int Inquiries { get; set; }
+        public int[] Savers { get; set; }
     }
 }

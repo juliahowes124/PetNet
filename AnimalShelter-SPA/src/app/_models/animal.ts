@@ -25,5 +25,6 @@ export interface Animal {
     userPhotoUrl: string;
     photoUrl: string;
     photos?: Photo[];
+    savers: number[];
 }
 

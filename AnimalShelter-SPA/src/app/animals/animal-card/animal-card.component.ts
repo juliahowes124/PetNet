@@ -17,7 +17,7 @@ export class AnimalCardComponent implements OnInit {
   timeLeft: number;
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService,
-              private authService: AuthService, private userService: UserService) { }
+              public authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
     const adoptby = this.animal.adoptBy.valueOf();

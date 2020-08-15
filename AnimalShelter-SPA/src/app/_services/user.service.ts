@@ -24,4 +24,8 @@ saveAnimal(userId: number, animalId: number) {
   return this.http.post(this.baseUrl + 'users/' + userId + '/save/' + animalId, {});
 }
 
+removeSave(userId: number, animalId: number) {
+  return this.http.delete(this.baseUrl + 'users/' + userId + '/save/' + animalId);
+}
+
 }

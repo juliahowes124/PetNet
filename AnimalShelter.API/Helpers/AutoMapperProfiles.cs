@@ -14,7 +14,9 @@ namespace AnimalShelter.API.Helpers
             .ForMember(dest => dest.PhotoUrl, opt => 
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
             .ForMember(a => a.Saves, opt =>
-                opt.MapFrom(src => src.Savers.Count));
+                opt.MapFrom(src => src.Savers.Count))
+            .ForMember(a => a.Savers, opt =>
+                opt.MapFrom(src => src.Savers.Select(s => s.SaverId)));
             CreateMap<Animal, AnimalForDetailDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))

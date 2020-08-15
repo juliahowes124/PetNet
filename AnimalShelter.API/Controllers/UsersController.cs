@@ -88,5 +88,20 @@ namespace AnimalShelter.API.Controllers
 
             return BadRequest("Failed to save animal");
         }
+
+        [HttpDelete("{userId}/save/{animalId}")]
+        public async Task<IActionResult> DeleteSave(int userId, int animalId)
+        {
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            
+            var saveToDelete = await _animal_repo.GetSave(userId, animalId);
+            _animal_repo.Delete(saveToDelete);
+
+            if (await _animal_repo.SaveAll())
+                return Ok();
+            
+            return BadRequest("Failed to delete the tag");
+        }
     }
 }

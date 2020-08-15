@@ -18,5 +18,6 @@ namespace AnimalShelter.API.Data
          Task<IEnumerable<Tag>> GetTags(int animalId);
 
         Task<Tag> GetTag(string content, int animalId);
+        Task<Save> GetSave(int userId, int animalId);
     }
 }

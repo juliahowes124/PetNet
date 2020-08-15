@@ -110,5 +110,10 @@ namespace AnimalShelter.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<Save> GetSave(int userId, int animalId)
+        {
+            return await _context.Saves.Where(s => s.SaveeId == animalId).FirstOrDefaultAsync(s => s.SaverId == userId);
+        }
     }
 }
