@@ -37,13 +37,16 @@
       </select>
     </div>
     <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
-    <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">Reset Filter</button>
+    <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">Reset</button>
     <div class="col">
-      <div class="btn-group float-right">
-        <button type="button" name="orderBy" class="btn btn-primary" 
-          [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="AdoptBy">Time Left To Adopt</button>
-        <button type="button" name="orderBy" class="btn btn-primary" 
-          [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="Saves">Number of Saves</button>
+      <div class="dropdown" dropdown>
+        <a class="btn btn-secondary dropdown-toggle" dropdownToggle>
+          Sort By
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a class="dropdown-item" name="orderBy" [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="AdoptBy">Time Left To Adopt</a>
+          <a class="dropdown-item" name="orderBy" [(ngModel)]="animalParams.orderBy" (click)="loadAnimals()" btnRadio="Saves">Least to Most Saves</a>
+        </div>
       </div>
     </div>
   </form>

@@ -1,3 +1,17 @@
 .dropdown-toggle, .dropdown-item {
     cursor: pointer;
 }
+
+.dropdown {
+    margin-right: 5%;
+}
+
+.dropdown-toggle {
+    float: right;
+}
+
+
+
+.dropdown-menu{
+    max-width: 10px;
+}
