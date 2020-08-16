@@ -14,7 +14,7 @@ namespace AnimalShelter.API.Data
          Task<User> GetUser(int id);
          Task<Save> GetSave(int userId, int animalId);
          Task<Message> GetMessage(int id);
-         Task<PagedList<Message>> GetMessagesForUser();
+         Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
          Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);
     }
 }

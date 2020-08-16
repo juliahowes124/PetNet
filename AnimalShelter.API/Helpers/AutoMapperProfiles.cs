@@ -44,6 +44,7 @@ namespace AnimalShelter.API.Helpers
             CreateMap<TagForCreationDto, Tag>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<MessageForCreationDto, Message>().ReverseMap();
+            CreateMap<Message, MessageToReturnDto>();
         }
     }
 }
