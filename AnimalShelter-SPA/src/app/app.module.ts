@@ -52,6 +52,7 @@ import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { SavedAnimalsResolver } from './_resolvers/saved-animals.resolver';
 import { CommonModule } from '@angular/common';
 import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 
 
@@ -111,6 +112,7 @@ export function tokenGetter() {
       AnimalEditResolver,
       UserEditResolver,
       SavedAnimalsResolver,
+      MessagesResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [
