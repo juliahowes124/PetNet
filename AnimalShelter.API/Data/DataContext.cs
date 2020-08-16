@@ -11,6 +11,7 @@ namespace AnimalShelter.API.Data
         public DbSet<Animal> Animals { get; set; }  
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Save> Saves { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,16 @@ namespace AnimalShelter.API.Data
                 .HasOne(u => u.Saver)
                 .WithMany(a => a.Savees)
                 .HasForeignKey(u => u.SaverId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Message>()
+                .HasOne(u => u.Sender)
+                .WithMany(m => m.MessagesSent)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Message>()
+                .HasOne(u => u.Recipient)
+                .WithMany(m => m.MessagesRecieved)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
