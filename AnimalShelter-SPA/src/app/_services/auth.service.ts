@@ -31,7 +31,7 @@ login(model: any) {
               const user = response;
               if (user) {
                 localStorage.setItem('token', user.token);
-                localStorage.setItem('user', JSON.stringify(user.userFromRepo));
+                localStorage.setItem('user', JSON.stringify(user.userToReturn));
                 this.decodedToken = this.jwtHelper.decodeToken(user.token);
                 this.currentUser = user.user;
               }
