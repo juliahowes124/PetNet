@@ -11,9 +11,9 @@
                     <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
                 </div>
                 <div class="col md-9">
-                  <p>Posted: {{animal.posted}}</p>
+                  <p>Posted: {{animal.posted | timeago}}</p>
                   <p><i class="fa fa-hourglass"></i> {{timeLefts[animal.id]}} Days Left</p>
-                  <p>Saved by # people</p>
+                  <p>Saved by {{animal.saves}} people</p>
                 </div>
               </div>
               <div id="viewBar">

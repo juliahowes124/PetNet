@@ -68,6 +68,7 @@ namespace AnimalShelter.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMessage(int userId, MessageForCreationDto messageForCreationDto)
         {
+            var sender = await _repo.GetUser(userId);
             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             //     return Unauthorized();
             messageForCreationDto.SenderId = userId;

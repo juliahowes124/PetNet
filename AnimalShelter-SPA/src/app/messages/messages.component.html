@@ -22,7 +22,7 @@
       <tr>
         <th style="width: 40%">Message</th>
         <th style="width: 20%">From / To</th>
-        <th style="width: 20%">Sent / Received</th>
+        <th style="width: 20%">Sent</th>
         <th style="width: 20%"></th>
       </tr>
       <tr *ngFor="let message of messages" [routerLink]= "['/message-thread/', 
@@ -39,7 +39,7 @@
                 <strong>{{message.recipientKnownAs}}</strong>
           </div>
         </td>
-        <td>{{message.messageSent}}</td>
+        <td>{{message.messageSent | timeago}}</td>
         <td>
           <button class="btn btn-danger" (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)">Delete</button>
         </td>
