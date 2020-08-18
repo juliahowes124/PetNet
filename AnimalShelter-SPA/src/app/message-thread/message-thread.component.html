@@ -16,6 +16,8 @@
               <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
               <small class="text-muted float-left">
                 <span class="fa fa-clock-o">{{message.messageSent}}</span>
+                <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
+                <span *ngIf="message.isRead" class="text-success">(read {{message.dateRead}})</span>
               </small>
             </div>
             <p>{{message.content}}</p>
@@ -31,8 +33,6 @@
             <div class="header">
               <small class="text-muted float-right">
                 <span class="fa fa-clock-o">{{message.messageSent}}</span>
-                <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
-                <span *ngIf="message.isRead" class="text-success">(read {{message.dateRead}})</span>
               </small>
               <strong class="primary-font">{{message.senderKnownAs}}</strong>
             </div>

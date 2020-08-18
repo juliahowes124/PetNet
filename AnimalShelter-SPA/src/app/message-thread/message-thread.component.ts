@@ -4,6 +4,7 @@ import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message-thread',
@@ -20,7 +21,18 @@ export class MessageThreadComponent implements OnInit {
               private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    const currentUserId = +this.authService.decodedToken.nameid;
+    this.route.data
+      .pipe(
+        tap(data => {
+          // tslint:disable-next-line: prefer-for-of
+          for (let i = 0; i < data.messages.length; i++) {
+            if (data.messages[i].isRead === false && data.messages[i].recipientId === currentUserId) {
+              this.userService.markAsRead(currentUserId, data.messages[i].id);
+            }
+          }
+        })
+      ).subscribe(data => {
       this.messages = data.messages;
       console.log(data);
     });

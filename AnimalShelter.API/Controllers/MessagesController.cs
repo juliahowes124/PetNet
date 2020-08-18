@@ -110,5 +110,23 @@ namespace AnimalShelter.API.Controllers
             throw new Exception("Error deleting the message");
         }
 
+        [HttpPost("{id}/read")]
+        public async Task<IActionResult> MarkMessageAsRead(int userId, int id)
+        {
+             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+            var message = await _repo.GetMessage(id);
+            if (message.RecipientId != userId)
+                return Unauthorized();
+            
+            message.IsRead = true;
+            message.DateRead = DateTime.Now;
+            await _repo.SaveAll();
+
+            return NoContent();
+
+        }
+
+
     }
 }
