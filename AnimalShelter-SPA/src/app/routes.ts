@@ -18,6 +18,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MessageThreadComponent } from './message-thread/message-thread.component';
+import { MessageThreadResolver } from './_resolvers/message-thread.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -27,6 +29,8 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard], resolve: {messages: MessagesResolver}},
+            // tslint:disable-next-line: max-line-length
+            { path: 'message-thread/:id/:recipientId', component: MessageThreadComponent, canActivate: [AuthGuard], resolve: {messages: MessageThreadResolver}},
             { path: 'your-animals', component: YourAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: YourAnimalsResolver}},
             { path: 'animal/edit/:id', component: AnimalEditComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
             // tslint:disable-next-line: max-line-length

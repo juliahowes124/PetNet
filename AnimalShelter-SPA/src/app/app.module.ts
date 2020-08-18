@@ -53,6 +53,8 @@ import { SavedAnimalsResolver } from './_resolvers/saved-animals.resolver';
 import { CommonModule } from '@angular/common';
 import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { MessageThreadComponent } from './message-thread/message-thread.component';
+import { MessageThreadResolver } from './_resolvers/message-thread.resolver';
 
 
 
@@ -78,6 +80,7 @@ export function tokenGetter() {
       PhotoEditorComponent,
       TagEditorComponent,
       UserEditComponent,
+      MessageThreadComponent
    ],
    imports: [
       BrowserModule,
@@ -113,6 +116,7 @@ export function tokenGetter() {
       UserEditResolver,
       SavedAnimalsResolver,
       MessagesResolver,
+      MessageThreadResolver,
       ErrorInterceptorProvider
    ],
    bootstrap: [
