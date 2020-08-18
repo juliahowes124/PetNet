@@ -22,12 +22,16 @@ export class MessageThreadComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.messages = data.messages;
+      console.log(data);
     });
-    // current issue, jane is only sending messages to herself
-    this.recipientId = this.messages.filter(u => u.recipientId !== this.authService.decodedToken.nameid)[0].recipientId;
+    this.route.params.subscribe(r => {
+      this.recipientId = r.recipientId;
+      console.log(this.recipientId);
+    });
   }
 
   sendMessage() {
+    console.log(this.recipientId);
     this.newMessage.recipientId = this.recipientId;
     this.userService.sendMessage(this.authService.decodedToken.nameid, this.newMessage).subscribe((message: Message) => {
       this.messages.unshift(message);

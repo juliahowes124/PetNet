@@ -17,6 +17,7 @@ export class AnimalDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   timeLeft: number;
+  userId: number;
 
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class AnimalDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.animal = data.animal;
     });
+    this.userId = this.authService.decodedToken.nameid;
 
     const adoptby = this.animal.adoptBy.valueOf();
     this.timeLeft = Math.round((new Date(adoptby).getTime() - Date.now()) / (60 * 60 * 24 * 1000));

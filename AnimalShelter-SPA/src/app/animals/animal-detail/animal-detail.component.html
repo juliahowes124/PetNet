@@ -23,7 +23,7 @@
                     <h6>@{{animal.username}}</h6>
                   </div>
                   <div class="col">
-                    <button id="messageButton" class="btn btn-primary" [routerLink]="['/messages']" routerLinkActive="router-link-active" ><i class="fa fa-envelope"></i></button>
+                    <button id="messageButton" class="btn btn-primary" [routerLink]="['/message-thread/', userId, animal.userId ]" routerLinkActive="router-link-active" ><i class="fa fa-envelope"></i></button>
                   </div>
                 </div>
                   
