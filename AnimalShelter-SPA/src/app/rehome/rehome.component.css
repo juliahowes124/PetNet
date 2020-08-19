@@ -1,0 +1,12 @@
+.form-control {
+    width: 50%;
+    float: right;
+}
+
+.control-label {
+    margin-top: 10px;
+}
+
+.radio-inline {
+    float: right;
+}

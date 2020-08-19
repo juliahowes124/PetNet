@@ -1,5 +1,7 @@
 .card {
-    border: none;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10px;
 }
 
 .chat {
@@ -21,9 +23,9 @@
 
 .card-body {
     overflow-y: scroll;
-    height: 400px;
-    width: 600px;
+    height: 500px;
+    width: 100%;
 }
 .card-footer {
-    width: 600px;
+    width: 100%;
 }

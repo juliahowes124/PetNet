@@ -15,12 +15,14 @@
             <div class="header">
               <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
               <small class="text-muted float-left">
-                <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
+                <span class="fa fa-clock-o">{{message.messageSent | timeago}}  </span>
+                <br>
                 <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
                 <span *ngIf="message.isRead" class="text-success">(read {{message.dateRead | timeago}})</span>
               </small>
             </div>
-            <p>{{message.content}}</p>
+            <br>
+            <p style="text-align: right;">{{message.content}}</p>
           </div>
         </div>
 
