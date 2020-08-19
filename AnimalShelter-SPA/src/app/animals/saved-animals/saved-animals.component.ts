@@ -39,7 +39,7 @@ export class SavedAnimalsComponent implements OnInit {
     this.animalParams.species = '';
     this.animalParams.orderBy = 'AdoptBy';
     this.animalParams.savees = 'true';
-    this.animalParams.userId = this.authService.decodedToken.nameid;
+    // this.animalParams.userId = this.authService.decodedToken.nameid;
 
     this.loadAnimals();
   }
@@ -50,7 +50,8 @@ export class SavedAnimalsComponent implements OnInit {
   }
 
   loadAnimals() {
-    this.animalService.getAnimals(this.pagination.currentPage, this.pagination.itemsPerPage, this.animalParams)
+    this.animalService.getAnimals(this.pagination.currentPage, this.pagination.itemsPerPage, this.animalParams,
+       this.authService.decodedToken.nameid)
     .subscribe((res: PaginatedResult<Animal[]>) => {
       this.animals = res.result;
       this.pagination = res.pagination;

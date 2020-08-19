@@ -35,7 +35,7 @@ namespace AnimalShelter.API.Data
         {
             var animals = _context.Animals.Include(p => p.Photos).Include(s => s.Savers).OrderBy(a => a.AdoptBy).AsQueryable();
 
-            if (animalParams.Savees)
+            if (animalParams.Savees && animalParams.UserId != null)
             {
                 var userSavees = await GetUserSavees(animalParams.UserId);
                 animals = animals.Where(a => userSavees.Contains(a.Id));

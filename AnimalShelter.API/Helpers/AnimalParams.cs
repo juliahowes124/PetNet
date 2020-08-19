@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace AnimalShelter.API.Helpers
 {
     public class AnimalParams

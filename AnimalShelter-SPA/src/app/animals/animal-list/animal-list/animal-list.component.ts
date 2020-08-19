@@ -30,7 +30,7 @@ export class AnimalListComponent implements OnInit {
     this.animalParams.minAge = 0;
     this.animalParams.maxAge = 100;
     this.animalParams.savees = false;
-    this.animalParams.userId = this.authService.decodedToken.nameid;
+    // this.animalParams.userId = this.authService.decodedToken.nameid;
     this.animalParams.orderBy = 'AdoptBy';
   }
 

@@ -28,7 +28,7 @@ export class AnimalService {
 
     constructor(private http: HttpClient) { }
 
-    getAnimals(page?, itemsPerPage?, animalParams?): Observable<PaginatedResult<Animal[]>> {
+    getAnimals(page?, itemsPerPage?, animalParams?, userId?): Observable<PaginatedResult<Animal[]>> {
       const paginatedResult: PaginatedResult<Animal[]> = new PaginatedResult<Animal[]>();
 
       let params = new HttpParams();
@@ -45,7 +45,11 @@ export class AnimalService {
         params = params.append('species', animalParams.species);
         params = params.append('orderBy', animalParams.orderBy);
         params = params.append('savees', animalParams.savees);
-        params = params.append('userId', animalParams.userId);
+        // params = params.append('userId', animalParams.userId);
+      }
+
+      if (userId != null) {
+        params = params.append('userId', userId);
       }
 
       return this.http.get<Animal[]>(this.baseUrl + 'animals', { observe: 'response', params})
