@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AnimalShelter.API.Data;
 using AnimalShelter.API.DTOs;
 using AnimalShelter.API.Helpers;
 using AnimalShelter.API.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelter.API.Controllers
 {
     //[ServiceFilter(typeof(LogUserActivity))]
-    // [Authorize]
+    [Authorize]
     [Route("api/users/{userId}/[controller]")]
     [ApiController]
     public class MessagesController : ControllerBase
@@ -28,8 +30,8 @@ namespace AnimalShelter.API.Controllers
         [HttpGet("{id}", Name = "GetMessage")]
         public async Task<IActionResult> GetMessage(int userId, int id)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var messageFromRepo = await _repo.GetMessage(id);
 
@@ -43,8 +45,8 @@ namespace AnimalShelter.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMessagesForUser(int userId, [FromQuery]MessageParams messageParams)
         {
-             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
             messageParams.UserId = userId;
             var messagesFromRepo = await _repo.GetMessagesForUser(messageParams);
             var messages = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
@@ -58,8 +60,8 @@ namespace AnimalShelter.API.Controllers
         [HttpGet("thread/{recipientId}")]
         public async Task<IActionResult> GetMessageThread(int userId, int recipientId)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
             var messagesFromRepo = await _repo.GetMessageThread(userId, recipientId);
             var messageThread = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
             return Ok(messageThread);
@@ -69,8 +71,10 @@ namespace AnimalShelter.API.Controllers
         public async Task<IActionResult> CreateMessage(int userId, MessageForCreationDto messageForCreationDto)
         {
             var sender = await _repo.GetUser(userId);
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
             messageForCreationDto.SenderId = userId;
             var recipient = await _repo.GetUser(messageForCreationDto.RecipientId);
 
@@ -94,8 +98,8 @@ namespace AnimalShelter.API.Controllers
         [HttpPost("{id}")]
         public async Task<IActionResult> DeleteMessage(int id, int userId)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var messageFromRepo = await _repo.GetMessage(id);
             if (messageFromRepo.SenderId == userId)
@@ -114,8 +118,8 @@ namespace AnimalShelter.API.Controllers
         [HttpPost("{id}/read")]
         public async Task<IActionResult> MarkMessageAsRead(int userId, int id)
         {
-             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
             var message = await _repo.GetMessage(id);
             if (message.RecipientId != userId)
                 return Unauthorized();

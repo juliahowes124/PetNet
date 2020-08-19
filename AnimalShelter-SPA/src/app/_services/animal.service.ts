@@ -8,12 +8,6 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    Authorization: 'Bearer ' + localStorage.getItem('token')
-  })
-};
-
 export interface Tag {
   id: number;
   content: string;
@@ -79,11 +73,11 @@ export class AnimalService {
     }
 
     setMainPhoto(animalId: number, id: number) {
-      return this.http.post(this.baseUrl + 'animals/' + animalId + '/photos/' + id + '/setMain', {}, httpOptions);
+      return this.http.post(this.baseUrl + 'animals/' + animalId + '/photos/' + id + '/setMain', {});
     }
 
     deletePhoto(animalId: number, id: number) {
-      return this.http.delete(this.baseUrl + 'animals/' + animalId + '/photos/' + id, httpOptions);
+      return this.http.delete(this.baseUrl + 'animals/' + animalId + '/photos/' + id);
     }
 
     changeMainPhoto(photoUrl: string, animal: Animal) {

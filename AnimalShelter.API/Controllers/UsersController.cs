@@ -11,7 +11,7 @@ using AnimalShelter.API.Helpers;
 
 namespace AnimalShelter.API.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -39,6 +39,7 @@ namespace AnimalShelter.API.Controllers
             return Ok(usersToReturn);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
@@ -50,8 +51,8 @@ namespace AnimalShelter.API.Controllers
         [HttpPut("{id}", Name = "UpdateUser")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(id);
 
@@ -65,8 +66,8 @@ namespace AnimalShelter.API.Controllers
         [HttpPost("{userId}/save/{animalId}")]
         public async Task<IActionResult> SaveAnimal(int userId, int animalId)
         {
-            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
 
             var save = await _repo.GetSave(userId, animalId);
             if (save != null)
@@ -92,8 +93,8 @@ namespace AnimalShelter.API.Controllers
         [HttpDelete("{userId}/save/{animalId}")]
         public async Task<IActionResult> DeleteSave(int userId, int animalId)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
             
             var saveToDelete = await _animal_repo.GetSave(userId, animalId);
             _animal_repo.Delete(saveToDelete);

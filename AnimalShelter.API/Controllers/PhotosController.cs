@@ -44,6 +44,7 @@ namespace AnimalShelter.API.Controllers
 
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}", Name = "GetPhoto")]
     public async Task<IActionResult> GetPhoto(int id)
     {

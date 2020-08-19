@@ -100,7 +100,9 @@ export function tokenGetter() {
       FileUploadModule,
       JwtModule.forRoot({
          config: {
-            tokenGetter
+            tokenGetter: tokenGetter,
+            allowedDomains: ['localhost:5000'],
+            disallowedRoutes: ['localhost:5000/api/auth']
          }
       }),
       RouterModule.forRoot(appRoutes),
