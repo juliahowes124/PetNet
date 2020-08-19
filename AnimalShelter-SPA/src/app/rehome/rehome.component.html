@@ -13,41 +13,67 @@
 <div *ngIf="loggedIn()" class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-4">
-      <form #animalRegisterForm="ngForm" (ngSubmit)="registerAnimal(animal)">
+      <form [formGroup]="animalRegisterForm" (ngSubmit)="registerAnimal()">
         <h2 class="text-center text-primary">Create Your Pet's Profile</h2>
         <hr>
+      
+        <div class="form-group">
+          <label class="control-label" style="margin-right:10px">Gender: </label>
+          <label class="radio-inline">
+            <input class="mr-3" type="radio" value="male" formControlName="gender">Male
+          </label>
+          <label class="radio-inline ml-3">
+            <input class="mr-3" type="radio" value="female" formControlName="gender">Female
+          </label>
+        </div>
+    
+      
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Name" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label class="radio-inline">
+            <input class="mr-3" type="radio" value="dog" formControlName="species">Dog
+          </label>
+          <label class="radio-inline ml-3">
+            <input class="mr-3" type="radio" value="cat" formControlName="species">Cat
+          </label>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Breed" formControlName="breed">
+        </div>
+      
+        <div class="form-group">
+          <input class="form-control" placeholder="Age" formControlName="age">
+        </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Adoption Fee" formControlName="adoptionFee">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="date" placeholder="Adopt By" formControlName="adoptBy">
+        </div>
+
+        <div class="form-group text-center">
+          <button class="btn btn-success" type="submit">Register</button>
+          <button class="btn btn-default" type="button">Cancel</button>
+        </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" required name="name" placeholder="Name">
+          <label class="checkbox-inline">
+              <input type="checkbox" name="likes" (click)="addOrRemove('walks','like')"> Walks
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="likes" (click)="addOrRemove('cuddles','like')"> Cuddles
+        </label>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="gender" placeholder="Gender">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="age" placeholder="Age">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="petType" placeholder="Pet Type">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="breed"  placeholder="Breed">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="adoptionFee" placeholder="Adoption Fee ($)">
-        </div>
-        <div class="form-group">
-          <input type="date" class="form-control" required name="adoptBy" placeholder="Adopt By">
-        </div>
+    
+        
+      </form>
 
-        <label>Likes</label>
-        <div class="form-group">
-            <label class="checkbox-inline">
-                <input type="checkbox" name="Likes" (click)="addOrRemove('walks','like')"> Walks
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" name="Likes" (click)="addOrRemove('cuddles','like')"> Cuddles
-            </label>
-        </div>
+  
+
+        <!-- <label>Likes</label>
+        
 
         <label>Qualities</label>
         <div class="form-group">
@@ -57,13 +83,13 @@
             <label class="checkbox-inline">
                 <input type="checkbox" name="Qualities" (click)="addOrRemove('energetic','quality')"> Energetic
             </label>
-        </div>
+        </div> -->
 
-        <div class="form-group text-center">
+        <!-- <div class="form-group text-center">
           <button class="btn btn-success" type="submit" (click)="registerAnimal(animal)">Register</button>
           <button class="btn btn-default" type="button">Cancel</button>
         </div>
-      </form>
+      </form> -->
     </div>
   </div>
 </div>

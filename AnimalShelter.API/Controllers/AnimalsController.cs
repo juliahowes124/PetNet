@@ -61,6 +61,7 @@ namespace AnimalShelter.API.Controllers
             // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             //     return Unauthorized();
             var animalToCreate = _mapper.Map<Animal>(animalForRegisterDto);
+            
             var createdAnimal = await _animal_repo.Register(animalToCreate);
             return StatusCode(201);
         }

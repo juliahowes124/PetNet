@@ -16,8 +16,8 @@ export class RehomeComponent implements OnInit {
 
   animal: Animal;
   animalRegisterForm: FormGroup;
-  likes = new Set();
-  qualities = new Set();
+  likes = new Set<string>();
+  qualities = new Set<string>();
   goodWith: string[] = [];
 
   constructor(public authService: AuthService, private animalService: AnimalService,
@@ -32,12 +32,13 @@ export class RehomeComponent implements OnInit {
       name: [''],
       gender: [''],
       age: 0,
-      petType: [''],
+      species: [''],
       breed: [''],
       adoptionFee: 0,
       likes: [],
       qualties: [],
       goodWith: [],
+      adoptBy: []
 
     });
   }
@@ -47,14 +48,21 @@ export class RehomeComponent implements OnInit {
     return this.authService.loggedIn();
   }
 
-  registerAnimal( animal: Animal ) {
-    const id = this.authService.decodedToken.nameid;
-    this.animalService.registerAnimal(id, animal).subscribe(() => {
-      this.alertify.success('Registration successful');
-      this.router.navigate(['/home']);
-    }, error => {
-      this.alertify.error(error);
-    });
+  registerAnimal() {
+    if (this.animalRegisterForm.valid) {
+      this.animal = Object.assign({}, this.animalRegisterForm.value);
+      const id = this.authService.decodedToken.nameid;
+      this.animal.userId = id;
+      this.animal.likes = [...this.likes];
+      this.animal.qualities = [...this.qualities];
+      console.log(this.animal);
+      this.animalService.registerAnimal(id, this.animal).subscribe(() => {
+        this.alertify.success('Registration successful');
+        this.router.navigate(['/your-animals']);
+      }, error => {
+        this.alertify.error(error);
+      });
+    }
   }
 
   addToTags(checkedTag: string, type: string) {
@@ -69,11 +77,11 @@ export class RehomeComponent implements OnInit {
 
   removeFromTags(checkedTag: string, type: string) {
     if (type === 'like') {
-      this.animal.likes.splice(this.animal.likes.findIndex(l => l === checkedTag));
+      this.likes.delete(checkedTag);
     } else if (type === 'quality') {
-      this.animal.qualities.splice(this.animal.qualities.findIndex(q => q === checkedTag));
+      this.qualities.delete(checkedTag);
     } else if (type === 'goodWith') {
-      this.animal.goodWith.splice(this.animal.goodWith.findIndex(g => g === checkedTag));
+      this.goodWith.splice(this.animal.goodWith.findIndex(g => g === checkedTag));
     }
   }
 
