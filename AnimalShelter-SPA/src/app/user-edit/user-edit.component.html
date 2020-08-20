@@ -80,8 +80,6 @@
 
     <div class="col-sm-8">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
-                  <h6 class="mt-1">Username</h6>
-                    <textarea name="username" rows="1" class="form-control mb-3" [(ngModel)]="user.username"></textarea>
                   <h6 class="mt-2">Known As</h6>
                     <textarea name="knownAs" rows="1" class="form-control" [(ngModel)]="user.knownAs"></textarea>
                   <h6 class="mt-2">City</h6>

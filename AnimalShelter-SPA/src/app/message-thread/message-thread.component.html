@@ -41,8 +41,10 @@
               </small>
               <small class="primary-font">{{message.senderKnownAs}}</small>
             </div>
-            <br>
-            <p>{{message.content}}</p>
+            <div class="speech-bubble float-left">
+              <div class="arrow bottom float-left"></div>
+              {{message.content}}
+            </div>
           </div>
         </div>
       </li>

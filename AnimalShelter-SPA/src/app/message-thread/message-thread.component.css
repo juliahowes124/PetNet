@@ -55,3 +55,7 @@ img {
     border-width: 8px 8px 0px 8px;
     bottom: -8px;
 }
+
+.chat-body {
+    min-height: 60px;
+}
