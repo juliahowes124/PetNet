@@ -72,7 +72,9 @@ namespace AnimalShelter.API.Data
         {
             var messages = _context.Messages
                 .Include(u => u.Sender)
+                .ThenInclude(u => u.ProfilePicture)
                 .Include(u => u.Recipient)
+                .ThenInclude(u => u.ProfilePicture)
                 .AsQueryable();
 
             switch (messageParams.MessageContainer)
@@ -97,7 +99,9 @@ namespace AnimalShelter.API.Data
         {
             var messages = await _context.Messages
             .Include(u => u.Sender)
+            .ThenInclude(u => u.ProfilePicture)
             .Include(u => u.Recipient)
+            .ThenInclude(u => u.ProfilePicture)
             .Where(m => m.RecipientId == userId && m.RecipientDeleted == false 
                 && m.SenderId == recipientId 
                 || m.RecipientId == recipientId && m.SenderId == userId 
