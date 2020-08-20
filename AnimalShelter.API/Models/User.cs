@@ -13,10 +13,10 @@ namespace AnimalShelter.API.Models
         public string City { get; set; }
         public string State { get; set; }
         public DateTime LastActive { get; set; }
-        public string ProfilePictureUrl { get; set; }
         public ICollection<Animal> Animals { get; set; }
         public ICollection<Save> Savees { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesRecieved { get; set; }
+        public ICollection<UserPhoto> ProfilePicture { get; set; }
     }
 }

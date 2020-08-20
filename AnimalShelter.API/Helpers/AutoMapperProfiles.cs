@@ -9,7 +9,9 @@ namespace AnimalShelter.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserForInfoDto>();
+            CreateMap<User, UserForInfoDto>()
+            .ForMember(dest => dest.ProfilePictureUrl, opt =>
+                opt.MapFrom(src => src.ProfilePicture.FirstOrDefault().Url));
             CreateMap<Animal, AnimalForListDto>()
             .ForMember(dest => dest.PhotoUrl, opt => 
                 opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
@@ -33,8 +35,8 @@ namespace AnimalShelter.API.Helpers
                 opt.MapFrom(src => src.KnownAs))
             .ForMember(u => u.Username, opt=>
                 opt.MapFrom(src => src.Username))
-            .ForMember(u => u.UserPhotoUrl, opt =>
-                opt.MapFrom(src => src.ProfilePictureUrl));
+            .ForMember(u => u.UserPhotoUrl, opt => 
+                opt.MapFrom(src => src.ProfilePicture.FirstOrDefault().Url));
 
             CreateMap<UserForRegisterDto, User>();
             CreateMap<AnimalForRegisterDto, Animal>();
@@ -44,8 +46,14 @@ namespace AnimalShelter.API.Helpers
             CreateMap<TagForCreationDto, Tag>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<MessageForCreationDto, Message>().ReverseMap();
-            CreateMap<Message, MessageToReturnDto>();
+            CreateMap<Message, MessageToReturnDto>()
+            .ForMember(m => m.SenderPhotoUrl, opt =>
+                opt.MapFrom(src => src.Sender.ProfilePicture.FirstOrDefault().Url))
+            .ForMember(m => m.RecipientPhotoUrl, opt =>
+                opt.MapFrom(src => src.Recipient.ProfilePicture.FirstOrDefault().Url));
             CreateMap<User, UserForDetailedDto>();
+            CreateMap<UserPhoto, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, UserPhoto>();
         }
     }
 }

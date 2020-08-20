@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
+import { UserPhoto } from '../_models/userPhoto';
 
 @Component({
   selector: 'app-user-edit',
@@ -16,15 +17,18 @@ import { environment } from 'src/environments/environment';
 export class UserEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   user: User;
+
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
+
 
   constructor(private userService: UserService, private alertify: AlertifyService,
               private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
+      console.log(data);
       this.user = data.user;
     });
     this.initializeUploader();
@@ -36,6 +40,7 @@ export class UserEditComponent implements OnInit {
 
   initializeUploader() {
     this.uploader = new FileUploader({
+      url: this.baseUrl + 'users/' + this.user.id + '/photo',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image'],
@@ -47,11 +52,16 @@ export class UserEditComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false; };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
-      debugger;
       if (response) {
-        console.log('there was a response');
-        const photoUrl: string = JSON.parse(response).Url;
-        this.user.photoUrl = photoUrl;
+        const res: UserPhoto = JSON.parse(response);
+        const photo = {
+          id: res.id,
+          url: res.url,
+          dateAdded: res.dateAdded,
+          description: res.description,
+          isMain: res.isMain
+        };
+        this.userService.changeMainPhoto(photo.url, this.user);
       }
     };
   }

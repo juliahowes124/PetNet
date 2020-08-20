@@ -190,9 +190,6 @@ namespace AnimalShelter.API.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
 
-                    b.Property<string>("ProfilePictureUrl")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
@@ -202,6 +199,37 @@ namespace AnimalShelter.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("AnimalShelter.API.Models.UserPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserPhotos");
                 });
 
             modelBuilder.Entity("AnimalShelter.API.Models.Animal", b =>
@@ -257,6 +285,15 @@ namespace AnimalShelter.API.Migrations
                     b.HasOne("AnimalShelter.API.Models.Animal", null)
                         .WithMany("Tags")
                         .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AnimalShelter.API.Models.UserPhoto", b =>
+                {
+                    b.HasOne("AnimalShelter.API.Models.User", null)
+                        .WithMany("ProfilePicture")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

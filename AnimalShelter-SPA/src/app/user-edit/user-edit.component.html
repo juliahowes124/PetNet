@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="User's name">
+        <img class="card-img-top img-thumbnail" src="{{user.profilePictureUrl|| '../../../assets/user.png'}}" alt="User's name">
 
         <div class="col">
           <h6>Change Profile Photo</h6>
@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="col-sm-7">
-              <input type="file" ng2FileSelect single [(ngModel)]="user.photoUrl" style="font-size: small;"/><br/>
+              <input type="file" ng2FileSelect single [uploader]="uploader" [(ngModel)]="user.profilePicture" style="font-size: small;"/><br/>
             </div>
           </div>
         </div>

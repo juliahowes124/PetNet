@@ -1,3 +1,4 @@
+import { UserPhoto } from './userPhoto';
 
 
 export interface User {
@@ -7,5 +8,6 @@ export interface User {
     city: string;
     state: string;
     lastActive: Date;
-    photoUrl: string;
+    profilePictureUrl: string;
+    profilePicture: UserPhoto[];
 }

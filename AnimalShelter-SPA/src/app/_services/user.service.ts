@@ -71,6 +71,10 @@ getMessages(id: number, page?, itemsPerPage?, messageContainer?) {
     .subscribe();
   }
 
+  changeMainPhoto(photoUrl: string, user: User) {
+    user.profilePictureUrl = photoUrl;
+  }
+
 
 
 }

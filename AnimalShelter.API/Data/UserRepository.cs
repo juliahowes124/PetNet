@@ -45,7 +45,7 @@ namespace AnimalShelter.API.Data
 
         public Task<User> GetUser(int id)
         {
-            var user = _context.Users.Include(a => a.Animals)
+            var user = _context.Users.Include(a => a.Animals).Include(p => p.ProfilePicture)
             .FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
@@ -107,5 +107,12 @@ namespace AnimalShelter.API.Data
 
             return messages;
         }
+
+        public async Task<UserPhoto> GetUserPhoto(int id)
+        {
+            var photo = await _context.UserPhotos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
     }
 }

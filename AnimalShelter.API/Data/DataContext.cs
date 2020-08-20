@@ -12,6 +12,7 @@ namespace AnimalShelter.API.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Save> Saves { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<UserPhoto> UserPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,6 +40,7 @@ namespace AnimalShelter.API.Data
                 .HasOne(u => u.Recipient)
                 .WithMany(m => m.MessagesRecieved)
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }
