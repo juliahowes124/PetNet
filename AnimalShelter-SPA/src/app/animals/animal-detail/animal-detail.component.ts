@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AnimalService } from 'src/app/_services/animal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Animal } from 'src/app/_models/animal';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { UserService } from 'src/app/_services/user.service';
@@ -21,13 +21,13 @@ export class AnimalDetailComponent implements OnInit {
 
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
-              private userService: UserService, private authService: AuthService) { }
+              private userService: UserService, private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.animal = data.animal;
     });
-    this.userId = this.authService.decodedToken.nameid;
 
     const adoptby = this.animal.adoptBy.valueOf();
     this.timeLeft = Math.round((new Date(adoptby).getTime() - Date.now()) / (60 * 60 * 24 * 1000));
@@ -64,11 +64,16 @@ export class AnimalDetailComponent implements OnInit {
   }
 
   saveAnimal(animalId: number) {
-    this.userService.saveAnimal(this.authService.decodedToken.nameid, animalId).subscribe(data => {
-      this.alertify.success('You have liked ' + this.animal.name);
-    }, error => {
-      this.alertify.error(error);
-    });
+    if (this.authService.decodedToken === undefined) {
+      this.alertify.warning('To save this pet, all you need to do is sign up!');
+      this.router.navigate(['/register']);
+    } else {
+      this.userService.saveAnimal(this.authService.decodedToken.nameid, animalId).subscribe(data => {
+        this.alertify.success('You have liked ' + this.animal.name);
+      }, error => {
+        this.alertify.error(error);
+      });
+    }
   }
 
 }

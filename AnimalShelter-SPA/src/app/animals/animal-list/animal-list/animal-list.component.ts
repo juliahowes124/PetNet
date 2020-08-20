@@ -22,16 +22,16 @@ export class AnimalListComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    debugger;
     this.route.data.subscribe(data => {
       this.animals = data.animals.result;
       this.pagination = data.animals.pagination;
     });
 
+    this.animalParams.gender = '';
+    this.animalParams.species = '';
     this.animalParams.minAge = 0;
     this.animalParams.maxAge = 100;
     this.animalParams.savees = false;
-    // this.animalParams.userId = this.authService.decodedToken.nameid;
     this.animalParams.orderBy = 'AdoptBy';
   }
 
