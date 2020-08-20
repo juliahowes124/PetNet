@@ -94,4 +94,8 @@ export class AnimalService {
       params = params.append('animalId', animalId.toString());
       return this.http.delete(this.baseUrl + 'animals/' + animalId + '/tags/', {params});
     }
+
+    markAsAdopted(id: number, animalId: number) {
+      return this.http.post(this.baseUrl + 'users/' + id + '/adopt/' + animalId, {});
+    }
   }

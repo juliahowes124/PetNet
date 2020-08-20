@@ -104,5 +104,19 @@ namespace AnimalShelter.API.Controllers
             
             return BadRequest("Failed to delete the tag");
         }
+
+        [HttpPost("{id}/adopt/{animalId}")]
+        public async Task<IActionResult> MarkAsAdopted(int id, int animalId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                 return Unauthorized();
+                
+            var animalFromRepo = await _animal_repo.GetAnimal(animalId);
+            animalFromRepo.Adopted= true;
+
+            if (await _animal_repo.SaveAll())
+                return Ok();
+            return BadRequest("Failed to mark animal as adopted.");
+        }
     }
 }

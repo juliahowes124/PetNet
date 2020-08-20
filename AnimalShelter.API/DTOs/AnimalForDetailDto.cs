@@ -31,5 +31,6 @@ namespace AnimalShelter.API.DTOs
         public string UserPhotoUrl { get; set; }
         public string PhotoUrl { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public bool Adopted { get; set; }
     }
 }

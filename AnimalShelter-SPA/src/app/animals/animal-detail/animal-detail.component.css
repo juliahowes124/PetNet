@@ -93,3 +93,9 @@ div {
 .badge-pill {
     position: absolute;
 }
+
+#ownerPic {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
