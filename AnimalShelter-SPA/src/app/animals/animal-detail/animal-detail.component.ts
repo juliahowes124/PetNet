@@ -48,6 +48,10 @@ export class AnimalDetailComponent implements OnInit {
 
     this.galleryImages = this.getImages();
 
+    if (this.authService.decodedToken !== undefined) {
+      this.userId = this.authService.decodedToken.nameid;
+    }
+
   }
 
   getImages() {

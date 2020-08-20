@@ -15,7 +15,8 @@ namespace AnimalShelter.API.DTOs
         public string[] Likes { get; set; }
         public string[] Qualities { get; set; }
         public string[] GoodWith { get; set; }
-        public int Age { get; set; }
+        public int AgeYears { get; set; }
+        public int AgeMonths { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }
         public DateTime AdoptBy { get; set; }

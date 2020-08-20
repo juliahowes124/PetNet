@@ -10,7 +10,8 @@ export interface Animal {
     likes: string[];
     qualities: string[];
     goodWith: string[];
-    age: number;
+    ageYears: number;
+    ageMonths: number;
     gender: string;
     posted: Date;
     adoptBy: Date;

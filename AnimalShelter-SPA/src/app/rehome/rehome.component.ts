@@ -31,7 +31,8 @@ export class RehomeComponent implements OnInit {
     this.animalRegisterForm = this.fb.group({
       name: [''],
       gender: [''],
-      age: 0,
+      ageYears: 0,
+      ageMonths: 0,
       species: [''],
       breed: [''],
       adoptionFee: 0,

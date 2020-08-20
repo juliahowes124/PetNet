@@ -45,7 +45,7 @@ namespace AnimalShelter.API.Data
             {
                 var minAge = animalParams.MinAge;
                 var maxAge = animalParams.MaxAge;
-                animals = animals.Where(a => a.Age >= minAge && a.Age <= maxAge);
+                animals = animals.Where(a => a.AgeYears >= minAge && a.AgeYears <= maxAge);
             }
 
             if (!string.IsNullOrEmpty(animalParams.OrderBy))

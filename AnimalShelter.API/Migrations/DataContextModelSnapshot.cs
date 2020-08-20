@@ -28,7 +28,10 @@ namespace AnimalShelter.API.Migrations
                     b.Property<int?>("AdoptionFee")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Age")
+                    b.Property<int>("AgeMonths")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AgeYears")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Breed")

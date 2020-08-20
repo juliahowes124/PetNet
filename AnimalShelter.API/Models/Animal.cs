@@ -16,7 +16,8 @@ namespace AnimalShelter.API.Models
         public string Breed { get; set; }
         public string Description { get; set; }
         public int? AdoptionFee { get; set; }
-        public int? Age { get; set; }
+        public int AgeYears { get; set; }
+        public int AgeMonths { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }
         public DateTime? AdoptBy { get; set; }
