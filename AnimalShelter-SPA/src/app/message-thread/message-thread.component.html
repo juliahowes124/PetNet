@@ -7,7 +7,7 @@
     <ul class="chat">
       <li *ngFor="let message of messages">
         <!-- to them -->
-        <div *ngIf="message.senderId == this.userId">
+        <div id="cardHolder" *ngIf="message.senderId == this.userId">
           <span class="chat-img float-right">
             <img src="{{message.senderPhotoUrl}}" class="rounded-circle">
           </span>
@@ -30,7 +30,7 @@
         </div>
 
         <!-- to me -->
-        <div *ngIf="message.senderId != this.userId">
+        <div id="cardHolder" *ngIf="message.senderId != this.userId">
           <span class="chat-img float-left">
             <img src="{{message.senderPhotoUrl}}" class="rounded-circle">
           </span>
@@ -59,7 +59,7 @@
         required
         class="form-control input-sm"
         placeholder="Send a private message">
-        <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
+        <button class="btn btn-primary ml-2" [disabled]="!messageForm.valid">Send</button>
       </div>
     </form>
   </div>

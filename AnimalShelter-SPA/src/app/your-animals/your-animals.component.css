@@ -1,5 +1,4 @@
 .img-thumbnail {
-    margin: 10px;
     object-fit: cover;
     overflow: hidden;
     height: 200px;
@@ -15,3 +14,8 @@ strong {
     font-size: large;
     margin: 10px;
 }
+
+.card {
+    width: 100%;
+}
+

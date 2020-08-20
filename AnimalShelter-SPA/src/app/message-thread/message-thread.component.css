@@ -43,7 +43,6 @@ img {
     border-radius: 5px;
     width: 110px;
     text-align: center;
-    justify-content: right;
 }
 
 .speech-bubble .arrow {
@@ -58,4 +57,5 @@ img {
 
 .chat-body {
     min-height: 60px;
+    overflow: auto;
 }
