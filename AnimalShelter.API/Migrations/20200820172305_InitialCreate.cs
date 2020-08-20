@@ -32,15 +32,15 @@ namespace AnimalShelter.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Species = table.Column<string>(nullable: true),
                     Breed = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    AdoptionFee = table.Column<int>(nullable: false),
-                    Age = table.Column<int>(nullable: false),
+                    AdoptionFee = table.Column<int>(nullable: true),
+                    Age = table.Column<int>(nullable: true),
                     Gender = table.Column<string>(nullable: true),
                     Posted = table.Column<DateTime>(nullable: false),
-                    AdoptBy = table.Column<DateTime>(nullable: false),
+                    AdoptBy = table.Column<DateTime>(nullable: true),
                     Views = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -96,7 +96,6 @@ namespace AnimalShelter.API.Migrations
                     Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
-                    IsMain = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     PublicId = table.Column<string>(nullable: true)
                 },

@@ -22,6 +22,7 @@ export class AnimalListComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
+    debugger;
     this.route.data.subscribe(data => {
       this.animals = data.animals.result;
       this.pagination = data.animals.pagination;

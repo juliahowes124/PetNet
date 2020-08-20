@@ -22,13 +22,13 @@ namespace AnimalShelter.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("AdoptBy")
+                    b.Property<DateTime?>("AdoptBy")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AdoptionFee")
+                    b.Property<int?>("AdoptionFee")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Breed")
@@ -41,6 +41,7 @@ namespace AnimalShelter.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Posted")
@@ -212,9 +213,6 @@ namespace AnimalShelter.API.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("PublicId")
                         .HasColumnType("TEXT");

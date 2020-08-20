@@ -59,7 +59,6 @@ export class UserEditComponent implements OnInit {
           url: res.url,
           dateAdded: res.dateAdded,
           description: res.description,
-          isMain: res.isMain
         };
         this.userService.changeMainPhoto(photo.url, this.user);
       }

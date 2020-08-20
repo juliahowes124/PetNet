@@ -41,7 +41,7 @@ namespace AnimalShelter.API.Data
                 animals = animals.Where(a => userSavees.Contains(a.Id));
             }
 
-            if (animalParams.MinAge != 18 || animalParams.MaxAge != 100)
+            if (animalParams.MinAge != 0 || animalParams.MaxAge != 100)
             {
                 var minAge = animalParams.MinAge;
                 var maxAge = animalParams.MaxAge;
