@@ -12,7 +12,7 @@ export class YourAnimalsResolver implements Resolve<Animal[]> {
                 private router: Router, private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Animal[]> {
-        return this.animalService.getAnimals().pipe(
+        return this.animalService.getAnimals(1, 50).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
                 this.router.navigate(['/home']);
