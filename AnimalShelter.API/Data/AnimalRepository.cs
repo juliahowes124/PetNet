@@ -33,7 +33,10 @@ namespace AnimalShelter.API.Data
 
         public async Task<PagedList<Animal>> GetAnimals(AnimalParams animalParams)
         {
-            var animals = _context.Animals.Include(p => p.Photos).Include(s => s.Savers).OrderBy(a => a.AdoptBy).AsQueryable();
+            var animals = _context.Animals.Include(p => p.Photos)
+            .Include(s => s.Savers)
+            .OrderBy(a => a.AdoptBy)
+            .AsQueryable();
 
             if (animalParams.Savees && animalParams.UserId != null)
             {
