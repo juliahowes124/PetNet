@@ -8,10 +8,18 @@
 
 .dropdown-toggle {
     float: right;
+    transform: translateY(15px);
+    margin-left: 10px;
 }
 
 
 
 .dropdown-menu{
     max-width: 10px;
+}
+
+img {
+    max-height: 50px;
+    border: 1px solid white;
+    display: inline;
 }

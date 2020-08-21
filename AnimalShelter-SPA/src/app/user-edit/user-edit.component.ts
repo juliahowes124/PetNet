@@ -61,6 +61,7 @@ export class UserEditComponent implements OnInit {
           description: res.description,
         };
         this.userService.changeMainPhoto(photo.url, this.user);
+        this.authService.changeMemberPhoto(photo.url);
       }
     };
   }
