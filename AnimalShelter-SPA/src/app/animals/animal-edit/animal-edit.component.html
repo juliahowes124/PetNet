@@ -67,14 +67,23 @@
             </form>
           </tab>
           <tab heading="Edit Tags">
-            <div *ngFor="let like of likes">
-              <input type="checkbox" [(ngModel)]="this.animalLikes[like]" (click)="addOrRemoveTag(like,'like')"> {{like}}
+            <h4 class="mt-3">Likes</h4>
+            <div class="row">
+              <div class="col-md-4" *ngFor="let like of likes">
+                <input type="checkbox" [(ngModel)]="this.animalLikes[like]" (click)="addOrRemoveTag(like,'like')"> {{like}}
+              </div>
             </div>
-            <div *ngFor="let quality of qualities">
-              <input type="checkbox" [(ngModel)]="this.animalQualities[quality]" (click)="addOrRemoveTag(quality,'quality')"> {{quality}}
+            <h4 class="mt-3">Qualities</h4>
+            <div class="row">
+              <div class="col-md-4" *ngFor="let quality of qualities">
+                <input type="checkbox" [(ngModel)]="this.animalQualities[quality]" (click)="addOrRemoveTag(quality,'quality')"> {{quality}}
+              </div>
             </div>
-            <div *ngFor="let goodWith of goodWith">
-              <input type="checkbox" [(ngModel)]="this.animalGoodWith[goodWith]" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
+            <h4 class="mt-3">Good With</h4>
+            <div class="row">
+              <div class="col-md-4" *ngFor="let goodWith of goodWith">
+                <input type="checkbox" [(ngModel)]="this.animalGoodWith[goodWith]" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
+              </div>
             </div>
             <button form="editForm" class="btn btn-success btn-block">Save Changes</button>
           </tab>

@@ -6,6 +6,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { User } from '../_models/user';
+import { Tag } from '../_models/tag';
 
 @Component({
   selector: 'app-rehome',
@@ -16,6 +17,10 @@ export class RehomeComponent implements OnInit {
 
   animal: Animal;
   animalRegisterForm: FormGroup;
+  likes = new Set(['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors']);
+  qualities = new Set(['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent']);
+  goodWith = new Set(['children', 'dogs', 'cats', 'women', 'men', 'crowds']);
+  tags: Tag[] = [];
 
   constructor(public authService: AuthService, private animalService: AnimalService,
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
@@ -33,9 +38,6 @@ export class RehomeComponent implements OnInit {
       species: [''],
       breed: [''],
       adoptionFee: 0,
-      likes: [],
-      qualties: [],
-      goodWith: [],
       adoptBy: []
 
     });
@@ -47,10 +49,12 @@ export class RehomeComponent implements OnInit {
   }
 
   registerAnimal() {
+    debugger;
     if (this.animalRegisterForm.valid) {
       this.animal = Object.assign({}, this.animalRegisterForm.value);
       const id = this.authService.decodedToken.nameid;
       this.animal.userId = id;
+      this.animal.tags = this.tags;
       this.animalService.registerAnimal(id, this.animal).subscribe(() => {
         this.alertify.success('Registration successful');
         this.router.navigate(['/your-animals']);
@@ -59,4 +63,16 @@ export class RehomeComponent implements OnInit {
       });
     }
   }
+
+  addOrRemoveTag(content: string, type: string) {
+    if (this.tags.find(t => t.content === content) !== undefined) {
+      this.tags.splice(this.tags.findIndex(x => x.content === content), 1);
+      console.log('tag was removed');
+    } else {
+        const newTag = new Tag(content, type);
+        this.tags.push(newTag);
+        console.log('tag was added');
+      }
+    }
+
 }

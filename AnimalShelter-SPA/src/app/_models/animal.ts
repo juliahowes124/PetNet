@@ -30,6 +30,6 @@ export interface Animal {
     photos?: Photo[];
     savers: number[];
     adopted: boolean;
-    tags: Tag[];
+    tags?: Tag[];
 }
 

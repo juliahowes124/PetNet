@@ -9,7 +9,7 @@ import { Animal } from '../_models/animal';
 @Injectable()
 export class AnimalListResolver implements Resolve<Animal[]> {
     pageNumber = 1;
-    pageSize = 3;
+    pageSize = 5;
 
     constructor(private animalService: AnimalService,
                 private router: Router, private alertify: AlertifyService) {}

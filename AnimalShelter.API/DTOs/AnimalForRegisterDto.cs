@@ -17,8 +17,8 @@ namespace AnimalShelter.API.DTOs
         public DateTime Posted { get; set; }
         public DateTime AdoptBy { get; set; }
         public int UserId { get; set; } 
-        public string[] Likes { get; set; }
         public int AdoptionFee { get; set; }
+        public ICollection<Tag> Tags { get; set; }
 
         public AnimalForRegisterDto()
         {

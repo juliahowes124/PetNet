@@ -76,14 +76,21 @@
           <button class="btn btn-default mt-3" type="button" [routerLink]="['/home']">Cancel</button>
         </div>
 
-        <!-- <div class="form-group">
+        <div class="form-group" *ngFor="let like of likes">
           <label class="checkbox-inline">
-              <input type="checkbox" name="likes" (click)="addOrRemove('walks','like')"> Walks
+              <input type="checkbox" (click)="addOrRemoveTag(like,'like')"> {{like}}
           </label>
+        </div>
+        <div class="form-group" *ngFor="let quality of qualities">
           <label class="checkbox-inline">
-            <input type="checkbox" name="likes" (click)="addOrRemove('cuddles','like')"> Cuddles
-        </label>
-        </div> -->
+              <input type="checkbox"  (click)="addOrRemoveTag(quality,'quality')"> {{quality}}
+          </label>
+        </div>
+        <div class="form-group" *ngFor="let goodWith of goodWith">
+          <label class="checkbox-inline">
+              <input type="checkbox" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
+          </label>
+        </div>
     
         
       </form>
