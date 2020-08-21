@@ -17,6 +17,13 @@ import { UserPhoto } from '../_models/userPhoto';
 export class UserEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   user: User;
+  originalUser: User;
+  states: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+                      'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+                      'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska',
+                      'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
+                      'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
+                      'West Virginia', 'Wisconsin', 'Wyoming'];
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -30,6 +37,7 @@ export class UserEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       console.log(data);
       this.user = data.user;
+      this.originalUser = data.user;
     });
     this.initializeUploader();
   }
@@ -74,5 +82,13 @@ export class UserEditComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+
+  // isIntact() {
+  //   debugger;
+  //   if (editForm.value === this.originalUser) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 }

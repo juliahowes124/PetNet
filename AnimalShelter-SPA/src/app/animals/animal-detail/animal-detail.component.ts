@@ -85,7 +85,7 @@ export class AnimalDetailComponent implements OnInit {
 
   saveAnimal(animalId: number) {
     if (this.authService.decodedToken === undefined) {
-      this.alertify.warning('To save this pet, all you need to do is sign up!');
+      this.alertify.warning("To save this pet, you'll need an account first!");
       this.router.navigate(['/register']);
     } else {
       this.userService.saveAnimal(this.authService.decodedToken.nameid, animalId).subscribe(data => {

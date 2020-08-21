@@ -82,7 +82,9 @@
                   <h6 class="mt-2">City</h6>
                     <textarea name="city" rows="1" class="form-control" [(ngModel)]="user.city"></textarea>
                   <h6 class="mt-2">State</h6>
-                    <textarea name="state" rows="1" class="form-control" [(ngModel)]="user.state"></textarea>
+                    <select class="form-control" id="state" name="state" rows="1" [(ngModel)]="user.state">
+                      <option  *ngFor="let state of states" value="{{state}}">{{state}}</option>
+                    </select>
             </form>
 
         <div class="saveChanges">

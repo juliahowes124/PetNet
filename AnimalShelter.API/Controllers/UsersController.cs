@@ -49,7 +49,7 @@ namespace AnimalShelter.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut("{id}", Name = "UpdateUser")]
+        [HttpPut("{id}", Name = "GetUser")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
@@ -61,7 +61,7 @@ namespace AnimalShelter.API.Controllers
 
             if (await _repo.SaveAll())
                 return NoContent();
-            throw new System.Exception($"Updating user {id} failed on save");
+            throw new System.Exception($"Updating user failed on save");
         }
 
         [HttpPost("{userId}/save/{animalId}")]
