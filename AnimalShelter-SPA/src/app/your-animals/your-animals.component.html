@@ -1,8 +1,10 @@
 <div class="container mt-5">
   <div class="row">
     <div *ngFor="let animal of animals" class="col-lg-6">
+      
           <div class="card mb-5">
-            <div class="card-body">
+            <span class="adopted" *ngIf="animal.adopted">ADOPTED</span>
+            <div class="card-body" [ngClass]="{'transparent' : animal.adopted}">
               <div>
                 <strong>{{animal.name}}</strong>
               </div>
@@ -20,11 +22,11 @@
                 <i class="fa fa-eye mr-3"> {{animal.views}}</i><i class="fa fa-heart mr-3"> {{animal.saves}}</i> <i class="fa fa-comment-o"> {{animal.inquiries}}</i>
               </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" [ngClass]="{'transparent' : animal.adopted}">
               <div class="btn-group d-flex">
                 <button class="btn btn-success mr-1" [routerLink]="['/messages']" routerLinkActive="router-link-active" > <i class="fa fa-envelope"> Messages</i> </button>
                 <button class="btn btn-primary mr-1 ml-1" [routerLink]="['/animal/edit',animal.id]" routerLinkActive="router-link-active" ><i class="fa fa-pencil"> Edit Profile</i></button>
-                <button class="btn btn-warning ml-1" (click)="markAsAdopted(animal.id)"><i class="fa fa-check"> Mark As Adopted</i></button>
+                <button class="btn btn-warning ml-1" *ngIf="!animal.adopted" (click)="markAsAdopted(animal.id)"><i class="fa fa-check"> Mark As Adopted</i></button>
               </div>
             </div>
           </div>

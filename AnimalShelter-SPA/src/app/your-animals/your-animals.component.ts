@@ -35,6 +35,7 @@ export class YourAnimalsComponent implements OnInit {
   markAsAdopted(animalId: number) {
     this.animalService.markAsAdopted(this.authService.decodedToken.nameid, animalId).subscribe(data => {
       this.alertify.success('Congratulations!');
+      this.animals.filter(a => a.id == animalId)[0].adopted = true;
     }, error => {
       this.alertify.error(error);
     });
