@@ -64,19 +64,21 @@ export class AnimalDetailComponent implements OnInit {
 
   getImages() {
     const imageUrls = [];
-    imageUrls.push( {
-      small: this.animal.photos.filter(p => p.isMain)[0].url,
-      medium: this.animal.photos.filter(p => p.isMain)[0].url,
-      big: this.animal.photos.filter(p => p.isMain)[0].url,
-      description: this.animal.photos.filter(p => p.isMain)[0].description
-    });
-    for (const photo of this.animal.photos.filter(p => !p.isMain)) {
-      imageUrls.push({
-        small: photo.url,
-        medium: photo.url,
-        big: photo.url,
-        description: photo.description
+    if (this.animal.photos.length !== 0) {
+      imageUrls.push( {
+        small: this.animal.photos.filter(p => p.isMain)[0].url,
+        medium: this.animal.photos.filter(p => p.isMain)[0].url,
+        big: this.animal.photos.filter(p => p.isMain)[0].url,
+        description: this.animal.photos.filter(p => p.isMain)[0].description
       });
+      for (const photo of this.animal.photos.filter(p => !p.isMain)) {
+        imageUrls.push({
+          small: photo.url,
+          medium: photo.url,
+          big: photo.url,
+          description: photo.description
+        });
+      }
     }
     return imageUrls;
   }

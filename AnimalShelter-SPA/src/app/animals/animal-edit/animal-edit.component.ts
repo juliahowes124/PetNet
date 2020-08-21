@@ -24,6 +24,7 @@ export class AnimalEditComponent implements OnInit {
   animalLikes = {};
   animalQualities = {};
   animalGoodWith = {};
+  changes = 0;
 
   // @HostListener('window:beforeunload', ['$event'])
   // unloadNotification($event: any) {
@@ -77,6 +78,7 @@ export class AnimalEditComponent implements OnInit {
         this.animal.tags.push(newTag);
         console.log('tag was added');
       }
+    this.changes = 1;
     }
 
     checkAnimalTag(content: string) {

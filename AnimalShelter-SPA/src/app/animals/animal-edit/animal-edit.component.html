@@ -5,7 +5,7 @@
       <h1>{{animal.name}}'s Profile</h1>
     </div>
     <div class="col-sm-8">
-      <div *ngIf="editForm.dirty" class="alert alert-info alert-warning">
+      <div *ngIf="editForm.dirty || changes" class="alert alert-info alert-warning">
         <strong>Information:</strong> You have made changes. Any unsaved changes will be lost!
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="card">
         <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
         <div class="card-footer">
-          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+          <button [disabled]="!editForm.dirty && !changes" form="editForm" class="btn btn-success btn-block">Save Changes</button>
         </div>
       </div>
     </div>
@@ -85,7 +85,6 @@
                 <input type="checkbox" [(ngModel)]="this.animalGoodWith[goodWith]" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
               </div>
             </div>
-            <button form="editForm" class="btn btn-success btn-block">Save Changes</button>
           </tab>
           <tab heading="Edit Photos">
             <app-photo-editor [animal]="animal"></app-photo-editor>
