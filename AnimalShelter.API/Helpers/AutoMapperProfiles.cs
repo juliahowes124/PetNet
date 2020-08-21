@@ -35,6 +35,8 @@ namespace AnimalShelter.API.Helpers
                 opt.MapFrom(src => src.KnownAs))
             .ForMember(u => u.Username, opt=>
                 opt.MapFrom(src => src.Username))
+            .ForMember(u => u.UserLastActive, opt => 
+                opt.MapFrom(src => src.LastActive))
             .ForMember(u => u.UserPhotoUrl, opt => 
                 opt.MapFrom(src => src.ProfilePicture.FirstOrDefault().Url));
 

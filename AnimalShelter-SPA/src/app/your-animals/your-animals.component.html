@@ -1,3 +1,15 @@
+<div class="emptyList" *ngIf="animals.length == 0" style="margin-top: 10px;text-align: center;">
+  <div class="container">
+    <h5>
+      You do not have any animals posted for adoption. You can create your pet's profile here.
+    </h5> 
+    <br>
+    <button class="btn btn-warning" [routerLink]="['/rehome']" routerLinkActive="router-link-active" >Register Your Pet</button>
+  </div>
+
+</div>
+
+
 <div class="container mt-5">
   <div class="row">
     <div *ngFor="let animal of animals" class="col-lg-6">

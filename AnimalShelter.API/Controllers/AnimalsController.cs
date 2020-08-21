@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelter.API.Controllers
 {
-    // [ServiceFilter(typeof(LogUserActivity))]
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

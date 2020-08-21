@@ -24,6 +24,7 @@ export interface Animal {
     username: string;
     userKnownAs: string;
     userPhotoUrl: string;
+    userLastActive: Date;
     photoUrl: string;
     photos?: Photo[];
     savers: number[];

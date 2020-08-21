@@ -22,6 +22,7 @@
                   <div class="col">
                     <h5 class="card-title">{{animal.userKnownAs}}</h5>
                     <h6>@{{animal.username}}</h6>
+                    <h6>Last Active: {{animal.userLastActive | timeago}}</h6>
                   </div>
                   <div class="col">
                     <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" [routerLink]="['/message-thread/', userId, animal.userId ]" routerLinkActive="router-link-active" ><i class="fa fa-envelope"></i></button>
