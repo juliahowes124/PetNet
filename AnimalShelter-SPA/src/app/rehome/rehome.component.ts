@@ -49,7 +49,6 @@ export class RehomeComponent implements OnInit {
   }
 
   registerAnimal() {
-    debugger;
     if (this.animalRegisterForm.valid) {
       this.animal = Object.assign({}, this.animalRegisterForm.value);
       const id = this.authService.decodedToken.nameid;

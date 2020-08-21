@@ -67,24 +67,6 @@ namespace AnimalShelter.API.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost("tags/{animalId}")]
-        public async Task<IActionResult> AddTag(int animalId, TagForCreationDto tagForCreationDto, int userId)
-        {
-
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
-
-            var tag = _mapper.Map<Tag>(tagForCreationDto);
-            var animalFromRepo = await _animal_repo.GetAnimal(animalId);
-            animalFromRepo.Tags.Add(tag);
-            if (await _animal_repo.SaveAll())
-            {
-                return Ok(tag);
-            }
-
-            return BadRequest("Could not add tag.");
-        }
-
         [HttpPut("{id}", Name="GetAnimal")]
         public async Task<IActionResult> UpdateAnimal(int id, AnimalForUpdateDto animalForUpdateDto) 
         {
@@ -107,22 +89,6 @@ namespace AnimalShelter.API.Controllers
         {
             var tags = await _animal_repo.GetTags(id);
             return Ok(tags); //returns either no content or a Tag object
-        }
-
-
-        [HttpDelete("{id}/tags")]
-        public async Task<IActionResult> DeleteTag(string tagContent, int animalId)
-        {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
-            
-            var tagToDelete = await _animal_repo.GetTag(tagContent, animalId);
-            _animal_repo.Delete(tagToDelete);
-
-            if (await _animal_repo.SaveAll())
-                return Ok();
-            
-            return BadRequest("Failed to delete the tag");
         }
 
     }

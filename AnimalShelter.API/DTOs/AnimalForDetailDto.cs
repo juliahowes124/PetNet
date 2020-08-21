@@ -12,9 +12,6 @@ namespace AnimalShelter.API.DTOs
         public string Breed { get; set; }
         public string Description { get; set; }
         public int AdoptionFee { get; set; }
-        public string[] Likes { get; set; }
-        public string[] Qualities { get; set; }
-        public string[] GoodWith { get; set; }
         public int AgeYears { get; set; }
         public int AgeMonths { get; set; }
         public string Gender { get; set; }
