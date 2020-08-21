@@ -5,6 +5,8 @@ import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { User } from '../_models/user';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-message-thread',
@@ -16,6 +18,7 @@ export class MessageThreadComponent implements OnInit {
   userId = this.authService.decodedToken.nameid;
   newMessage: any = {};
   recipientId: number;
+  recipient: User;
 
   constructor(private userService: UserService, private authService: AuthService,
               private alertify: AlertifyService, private route: ActivatedRoute) { }
@@ -38,8 +41,12 @@ export class MessageThreadComponent implements OnInit {
     });
     this.route.params.subscribe(r => {
       this.recipientId = r.recipientId;
-      console.log(this.recipientId);
     });
+
+    this.userService.getUser(this.recipientId).subscribe(data => {
+      this.recipient = data;
+    });
+
   }
 
   sendMessage() {
@@ -53,5 +60,5 @@ export class MessageThreadComponent implements OnInit {
       this.alertify.error(error);
     });
   }
-
 }
+

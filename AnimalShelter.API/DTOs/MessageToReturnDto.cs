@@ -8,9 +8,11 @@ namespace AnimalShelter.API.DTOs
         public int SenderId { get; set; }
         public string SenderKnownAs { get; set; }
         public string SenderPhotoUrl { get; set; }
+        public DateTime SenderLastActive { get; set; }
         public int RecipientId { get; set; }
         public string RecipientKnownAs { get; set; }
         public string RecipientPhotoUrl { get; set; }
+        public DateTime RecipientLastActive { get; set; }
         public string Content { get; set; }
         public bool IsRead { get; set; }
         public DateTime? DateRead { get; set; }

@@ -1,15 +1,24 @@
+<div class="row" style="margin-left: 25%; margin-top: 10px; width: 25%;">
+  <div class="col-sm-3">
+    <img style="height: 60px; width: 60px; margin: 0;" class="rounded-circle" src="{{recipient.profilePictureUrl || '../../../assets/user.png'}}"> 
+  </div>
+  <div class="col-sm-9">
+    <h4>{{recipient.knownAs}}</h4>
+    <small>Last Active: {{recipient.lastActive}}</small>
+  </div>
+</div>
+
 <div class="card">
   <div class="card-body">
     <div *ngIf="messages?.length === 0">
       <p>No messages yet</p>
     </div>
-
     <ul class="chat">
       <li *ngFor="let message of messages">
         <!-- to them -->
         <div id="cardHolder" *ngIf="message.senderId == this.userId">
           <span class="chat-img float-right">
-            <img src="{{message.senderPhotoUrl}}" class="rounded-circle">
+            <img src="{{message.senderPhotoUrl || '../../../assets/user.png'}}" class="rounded-circle">
           </span>
           <div class="chat-body" style="min-height: 70px;">
             <div class="header">
@@ -32,7 +41,7 @@
         <!-- to me -->
         <div id="cardHolder" *ngIf="message.senderId != this.userId">
           <span class="chat-img float-left">
-            <img src="{{message.senderPhotoUrl}}" class="rounded-circle">
+            <img src="{{message.senderPhotoUrl || '../../../assets/user.png'}}" class="rounded-circle">
           </span>
           <div class="chat-body">
             <div class="header">
