@@ -1,0 +1,22 @@
+.saveChanges {
+    margin-top: 20px;
+
+}
+
+img {
+    height: 300px;
+    width: 300px
+}
+
+.nv-file-over {
+    border: dotted 3px red; 
+}
+
+.my-drop-zone {
+    height: 100px;
+    width: 100px;
+}
+
+.main-card {
+    border: none;
+}

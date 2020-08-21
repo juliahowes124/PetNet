@@ -10,75 +10,72 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4">
-      <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user.profilePictureUrl|| '../../../assets/user.png'}}" alt="User's name">
-
-        <div class="col">
-          <h6>Change Profile Photo</h6>
-          <div class="row">
-            <div class="col-sm-5">
-              <div ng2FileDrop
-              [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-              (fileOver)="fileOverBase($event)"
-              [uploader]="uploader"
-              class="card bg-faded p-3 text-center mb-3 my-drop-zone" style="font-size: small;">
-              <i class="fa fa-upload"></i>
-             Drop Photo Here
-              </div>
-            </div>
-            <div class="col-sm-7">
-              <input type="file" ng2FileSelect single [uploader]="uploader" [(ngModel)]="user.profilePicture" style="font-size: small;"/><br/>
-            </div>
-          </div>
-        </div>
-
-  <div style="margin: 20px" *ngIf="uploader?.queue?.length">
-    <h6>Upload queue</h6>
-    <div class="row">
-      <div class="col-sm-8">
-        <table class="table">
-          <thead>
-          <tr>
-              <th width="50%">Name</th>
-              <th>Size</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of uploader.queue">
-              <td><strong>{{ item?.file?.name }}</strong></td>
-              <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-          </tr>
-          </tbody>
-        </table>
-        <div>
-          Progress:
-          <div class="progress mb-4">
-              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4"> 
-        <button type="button" class="btn btn-success btn-s" style="padding: 5px; font-size: small;"
-        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-         <span class="fa fa-upload"></span> Upload
-        </button>
-        <button type="button" class="btn btn-danger btn-s" style="padding: 5px; font-size: small;"
-                (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-            <span class="fa fa-trash"></span> Remove
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-    <div class="card-footer">
-          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
-        </div>
-      </div>
-    </div>
-
     <div class="col-sm-8">
+      <div class="main-card">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="card-img-top img-thumbnail" src="{{user.profilePictureUrl|| '../../../assets/user.png'}}" alt="User's name">
+          </div>
+          <div class="col-sm-7" style="margin-top: 10px;">
+              <h6>Change Profile Photo</h6>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div ng2FileDrop
+                  [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                  (fileOver)="fileOverBase($event)"
+                  [uploader]="uploader"
+                  class="card bg-faded p-3 text-center mb-3 my-drop-zone" style="font-size: small;">
+                  <i class="fa fa-upload"></i>
+                 Drop Photo Here
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <input type="file" ng2FileSelect single [uploader]="uploader" [(ngModel)]="user.profilePicture" style="color: transparent;"/><br/>
+                </div>
+              </div>
+            <div style="margin-right: 5%; margin-bottom: 5%;" *ngIf="uploader?.queue?.length">
+              <h6>Upload queue</h6>
+                  <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Size</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div>
+                    Progress:
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-success btn-s" style="padding: 5px; font-size: small;"
+                  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                  <span class="fa fa-upload"></span> Upload
+                  </button>
+                  <button type="button" class="btn btn-danger btn-s" style="padding: 5px; font-size: small;"
+                          (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                      <span class="fa fa-trash"></span> Remove
+                  </button>
+            </div>
+          </div>
+        </div>
+       
+
+       
+
+        
+
+      </div>
+    </div>
+
+    <div class="col-sm-4">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
                   <h6 class="mt-2">Known As</h6>
                     <textarea name="knownAs" rows="1" class="form-control" [(ngModel)]="user.knownAs"></textarea>
@@ -87,6 +84,10 @@
                   <h6 class="mt-2">State</h6>
                     <textarea name="state" rows="1" class="form-control" [(ngModel)]="user.state"></textarea>
             </form>
+
+        <div class="saveChanges">
+          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+        </div>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
           <span class="chat-img float-right">
             <img src="{{message.senderPhotoUrl}}" class="rounded-circle">
           </span>
-          <div class="chat-body" style="min-height: 60px;">
+          <div class="chat-body" style="min-height: 70px;">
             <div class="header">
               <small class="primary-font float-right">{{message.senderKnownAs}}</small>
               <small class="text-muted float-left">
@@ -23,8 +23,8 @@
             </div>
             <br>
             <div class="speech-bubble float-right">
-              <div class="arrow bottom float-right"></div>
               {{message.content}}
+              <div class="arrow bottom right"></div>
             </div>
           </div>
         </div>
@@ -42,8 +42,8 @@
               <small class="primary-font">{{message.senderKnownAs}}</small>
             </div>
             <div class="speech-bubble float-left">
-              <div class="arrow bottom float-left"></div>
               {{message.content}}
+              <div class="arrow bottom left"></div>
             </div>
           </div>
         </div>
