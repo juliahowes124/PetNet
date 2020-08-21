@@ -46,7 +46,6 @@ import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
 import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
 import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
-import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { SavedAnimalsResolver } from './_resolvers/saved-animals.resolver';
@@ -78,7 +77,6 @@ export function tokenGetter() {
       YourAnimalsComponent,
       AnimalEditComponent,
       PhotoEditorComponent,
-      TagEditorComponent,
       UserEditComponent,
       MessageThreadComponent
    ],

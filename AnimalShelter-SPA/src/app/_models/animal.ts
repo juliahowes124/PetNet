@@ -1,4 +1,5 @@
 import { Photo } from './photo';
+import { Tag } from './tag';
 
 export interface Animal {
     id: number;
@@ -7,9 +8,9 @@ export interface Animal {
     breed: string;
     description: string;
     adoptionFee: number;
-    likes: string[];
-    qualities: string[];
-    goodWith: string[];
+    // likes: string[];
+    // qualities: string[];
+    // goodWith: string[];
     ageYears: number;
     ageMonths: number;
     gender: string;
@@ -29,5 +30,6 @@ export interface Animal {
     photos?: Photo[];
     savers: number[];
     adopted: boolean;
+    tags: Tag[];
 }
 

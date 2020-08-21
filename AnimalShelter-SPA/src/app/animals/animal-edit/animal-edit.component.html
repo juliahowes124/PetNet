@@ -67,7 +67,16 @@
             </form>
           </tab>
           <tab heading="Edit Tags">
-            <app-tag-editor [animal]="animal"></app-tag-editor>
+            <div *ngFor="let like of likes">
+              <input type="checkbox" [(ngModel)]="this.animalLikes[like]" (click)="addOrRemoveTag(like,'like')"> {{like}}
+            </div>
+            <div *ngFor="let quality of qualities">
+              <input type="checkbox" [(ngModel)]="this.animalQualities[quality]" (click)="addOrRemoveTag(quality,'quality')"> {{quality}}
+            </div>
+            <div *ngFor="let goodWith of goodWith">
+              <input type="checkbox" [(ngModel)]="this.animalGoodWith[goodWith]" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
+            </div>
+            <button form="editForm" class="btn btn-success btn-block">Save Changes</button>
           </tab>
           <tab heading="Edit Photos">
             <app-photo-editor [animal]="animal"></app-photo-editor>

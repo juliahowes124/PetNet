@@ -16,9 +16,6 @@ export class RehomeComponent implements OnInit {
 
   animal: Animal;
   animalRegisterForm: FormGroup;
-  likes = new Set<string>();
-  qualities = new Set<string>();
-  goodWith: string[] = [];
 
   constructor(public authService: AuthService, private animalService: AnimalService,
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
@@ -54,9 +51,6 @@ export class RehomeComponent implements OnInit {
       this.animal = Object.assign({}, this.animalRegisterForm.value);
       const id = this.authService.decodedToken.nameid;
       this.animal.userId = id;
-      this.animal.likes = [...this.likes];
-      this.animal.qualities = [...this.qualities];
-      console.log(this.animal);
       this.animalService.registerAnimal(id, this.animal).subscribe(() => {
         this.alertify.success('Registration successful');
         this.router.navigate(['/your-animals']);
@@ -65,33 +59,4 @@ export class RehomeComponent implements OnInit {
       });
     }
   }
-
-  addToTags(checkedTag: string, type: string) {
-    if (type === 'like') {
-      this.likes.add(checkedTag);
-    } else if (type === 'quality') {
-      this.qualities.add(checkedTag);
-    } else if (type === 'goodWith') {
-      this.goodWith.push(checkedTag);
-    }
-  }
-
-  removeFromTags(checkedTag: string, type: string) {
-    if (type === 'like') {
-      this.likes.delete(checkedTag);
-    } else if (type === 'quality') {
-      this.qualities.delete(checkedTag);
-    } else if (type === 'goodWith') {
-      this.goodWith.splice(this.animal.goodWith.findIndex(g => g === checkedTag));
-    }
-  }
-
-  addOrRemove(checkedTag: string, type: string) {
-    if (this.likes.has(checkedTag) || this.qualities.has(checkedTag)) {
-      this.removeFromTags(checkedTag, type);
-    } else {
-      this.addToTags(checkedTag, type);
-    }
-  }
-
 }

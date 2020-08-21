@@ -17,6 +17,7 @@ namespace AnimalShelter.API.DTOs
         public DateTime AdoptBy { get; set; }
         public int UserId { get; set; } 
         public string PhotoUrl { get; set; }
-        public ICollection<Photo> Photos { get; set; }
+        public ICollection<Tag> Tags { get; set; }
+        public ICollection<Photo> Photos { get; set; } //get rid of this?
     }
 }

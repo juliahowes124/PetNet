@@ -13,7 +13,6 @@ import { YourAnimalsComponent } from './your-animals/your-animals.component';
 import { YourAnimalsResolver } from './_resolvers/your-animals.resolver';
 import { AnimalEditComponent } from './animals/animal-edit/animal-edit.component';
 import { AnimalEditResolver } from './_resolvers/animal-edit.resolver';
-import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
@@ -33,8 +32,6 @@ export const appRoutes: Routes = [
             { path: 'message-thread/:id/:recipientId', component: MessageThreadComponent, canActivate: [AuthGuard], resolve: {messages: MessageThreadResolver}},
             { path: 'your-animals', component: YourAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: YourAnimalsResolver}},
             { path: 'animal/edit/:id', component: AnimalEditComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
-            // tslint:disable-next-line: max-line-length
-            { path: 'animal/edit/:id/tag', component: TagEditorComponent, canActivate: [AuthGuard], resolve: {animal: AnimalEditResolver}},
             { path: 'user-edit', component: UserEditComponent, canActivate: [AuthGuard], resolve: {user: UserEditResolver}},
             { path: 'saved-animals', component: SavedAnimalsComponent, canActivate: [AuthGuard], resolve: {animals: AnimalListResolver}}
         ]
