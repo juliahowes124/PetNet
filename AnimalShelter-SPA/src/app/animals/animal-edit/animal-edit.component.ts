@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { Animal } from 'src/app/_models/animal';
 import { Tag } from 'src/app/_models/tag';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-animal-edit',
@@ -25,13 +26,7 @@ export class AnimalEditComponent implements OnInit {
   animalQualities = {};
   animalGoodWith = {};
   changes = 0;
-
-  // @HostListener('window:beforeunload', ['$event'])
-  // unloadNotification($event: any) {
-  //   if (this.editForm.dirty) {
-  //     $event.returnValue = true;
-  //   }
-  // }
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
               private animalService: AnimalService, private authService: AuthService) { }
@@ -40,6 +35,9 @@ export class AnimalEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.animal = data.animal;
     });
+    this.bsConfig = {
+      containerClass: 'theme-blue'
+    };
 
     this.animalLikes = {'walks': this.checkAnimalTag('walks'),
     'cuddles': this.checkAnimalTag('cuddles'),'food': this.checkAnimalTag('food'),
@@ -57,7 +55,7 @@ export class AnimalEditComponent implements OnInit {
   }
 
   updateAnimal() {
-    this.animalService.updateAnimal(this.authService.decodedToken.nameid, this.animal).subscribe(next => {
+    this.animalService.updateAnimal(this.animal.id, this.animal).subscribe(next => {
       this.alertify.success('Profile updated successfully');
       this.editForm.reset(this.animal);
     }, error => {

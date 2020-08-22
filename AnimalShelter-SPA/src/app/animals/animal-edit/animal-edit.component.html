@@ -61,7 +61,7 @@
                   <h6 class="mt-2">Adoption Fee</h6>
                     <textarea name="adoptionFee" rows="1" class="form-control" [(ngModel)]="animal.adoptionFee"></textarea>
                   <h6 class="mt-2">Adopt By</h6>
-                    <input type="date" name="adoptBy" rows="1" class="form-control" [(ngModel)]="animal.adoptBy">
+                    <input type="text" bsDatepicker [bsConfig]="bsConfig" name="adoptBy" rows="1" class="form-control" [(ngModel)]="animal.adoptBy">
                 </div>
               </div>
             </form>
