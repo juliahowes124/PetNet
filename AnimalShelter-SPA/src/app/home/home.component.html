@@ -1,9 +1,12 @@
-<div class="container mt-5">
-  <h1 class="text-center">Welcome</h1>
-    <div style="text-align: left">
-      <div class="text-center">
-        <button class="btn btn-primary btn-lg mr-1" [routerLink]="['/animals']"><i class="fa fa-paw"> Adopt</i></button>
-        <button class="btn btn-primary btn-lg ml-1" [routerLink]="['/rehome']"><i class="fa fa-home"> Rehome</i></button>
+<body class="fullscreen" [ngStyle]="{'background': ' url(' + '../../assets/background.png' + ') no-repeat 0 0'}">
+  <div class="container mt-5">
+    <h1 class="text-center">Welcome</h1>
+      <div style="text-align: left">
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg mr-1" [routerLink]="['/animals']"><i class="fa fa-paw"> Adopt</i></button>
+          <button class="btn btn-primary btn-lg ml-1" [routerLink]="['/rehome']"><i class="fa fa-home"> Rehome</i></button>
+        </div>
       </div>
-    </div>
-</div>
+  </div>
+</body>
+

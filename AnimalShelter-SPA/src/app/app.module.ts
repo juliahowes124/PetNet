@@ -54,6 +54,7 @@ import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.com
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MessageThreadComponent } from './message-thread/message-thread.component';
 import { MessageThreadResolver } from './_resolvers/message-thread.resolver';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -62,7 +63,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-   declarations: [
+   declarations: [	
       AppComponent,
       NavComponent,
       HomeComponent,
@@ -78,7 +79,8 @@ export function tokenGetter() {
       AnimalEditComponent,
       PhotoEditorComponent,
       UserEditComponent,
-      MessageThreadComponent
+      MessageThreadComponent,
+      AboutComponent
    ],
    imports: [
       BrowserModule,

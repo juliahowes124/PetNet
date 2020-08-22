@@ -19,6 +19,7 @@ import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.com
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MessageThreadComponent } from './message-thread/message-thread.component';
 import { MessageThreadResolver } from './_resolvers/message-thread.resolver';
+import { AboutComponent } from './about/about.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -41,6 +42,7 @@ export const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'rehome', component: RehomeComponent},
+    { path: 'about', component: AboutComponent},
     { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

@@ -9,14 +9,14 @@
             <a class="nav-link" [routerLink]="['/animals']">Browse Pets</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link">About</a>
+            <a class="nav-link" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
           </li>
         </ul>
       </div>
       <div class="col">
         <div *ngIf="!loginMode && !loggedIn()">
-          <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Sign-In</button>
-          <button class="btn btn-secondary my-2 my-sm-0" [routerLink]="['/register']">Register</button>
+          <button class="btn btn-secondary my-2 my-sm-0 float-right" [routerLink]="['/register']">Register</button>
+          <button class="btn btn-success my-2 my-sm-0 mr-1 float-right" (click)="loginToggle()">Sign-In</button>
         </div>
       
         <form *ngIf="loginMode" #loginForm ="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)= "login()">
