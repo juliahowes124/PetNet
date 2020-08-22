@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { User } from '../_models/user';
 // import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 // import { Router } from '@angular/router';
 // import { User } from '../_models/user';
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  model: any = {};
+  user: User;
   registerForm: FormGroup;
   states: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
                       'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
@@ -30,26 +31,33 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      username: [''],
-      password: [''],
-      knownAs: [''],
-      city: [''],
-      state: [''],
-      confirmPassword: ['']
-    });
+      username: ['', Validators.required],
+      password: ['', [Validators.required,
+          Validators.minLength(4), Validators.maxLength(8)]],
+      confirmPassword: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required]
+    }, {validator: this.passwordMatchValidator});
   }
 
-  // passwordMatchValidator(g: FormGroup) {
-  //   return g.get('password').value === g.get('confirmPassword').value ? null : {mismatch: true};
-  // }
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};
+  }
 
   register() {
-    this.authService.register(this.model).subscribe(() => {
-      this.alertify.success('Registration successful');
-      this.router.navigate(['/home']);
-    }, error => {
-      this.alertify.error(error);
-    });
+    if (this.registerForm.valid) {
+      this.user = Object.assign({}, this.registerForm.value);
+      this.authService.register(this.user).subscribe(() => {
+        this.alertify.success('Registration successful');
+      }, error => {
+        this.alertify.error(error);
+      }, () => {
+        this.authService.login(this.user).subscribe(() => {
+          this.router.navigate(['/animals']);
+        });
+      });
+    }
   }
 
 }

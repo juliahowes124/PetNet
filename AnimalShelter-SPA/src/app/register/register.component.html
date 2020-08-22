@@ -4,30 +4,77 @@
 <div  class="container">
   <div class="row justify-content-center">
     <div class="col-4">
-      <form #registerForm="ngForm" (ngSubmit)="register()">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
         <h2 class="text-center text-primary">Sign Up</h2>
         <hr>
       
         <div class="form-group">
-          <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username">
+          <input type="text" 
+          [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
+          class="form-control" formControlName="username" placeholder="Username">
+          <div class="invalid-feedback">Please choose a username</div>
         </div>
       
         <div class="form-group">
-          <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password">
+          <input type="password"
+          [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}"
+          class="form-control" formControlName="password" placeholder="Password">
+          <div class="invalid-feedback"
+            *ngIf="registerForm.get('password').hasError('required')
+            && registerForm.get('password').touched">
+            Password is required
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="registerForm.get('password').hasError('minlength')
+            && registerForm.get('password').touched">
+            Password must be at least 4 characters
+          </div>
+          <div class="invalid-feedback"
+            *ngIf="registerForm.get('password').hasError('maxlength')
+            && registerForm.get('password').touched">
+            Password cannot exceed 8 characters
+          </div>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" required name="knownAs" [(ngModel)]="model.knownAs" placeholder="Known As">
+          <input type="password"
+            [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors
+              && registerForm.get('confirmPassword').touched
+              || registerForm.get('confirmPassword').touched
+              && registerForm.hasError('mismatch')}"
+            class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+            <div class="invalid-feedback"
+              *ngIf="registerForm.get('confirmPassword').hasError('required')
+              && registerForm.get('confirmPassword').touched">
+              Password is required
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="registerForm.hasError('mismatch')
+              && registerForm.get('confirmPassword').touched">
+              Passwords must match
+            </div>
+          </div>
+
+        <div class="form-group">
+          <input type="text"
+          [ngClass]="{'is-invalid': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched}"
+          class="form-control" formControlName="knownAs" placeholder="Known As">
+          <div class="invalid-feedback">Known As is required</div>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" required name="city" [(ngModel)]="model.city" placeholder="City">
+          <input type="text"
+          [ngClass]="{'is-invalid': registerForm.get('city').errors && registerForm.get('city').touched}"
+          class="form-control"  formControlName="city" placeholder="City">
+          <div class="invalid-feedback">City is required</div>
         </div>
 
         <div class="form-group">
-          <select class="form-control" id="state" required name="state" rows="1" [(ngModel)]="model.state" placeholder="State">
+          <select [ngClass]="{'is-invalid': registerForm.get('state').errors && registerForm.get('state').touched}"
+            class="form-control" formControlName="state" placeholder="State">
             <option  *ngFor="let state of states" value="{{state}}">{{state}}</option>
           </select>
+          <div class="invalid-feedback">State is required</div>
         </div>
       
         <div class="form-group text-center">

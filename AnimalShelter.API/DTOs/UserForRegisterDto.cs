@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace AnimalShelter.API.DTOs
@@ -19,5 +20,12 @@ namespace AnimalShelter.API.DTOs
 
         [Required]
         public string State { get; set; }
+
+        public DateTime LastActive { get; set; }
+
+        public UserForRegisterDto()
+        {
+            this.LastActive = DateTime.Now;
+        }
     }
 }
