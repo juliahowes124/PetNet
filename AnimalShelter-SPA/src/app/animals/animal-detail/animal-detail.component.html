@@ -25,7 +25,7 @@
                     <h6>Last Active: {{animal.userLastActive | timeago}}</h6>
                   </div>
                   <div class="col">
-                    <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" [routerLink]="['/message-thread/', userId, animal.userId ]" routerLinkActive="router-link-active" ><i class="fa fa-envelope"></i></button>
+                    <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" (click)="checkAuth()"><i class="fa fa-envelope"></i></button>
                   </div>
                 </div>
                   

@@ -96,4 +96,13 @@ export class AnimalDetailComponent implements OnInit {
     }
   }
 
+  checkAuth() {
+    if (this.authService.decodedToken === undefined) {
+      this.alertify.warning("To message the owner, you'll need an account first!");
+      this.router.navigate(['/register']);
+    } else {
+      this.router.navigate(['/message-thread/', this.userId, this.animal.userId]);
+    }
+  }
+
 }

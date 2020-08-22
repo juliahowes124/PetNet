@@ -1,58 +1,60 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">(Website Name Goes Here)</a>
-
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/animals']">Browse Pets</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link">About</a>
-    </li>
-  </ul>
-
-  <div *ngIf="!loginMode && !loggedIn()">
-    <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Sign-In</button>
-    <button class="btn btn-secondary my-2 my-sm-0" [routerLink]="['/register']">Register</button>
-  </div>
-
-  <form *ngIf="loginMode" #loginForm ="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)= "login()">
-    <button type="button" class="mr-2" (click)="loginToggle()"><i class="fa fa-arrow-left"> Back</i></button>
-    <input class="form-control mr-sm-2" type="text" name="username" 
-      placeholder="Username" required [(ngModel)]= "model.username">
-    <input class="form-control mr-sm-2" type="password" name="password" 
-      placeholder="Password" required [(ngModel)]= "model.password">
-    <button [disabled] = "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-  </form>
-  </div>
-
-  <div *ngIf="loggedIn()" class="dropdown" dropdown>
-    <div class="row">
-      <div class="col">
-        <span class="mr-1">
-          <img src="{{photoUrl}}" alt="">
-        </span>
+    <div class="row" style="width: 100%;">
+      <div class="col-md-1">
+        <a class="navbar-brand" [routerLink]="['/home']">(Web)</a>
       </div>
       <div class="col">
-      <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome {{authService.decodedToken?.unique_name | titlecase}}
-      </a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/animals']">Browse Pets</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link">About</a>
+          </li>
+        </ul>
       </div>
-    </div>
-    
-
-    <div class="dropdown-menu mt-3" *dropdownMenu>
-      <a class="dropdown-item" [routerLink]="['/user-edit']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-1"></i>Edit Profile</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" [routerLink]="['/your-animals']"><i class="fa fa-paw mr-1"></i>Your Pets</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" [routerLink]="['/saved-animals']"><i class="fa fa-heart mr-1"></i>Saved Pets</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" [routerLink]="['/messages']"><i class="fa fa-envelope mr-1"></i>Messages</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out mr-1"></i>Logout</a>
-    </div>
-  </div>
-  
-
+      <div class="col">
+        <div *ngIf="!loginMode && !loggedIn()">
+          <button class="btn btn-success my-2 my-sm-0 mr-1" (click)="loginToggle()">Sign-In</button>
+          <button class="btn btn-secondary my-2 my-sm-0" [routerLink]="['/register']">Register</button>
+        </div>
+      
+        <form *ngIf="loginMode" #loginForm ="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)= "login()">
+          <button type="button" class="mr-2" (click)="loginToggle()"><i class="fa fa-arrow-left"> Back</i></button>
+          <input class="form-control mr-sm-2" type="text" name="username" 
+            placeholder="Username" required [(ngModel)]= "model.username">
+          <input class="form-control mr-sm-2" type="password" name="password" 
+            placeholder="Password" required [(ngModel)]= "model.password">
+          <button [disabled] = "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+        </form>
+        </div>
+      
+        <div *ngIf="loggedIn()" class="dropdown" dropdown>
+          <div class="row">
+            <div>
+              <span class="mr-1">
+                <img src="{{photoUrl || '../../assets/user.png'}}" alt="">
+              </span>
+            </div>
+            <div>
+            <a class="dropdown-toggle text-light" dropdownToggle>
+              Welcome {{authService.decodedToken?.unique_name | titlecase}}
+            </a>
+            </div>
+          </div>
+          
+      
+          <div class="dropdown-menu mt-3" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['/user-edit']" routerLinkActive="router-link-active" ><i class="fa fa-user mr-1"></i>Edit Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/your-animals']"><i class="fa fa-paw mr-1"></i>Your Pets</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/saved-animals']"><i class="fa fa-heart mr-1"></i>Saved Pets</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/messages']"><i class="fa fa-envelope mr-1"></i>Messages</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out mr-1"></i>Logout</a>
+          </div>
+        </div>
+      </div>
 </nav>

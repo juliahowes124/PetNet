@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalShelter.API.Controllers
 {
-    // [ServiceFilter(typeof(LogUserActivity))]
+    
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -55,6 +55,7 @@ namespace AnimalShelter.API.Controllers
             return Ok(animalToReturn);
         }
 
+        [ServiceFilter(typeof(LogUserActivity))]
         [HttpPost("{userId}/register")]
         public async Task<IActionResult> Register(int userId, AnimalForRegisterDto animalForRegisterDto)
         {
@@ -67,6 +68,7 @@ namespace AnimalShelter.API.Controllers
             return StatusCode(201);
         }
 
+        [ServiceFilter(typeof(LogUserActivity))]
         [HttpPut("{id}", Name="GetAnimal")]
         public async Task<IActionResult> UpdateAnimal(int id, AnimalForUpdateDto animalForUpdateDto) 
         {
