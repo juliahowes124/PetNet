@@ -44,7 +44,7 @@ export class RehomeComponent implements OnInit {
       species: [''],
       breed: [''],
       adoptionFee: 0,
-      adoptBy: []
+      adoptBy: ['01/01/0000']
 
     });
   }
