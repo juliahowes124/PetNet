@@ -4,9 +4,10 @@ import { AnimalService } from '../_services/animal.service';
 import { Animal } from '../_models/animal';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../_models/user';
 import { Tag } from '../_models/tag';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-rehome',
@@ -17,6 +18,8 @@ export class RehomeComponent implements OnInit {
 
   animal: Animal;
   animalRegisterForm: FormGroup;
+  bsConfig: Partial<BsDatepickerConfig>;
+
   likes = new Set(['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors']);
   qualities = new Set(['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent']);
   goodWith = new Set(['children', 'dogs', 'cats', 'women', 'men', 'crowds']);
@@ -26,12 +29,15 @@ export class RehomeComponent implements OnInit {
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.bsConfig = {
+      containerClass: 'theme-blue'
+    };
     this.createRegisterForm();
   }
 
   createRegisterForm() {
     this.animalRegisterForm = this.fb.group({
-      name: [''],
+      name: ['', Validators.required],
       gender: [''],
       ageYears: 0,
       ageMonths: 0,
