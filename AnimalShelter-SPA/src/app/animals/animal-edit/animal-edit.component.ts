@@ -26,9 +26,9 @@ export class AnimalEditComponent implements OnInit {
   animalLikes = {};
   animalQualities = {};
   animalGoodWith = {};
-  changes = 0;
   bsConfig: Partial<BsDatepickerConfig>;
   animalUpdateForm: FormGroup;
+  tagChanges = 0;
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
               private animalService: AnimalService, private authService: AuthService, private fb: FormBuilder) { }
@@ -69,7 +69,8 @@ export class AnimalEditComponent implements OnInit {
       species: [this.animal.species],
       breed: [this.animal.breed],
       adoptionFee: [this.animal.adoptionFee],
-      adoptBy: [this.animal.adoptBy]
+      adoptBy: [this.animal.adoptBy],
+      tags: [this.animal.tags]
 
     });
   }
@@ -101,30 +102,33 @@ export class AnimalEditComponent implements OnInit {
         this.animal.tags.push(newTag);
         console.log('tag was added');
       }
-    this.changes = 1;
+    this.tagChanges = 1;
     }
 
-    checkAnimalTag(content: string) {
-      if (this.animal.tags.find(t => t.content === content) !== undefined) {
-        return true;
-      }
-      return false;
+  checkAnimalTag(content: string) {
+    if (this.animal.tags.find(t => t.content === content) !== undefined) {
+      return true;
     }
+    return false;
+  }
 
-    isDifferent() {
-      const isSame = (this.animalUpdateForm.value.name === this.originalAnimal.name
-                && this.animalUpdateForm.value.gender === this.originalAnimal.gender
-                && this.animalUpdateForm.value.ageYears == this.originalAnimal.ageYears
-                && this.animalUpdateForm.value.ageMonths == this.originalAnimal.ageMonths
-                && this.animalUpdateForm.value.description === this.originalAnimal.description
-                && this.animalUpdateForm.value.species === this.originalAnimal.species
-                && this.animalUpdateForm.value.breed === this.originalAnimal.breed
-                && this.animalUpdateForm.value.adoptBy === this.originalAnimal.adoptBy
-                && this.animalUpdateForm.value.adoptionFee == this.originalAnimal.adoptionFee);
-      return !isSame;
-    }
+  isDifferent() {
 
-    reset() {
-      this.animalUpdateForm.reset(this.animal);
-    }
+    const isSame = (this.animalUpdateForm.value.name === this.originalAnimal.name
+              && this.animalUpdateForm.value.gender === this.originalAnimal.gender
+              && this.animalUpdateForm.value.ageYears == this.originalAnimal.ageYears
+              && this.animalUpdateForm.value.ageMonths == this.originalAnimal.ageMonths
+              && this.animalUpdateForm.value.description === this.originalAnimal.description
+              && this.animalUpdateForm.value.species === this.originalAnimal.species
+              && this.animalUpdateForm.value.breed === this.originalAnimal.breed
+              && this.animalUpdateForm.value.adoptBy === this.originalAnimal.adoptBy
+              && this.animalUpdateForm.value.adoptionFee == this.originalAnimal.adoptionFee
+              && !this.tagChanges);
+    return !isSame;
+  }
+
+  reset() {
+    this.animalUpdateForm.reset(this.animal);
+    this.animal.tags = this.originalAnimal.tags;
+  }
   }

@@ -105,6 +105,8 @@
                   <input type="checkbox" [(ngModel)]="this.animalGoodWith[goodWith]" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
                 </div>
               </div>
+              <button class="btn btn-success" (click)="updateAnimal()">Update</button>
+               <!-- <button class="btn btn-default" (click)="reset()" type="button" >Reset</button> -->
             </tab>
             <tab heading="Edit Photos">
               <app-photo-editor [animal]="animal"></app-photo-editor>
