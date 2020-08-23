@@ -29,6 +29,7 @@ export class RehomeComponent implements OnInit {
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+
     this.bsConfig = {
       containerClass: 'theme-blue'
     };
@@ -38,13 +39,13 @@ export class RehomeComponent implements OnInit {
   createRegisterForm() {
     this.animalRegisterForm = this.fb.group({
       name: ['', Validators.required],
-      gender: [''],
+      gender: [null],
       ageYears: 0,
       ageMonths: 0,
-      species: [''],
-      breed: [''],
+      species: [null],
+      breed: [null],
       adoptionFee: 0,
-      adoptBy: ['01/01/0000']
+      adoptBy: ['01/01/0001']
 
     });
   }

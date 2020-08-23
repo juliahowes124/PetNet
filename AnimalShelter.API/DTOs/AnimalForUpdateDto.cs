@@ -8,7 +8,7 @@ namespace AnimalShelter.API.DTOs
     {
         public string Name { get; set; }
         public string Species { get; set; }
-        public string Breed { get; set; }
+        public string Breed { get; set; } = null;
         public string Description { get; set; }
         public string Gender { get; set; }
         public int AdoptionFee { get; set; }

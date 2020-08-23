@@ -90,9 +90,9 @@
     <div class="col-sm-2">
       <ul class="list-group list-group-flush">
         <span class="badge badge-pill badge-warning">Adoption Fee: ${{animal.adoptionFee}}</span>
-        <li class="list-group-item mt-5">{{animal.species | titlecase}}</li>
-        <li class="list-group-item">{{animal.breed | titlecase}}</li>
-        <li class="list-group-item">{{animal.gender | titlecase}}</li>
+        <li *ngIf="animal.species !== null" class="list-group-item mt-5">{{animal.species | titlecase}}</li>
+        <li *ngIf="animal.breed !== null" class="list-group-item">{{animal.breed | titlecase}}</li>
+        <li *ngIf="animal.gender !== null" class="list-group-item">{{animal.gender | titlecase}}</li>
         <li class="list-group-item">{{animal.ageYears}} yrs {{animal.ageMonths}} mo </li>
       </ul>
     </div>
