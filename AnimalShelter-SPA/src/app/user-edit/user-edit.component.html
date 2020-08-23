@@ -4,7 +4,7 @@
       <h1>Your Profile</h1>
     </div>
     <div class="col-sm-8">
-      <div *ngIf="editForm.dirty" class="alert alert-info alert-warning">
+      <div *ngIf="isDifferent()" class="alert alert-info alert-warning">
         <strong>Information:</strong> You have made changes. Any unsaved changes will be lost!
       </div>
     </div>
@@ -66,30 +66,40 @@
             </div>
           </div>
         </div>
-       
-
-       
-
-        
-
       </div>
     </div>
 
     <div class="col-sm-4">
-            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+            <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
                   <h6 class="mt-2">Known As</h6>
-                    <textarea name="knownAs" rows="1" class="form-control" [(ngModel)]="user.knownAs"></textarea>
+                  <div class="form-group">
+                    <input type="text"
+                    [ngClass]="{'is-invalid': updateForm.get('knownAs').errors && updateForm.get('knownAs').touched}"
+                    class="form-control" formControlName="knownAs" placeholder="Known As">
+                    <div class="invalid-feedback">Known As is required</div>
+                  </div>
                   <h6 class="mt-2">City</h6>
-                    <textarea name="city" rows="1" class="form-control" [(ngModel)]="user.city"></textarea>
+                    <div class="form-group">
+                      <input type="text"
+                      [ngClass]="{'is-invalid': updateForm.get('city').errors && updateForm.get('city').touched}"
+                      class="form-control"  formControlName="city" placeholder="City">
+                      <div class="invalid-feedback">City is required</div>
+                    </div>
                   <h6 class="mt-2">State</h6>
-                    <select class="form-control" id="state" name="state" rows="1" [(ngModel)]="user.state">
+                  <div class="form-group">
+                    <select [ngClass]="{'is-invalid': updateForm.get('state').errors && updateForm.get('state').touched}"
+                      class="form-control" formControlName="state" placeholder="State">
                       <option  *ngFor="let state of states" value="{{state}}">{{state}}</option>
                     </select>
+                    <div class="invalid-feedback">State is required</div>
+                  </div>
+                  <div class="form-group text-center">
+                    <button class="btn btn-success" [disabled]="!isDifferent()" type="submit">Register</button>
+                    <button class="btn btn-default" type="button" (click)="reset()">Reset</button>
+                  </div>
             </form>
 
-        <div class="saveChanges">
-          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
-        </div>
+
       </div>
     </div>
   </div>

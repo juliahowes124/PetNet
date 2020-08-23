@@ -49,7 +49,7 @@ namespace AnimalShelter.API.Controllers
             return Ok(userToReturn);
         }
 
-        [HttpPut("{id}", Name = "GetUser")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))

@@ -34,6 +34,7 @@ login(model: any) {
                 localStorage.setItem('user', JSON.stringify(user.userToReturn));
                 this.decodedToken = this.jwtHelper.decodeToken(user.token);
                 this.currentUser = user.userToReturn;
+                this.changeMemberPhoto(this.currentUser.profilePictureUrl);
               }
             })
       );

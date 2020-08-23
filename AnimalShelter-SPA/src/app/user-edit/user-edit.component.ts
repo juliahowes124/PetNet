@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { AlertifyService } from '../_services/alertify.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User } from '../_models/user';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
@@ -28,10 +28,11 @@ export class UserEditComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
+  updateForm: FormGroup;
 
 
   constructor(private userService: UserService, private alertify: AlertifyService,
-              private route: ActivatedRoute, private authService: AuthService) { }
+              private route: ActivatedRoute, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -40,6 +41,8 @@ export class UserEditComponent implements OnInit {
       this.originalUser = data.user;
     });
     this.initializeUploader();
+
+    this.createRegisterForm(this.user);
   }
 
   fileOverBase(e: any): void {
@@ -74,21 +77,35 @@ export class UserEditComponent implements OnInit {
     };
   }
 
-  updateUser() {
-    this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
-      this.alertify.success('Profile updated successfully');
-      this.editForm.reset(this.user);
-    }, error => {
-      this.alertify.error(error);
+  createRegisterForm(user: User) {
+    this.updateForm = this.fb.group({
+      knownAs: [user.knownAs, Validators.required],
+      city: [user.city, Validators.required],
+      state: [user.state, Validators.required]
     });
   }
 
-  // isIntact() {
-  //   debugger;
-  //   if (editForm.value === this.originalUser) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
+  updateUser() {
+    if (this.updateForm.valid) {
+      this.user = Object.assign({}, this.updateForm.value);
+      this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
+        this.alertify.success('Profile updated successfully');
+        this.updateForm.reset(this.user);
+      }, error => {
+        this.alertify.error(error);
+      });
+    }
+  }
+
+  reset() {
+    this.updateForm.reset(this.user);
+  }
+
+  isDifferent() {
+    const isSame = (this.updateForm.value.knownAs === this.user.knownAs
+              && this.updateForm.value.city === this.user.city
+              && this.updateForm.value.state === this.user.state);
+    return !isSame;
+  }
 
 }
