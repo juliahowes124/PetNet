@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,11 +14,18 @@ export class NavComponent implements OnInit {
   loginMode = false;
   userId: number;
   photoUrl: string;
+  messages: number;
 
-  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService,
+              private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    if (this.authService.decodedToken !== undefined) {
+      this.userService.getMessages(this.authService.decodedToken.nameid, 1, 1, 'Unread').subscribe(data => {
+        this.messages = data.pagination.totalItems;
+      });
+    }
   }
 
 
@@ -25,6 +33,9 @@ export class NavComponent implements OnInit {
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Logged in successfully');
       this.router.navigate(['/animals']);
+      this.userService.getMessages(this.authService.decodedToken.nameid, 1, 1, 'Unread').subscribe(data => {
+        this.messages = data.pagination.totalItems;
+      });
     }, error => {
       this.alertify.error(error);
     });

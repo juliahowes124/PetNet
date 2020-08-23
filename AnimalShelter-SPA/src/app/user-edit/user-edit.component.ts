@@ -88,6 +88,7 @@ export class UserEditComponent implements OnInit {
   updateUser() {
     if (this.updateForm.valid) {
       this.user = Object.assign({}, this.updateForm.value);
+      this.user.profilePictureUrl = this.originalUser.profilePictureUrl;
       this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
         this.alertify.success('Profile updated successfully');
         this.updateForm.reset(this.user);
