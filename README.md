@@ -14,7 +14,7 @@ My goal for this project was to start by building the major features of this web
 Front-end:
 - Angular 9
 - HTML/CSS
-- Javascript
+- Typescript
 - Bootstrap
 - Fontawesome
 
