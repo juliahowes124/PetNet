@@ -16,6 +16,7 @@ namespace AnimalShelter.API.Helpers
         public int MinAge { get; set; } = 0;
         public int MaxAge { get; set; } = 100;
         public string Species { get; set; }
+        public string State { get; set; }
         public string OrderBy { get; set; }
         public bool Savees { get; set; } = false;
         public bool Savers { get; set; } = false;

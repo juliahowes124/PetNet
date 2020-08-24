@@ -71,6 +71,12 @@ namespace AnimalShelter.API.Data
                 var species = animalParams.Species;
                 animals = animals.Where(a => a.Species == species);
             }
+            if (!string.IsNullOrEmpty(animalParams.State)) {
+                var state = animalParams.State;
+                var usersOfState = _context.Users.Where(u => u.State == state).Include(u => u.Animals);
+                var animalsOfState = usersOfState.Select(u => u.Animals);
+                // animals = animals.Where(a => animalsOfState.Contains(a));
+            }
             return await PagedList<Animal>.CreateAsync(animals, animalParams.PageNumber, animalParams.PageSize);
         }
 
