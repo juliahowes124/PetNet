@@ -4,6 +4,10 @@
     object-fit: cover;
 }
 
+#picContainer {
+    height: 320px;
+}
+
 #picContainer .btn {
     position: relative;
     transform: translate(20%, -120%);
@@ -65,7 +69,7 @@
     font-size: small;
 }
 
-#viewBar {
+.viewBar {
     text-align: center;
 }
 

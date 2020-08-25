@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-4">
       <div class="card" id="mainCard">
         <div class="container" id="picContainer">
           <span class="adopted" *ngIf="animal.adopted">ADOPTED</span>
@@ -8,28 +8,20 @@
           <button class="btn btn-primary" *ngIf="!animal.adopted" (click)="saveAnimal(animal.id)"><i class="fa fa-heart"></i></button>
         </div>
         <div id="mainCardBody" class="card-body">
-          <div id="viewBar">
+          <div class="viewBar">
             <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
           </div>
           <hr>
           <div id="innerCard" class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-              <div class="col-md-4-sm-2">
+              <div class="col-sm-3" style="margin-right: 10%">
                   <img id="ownerPic" src="{{animal.userPhotoUrl || '../../../assets/user.png'}}" alt="Owner Picture">
-              </div>
-              <div class="col-md-8-sm-3">
-                <div class="row">
-                  <div class="col">
-                    <h5 class="card-title">{{animal.userKnownAs}}</h5>
-                    <h6>@{{animal.username}}</h6>
-                    <h6>Last Active: {{animal.userLastActive | timeago}}</h6>
-                  </div>
-                  <div class="col">
-                    <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" (click)="checkAuth()"><i class="fa fa-envelope"></i></button>
-                  </div>
                 </div>
-                  
-                  
+              <div class="col">
+                    <h5 class="card-title">{{animal.userKnownAs}} - @{{animal.username}} 
+                      <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" (click)="checkAuth()">
+                      <i class="fa fa-envelope"></i></button></h5>
+                    <h6>Last Active: {{animal.userLastActive | timeago}}</h6>
                   <p class="card-text">{{animal.city}}, {{animal.state}}</p>
               </div>
             </div>
@@ -37,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-6">
       <div class="tab-panel">
         <tabset class="animal-tabset">
           <tab heading="About">
@@ -72,11 +64,6 @@
                 <div *ngFor="let goodWith of animalGoodWith" class="d-flex mr-1 ml-1"><span class="badge badge-info mb-2">{{goodWith.content}}</span></div>
               </div>
             </div>
-            
-            
-            
-      
-            
           </tab>
           <tab heading="Photos">
             <ngx-gallery style="display: inline-block; margin-bottom:20px;" [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> 
@@ -87,7 +74,7 @@
         </tabset>
       </div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-md-2">
       <ul class="list-group list-group-flush">
         <span class="badge badge-pill badge-warning">Adoption Fee: ${{animal.adoptionFee}}</span>
         <li *ngIf="animal.species !== null" class="list-group-item mt-5">{{animal.species | titlecase}}</li>

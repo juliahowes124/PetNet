@@ -15,7 +15,7 @@ namespace AnimalShelter.API.DTOs
         public int AgeMonths { get; set; }
         public string Gender { get; set; }
         public DateTime Posted { get; set; }
-        public DateTime AdoptBy { get; set; } = DateTime.Now.AddDays(90);
+        public DateTime AdoptBy { get; set; } = DateTime.Now.Date.AddDays(90);
         public int UserId { get; set; } 
         public int AdoptionFee { get; set; }
         public ICollection<Tag> Tags { get; set; }

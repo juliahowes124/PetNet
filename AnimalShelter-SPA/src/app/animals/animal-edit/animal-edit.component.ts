@@ -8,11 +8,13 @@ import { Animal } from 'src/app/_models/animal';
 import { Tag } from 'src/app/_models/tag';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-animal-edit',
   templateUrl: './animal-edit.component.html',
-  styleUrls: ['./animal-edit.component.css']
+  styleUrls: ['./animal-edit.component.css'],
+  providers: [DatePipe]
 })
 export class AnimalEditComponent implements OnInit {
 
@@ -30,7 +32,7 @@ export class AnimalEditComponent implements OnInit {
   animalUpdateForm: FormGroup;
   tagChanges = 0;
 
-  constructor(private route: ActivatedRoute, private alertify: AlertifyService,
+  constructor(private route: ActivatedRoute, private alertify: AlertifyService, private datepipe: DatePipe,
               private animalService: AnimalService, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class AnimalEditComponent implements OnInit {
     this.bsConfig = {
       containerClass: 'theme-blue'
     };
+
+    let date = this.datepipe.transform(this.animal.adoptBy, 'MM/dd/yyyy');
 
     this.animalLikes = {'walks': this.checkAnimalTag('walks'),
     'cuddles': this.checkAnimalTag('cuddles'),'food': this.checkAnimalTag('food'),
@@ -69,13 +73,14 @@ export class AnimalEditComponent implements OnInit {
       species: [this.animal.species],
       breed: [this.animal.breed],
       adoptionFee: [this.animal.adoptionFee],
-      adoptBy: [this.animal.adoptBy],
+      adoptBy: [this.datepipe.transform(this.animal.adoptBy, 'MM/dd/yyyy')],
       tags: [this.animal.tags]
 
     });
   }
 
   updateAnimal() {
+    console.log(this.animal.adoptBy);
     if (this.animalUpdateForm.valid) {
       this.animal = Object.assign({}, this.animalUpdateForm.value);
       this.animal.id = this.originalAnimal.id;
@@ -121,7 +126,8 @@ export class AnimalEditComponent implements OnInit {
               && this.animalUpdateForm.value.description === this.originalAnimal.description
               && this.animalUpdateForm.value.species === this.originalAnimal.species
               && this.animalUpdateForm.value.breed === this.originalAnimal.breed
-              && this.animalUpdateForm.value.adoptBy === this.originalAnimal.adoptBy
+              && this.datepipe.transform(this.animalUpdateForm.value.adoptBy, 'MM/dd/yyyy')
+                === this.datepipe.transform(this.originalAnimal.adoptBy, 'MM/dd/yyyy')
               && this.animalUpdateForm.value.adoptionFee == this.originalAnimal.adoptionFee
               && !this.tagChanges);
     return !isSame;
@@ -129,6 +135,7 @@ export class AnimalEditComponent implements OnInit {
 
   reset() {
     this.animalUpdateForm.reset(this.animal);
+    // this.animalUpdateForm.setValue(value: {adoptBy: this.datepipe.transform(this.originalAnimal.adoptBy, 'MM/dd/yyyy')};
     this.animal.tags = this.originalAnimal.tags;
   }
   }

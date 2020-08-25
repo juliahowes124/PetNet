@@ -49,7 +49,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { SavedAnimalsResolver } from './_resolvers/saved-animals.resolver';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SavedAnimalsComponent } from './animals/saved-animals/saved-animals.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MessageThreadComponent } from './message-thread/message-thread.component';
