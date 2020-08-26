@@ -1,9 +1,31 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="side-drawer" *ngIf="drawerToggle">
+      <ul class="navbar-nav mr-auto">
+        <button (click)="closeDrawer()">Exit</button>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/about']" (click)="closeDrawer()" routerLinkActive="router-link-active" >About</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/animals']" (click)="closeDrawer()">Browse Pets</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/rehome']" (click)="closeDrawer()" routerLinkActive="router-link-active" >Rehome</a>
+        </li>
+      </ul>
+    </div>
     <div class="row" style="width: 100%;">
-      <div class="col-md-1">
-        <a class="navbar-brand" [routerLink]="['/home']">(Web)</a>
+      <div class="col-2" *ngIf="mobile">
+        <button class="main-navigation__menu-btn" (click)="openDrawer()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="col">
+      <div class="col-2">
+        <a *ngIf="!mobile" class="navbar-brand" [routerLink]="['/home']">Website Name</a>
+        <i class="fa fa-paw fa-3x"></i>
+      </div>
+      <div class="col" *ngIf="!mobile">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
@@ -41,7 +63,7 @@
             </div>
             <div>
             <a class="dropdown-toggle text-light" dropdownToggle>
-              Welcome {{authService.decodedToken?.unique_name | titlecase}}
+              <div *ngIf="!mobile">Welcome {{authService.decodedToken?.unique_name | titlecase}}</div>
             </a>
             </div>
           </div>

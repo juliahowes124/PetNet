@@ -15,11 +15,19 @@ export class NavComponent implements OnInit {
   userId: number;
   photoUrl: string;
   messages: number;
+  drawerToggle = false;
+  mobile: boolean;
 
   constructor(public authService: AuthService, private alertify: AlertifyService,
               private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+
+    if (window.screen.width < 361) { // 768px portrait
+      this.mobile = true;
+    }
+    console.log(window.screen.width);
+
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
     if (this.authService.decodedToken !== undefined) {
       this.userService.getMessages(this.authService.decodedToken.nameid, 1, 1, 'Unread').subscribe(data => {
@@ -58,6 +66,14 @@ export class NavComponent implements OnInit {
     this.authService.currentPhotoUrl = null;
     this.alertify.message('logged out');
     this.router.navigate(['/home']);
+  }
+
+  openDrawer() {
+    this.drawerToggle = true;
+  }
+
+  closeDrawer() {
+    this.drawerToggle = false;
   }
 
 }
