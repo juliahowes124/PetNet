@@ -1,17 +1,18 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <div class="side-drawer" *ngIf="drawerToggle">
-      <ul class="navbar-nav mr-auto">
-        <button (click)="closeDrawer()">Exit</button>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/about']" (click)="closeDrawer()" routerLinkActive="router-link-active" >About</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/animals']" (click)="closeDrawer()">Browse Pets</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/rehome']" (click)="closeDrawer()" routerLinkActive="router-link-active" >Rehome</a>
-        </li>
-      </ul>
+    <div class="drawer-background" *ngIf="drawerToggle" (click)="closeDrawer()">
+      <div class="side-drawer" (click)="$event.stopPropagation()">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <button type="button" class="btn btn-info" [routerLink]="['/about']" (click)="closeDrawer()" routerLinkActive="router-link-active" >About</button>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <button type="button" class="btn btn-info" [routerLink]="['/animals']" (click)="closeDrawer()">Browse Pets</button>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <button type="button" class="btn btn-info" [routerLink]="['/rehome']" (click)="closeDrawer()" routerLinkActive="router-link-active" >Rehome</button>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="row" style="width: 100%;">
       <div class="col-2" *ngIf="mobile">

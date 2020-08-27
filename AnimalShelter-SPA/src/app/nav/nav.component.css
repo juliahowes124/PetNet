@@ -49,7 +49,27 @@ img {
     z-index: 100;
     height: 100vh;
     width: 70%;
-    background: rgb(34, 33, 33);
+    background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+
+  .drawer-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    height: 100vh;
+    width: 100%;
+    background: rgb(133, 130, 130);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+
+  .side-drawer ul{
+      align-items: center;
+      margin-top: 200px;
+  }
+
+  .side-drawer ul li{
+      margin-top: 1rem;
   }
   
