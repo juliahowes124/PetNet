@@ -10,9 +10,7 @@
     </div>
 </div>
 
-<div *ngIf="loggedIn()" class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-4">
+<div *ngIf="loggedIn()" [ngClass]="{container: !mobile}">
       <form [formGroup]="animalRegisterForm" (ngSubmit)="registerAnimal()">
         <h2 class="text-center text-primary">Create Your Pet's Profile</h2>
         <hr>
@@ -70,7 +68,7 @@
 
         <h6 class="mt-3">Likes:</h6>
         <div class="row">
-          <div class="form-group col-md-4" *ngFor="let like of likes">
+          <div class="form-group col-4" *ngFor="let like of likes">
             <label class="checkbox-inline">
                 <input type="checkbox" (click)="addOrRemoveTag(like,'like')"> {{like}}
             </label>
@@ -78,7 +76,7 @@
         </div>
         <h6 class="mt-3">Qualities:</h6>
         <div class="row">
-          <div class="form-group col-md-4" *ngFor="let quality of qualities">
+          <div class="form-group col-4" *ngFor="let quality of qualities">
             <label class="checkbox-inline">
                 <input type="checkbox"  (click)="addOrRemoveTag(quality,'quality')"> {{quality}}
             </label>
@@ -86,7 +84,7 @@
         </div>
         <h6 class="mt-3">Good With:</h6>
         <div class="row">
-          <div class="form-group col-md-4" *ngFor="let goodWith of goodWith">
+          <div class="form-group col-4" *ngFor="let goodWith of goodWith">
             <label class="checkbox-inline">
                 <input type="checkbox" (click)="addOrRemoveTag(goodWith,'goodWith')"> {{goodWith}}
             </label>
@@ -98,7 +96,5 @@
         </div>
         
       </form>
-    </div>
-  </div>
 </div>
 

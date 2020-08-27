@@ -1,9 +1,6 @@
 
+<div [ngClass]="{'container': !mobile}">
 
-
-<div  class="container">
-  <div class="row justify-content-center">
-    <div class="col-4">
       <form [formGroup]="registerForm" (ngSubmit)="register()">
         <h2 class="text-center text-primary">Sign Up</h2>
         <hr>
@@ -84,6 +81,5 @@
         
       </form>
     </div>
-  </div>
-</div>
+
 

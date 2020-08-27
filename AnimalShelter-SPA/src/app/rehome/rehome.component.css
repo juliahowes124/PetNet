@@ -10,3 +10,11 @@
 .radio-inline {
     float: right;
 }
+
+.container {
+    width: 40%;
+}
+
+form {
+    margin: 10px;
+}

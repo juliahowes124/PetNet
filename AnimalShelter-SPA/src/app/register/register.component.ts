@@ -16,6 +16,7 @@ import { User } from '../_models/user';
 export class RegisterComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
+  mobile: boolean;
   states: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
                       'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
                       'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska',
@@ -26,6 +27,9 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
+    if (window.screen.width < 800) { // 768px portrait
+      this.mobile = true;
+    }
     this.createRegisterForm();
   }
 

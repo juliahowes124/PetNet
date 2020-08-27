@@ -1,8 +1,6 @@
-<div  class="container">
-  <div class="row justify-content-center">
-    <div class="col-4">
+<div  [ngClass]="{'container': !mobile}">
       <form #loginForm="ngForm" (ngSubmit)="login()">
-        <h2>Login</h2>
+        <h2 style="text-align: center;">Login</h2>
       
         <div class="form-group">
           <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username">
@@ -18,7 +16,5 @@
         </div>
       </form>
     </div>
-  </div>
-</div>
 
 

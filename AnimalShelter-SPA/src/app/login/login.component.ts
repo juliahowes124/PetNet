@@ -10,10 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
+  mobile: boolean;
 
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
   ngOnInit() {
+    if (window.screen.width < 800) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
   login() {

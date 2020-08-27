@@ -19,6 +19,7 @@ export class RehomeComponent implements OnInit {
   animal: Animal;
   animalRegisterForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
+  mobile: boolean;
 
   likes = new Set(['walks', 'cuddles', 'food', 'toys', 'sleeping', 'outdoors']);
   qualities = new Set(['friendly', 'energetic', 'smart', 'funny', 'loving', 'independent']);
@@ -29,6 +30,9 @@ export class RehomeComponent implements OnInit {
               private alertify: AlertifyService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
+    if (window.screen.width < 800) { // 768px portrait
+      this.mobile = true;
+    }
 
     this.bsConfig = {
       containerClass: 'theme-blue'
