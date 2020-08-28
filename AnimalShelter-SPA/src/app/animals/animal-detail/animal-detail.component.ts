@@ -22,6 +22,7 @@ export class AnimalDetailComponent implements OnInit {
   animalLikes: Tag[];
   animalQualities: Tag[];
   animalGoodWith: Tag[];
+  mobile: boolean;
 
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
@@ -32,6 +33,10 @@ export class AnimalDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.animal = data.animal;
     });
+
+    if (window.screen.width < 800) { // 768px portrait
+      this.mobile = true;
+    }
 
     if (this.authService.decodedToken !== undefined) {
       this.userId = this.authService.decodedToken.nameid;

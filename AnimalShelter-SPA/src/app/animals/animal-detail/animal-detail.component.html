@@ -1,26 +1,26 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-4">
-      <div class="card" id="mainCard">
+      <div class="card">
         <div class="container" id="picContainer">
           <span class="adopted" *ngIf="animal.adopted">ADOPTED</span>
           <img class="card-img-top img-thumbnail" [ngClass]="{'transparent' : animal.adopted}" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
           <button class="btn btn-primary" *ngIf="!animal.adopted" (click)="saveAnimal(animal.id)"><i class="fa fa-heart"></i></button>
         </div>
-        <div id="mainCardBody" class="card-body">
+        <div class="card-body">
           <div class="viewBar">
             <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
           </div>
           <hr>
-          <div id="innerCard" class="card mb-3" style="max-width: 540px;">
+          <div class="card" id="innerCard">
             <div class="row no-gutters">
-              <div class="col-sm-3" style="margin-right: 10%">
+              <div class="col-3 card-img-wrapper" style="margin-right: 10%">
                   <img id="ownerPic" src="{{animal.userPhotoUrl || '../../../assets/user.png'}}" alt="Owner Picture">
-                </div>
+                  <button *ngIf="!animal.adopted" class="btn btn-primary animate" (click)="checkAuth()">
+                    <i class="fa fa-envelope"></i></button>
+              </div>
               <div class="col">
-                    <h5 class="card-title">{{animal.userKnownAs}} - @{{animal.username}} 
-                      <button *ngIf="!animal.adopted" id="messageButton" class="btn btn-primary" (click)="checkAuth()">
-                      <i class="fa fa-envelope"></i></button></h5>
+                    <h5 class="card-title">{{animal.userKnownAs}} - @{{animal.username}}</h5>
                     <h6>Last Active: {{animal.userLastActive | timeago}}</h6>
                   <p class="card-text">{{animal.city}}, {{animal.state}}</p>
               </div>

@@ -24,32 +24,16 @@
     background-color: rgb(153, 56, 56);
   }
 
-#messageButton {
-    background-color: rgb(118, 206, 235);
-    width: 40px;
-    transform: translate(75%, 0);
-}
-
-#messageButton:hover {
-    background-color: lightskyblue;
-}
-
 #timeLeft {
     text-align: right;
 }
 
 
-#mainCard {
+.card{
     border: none;
 }
-#mainCardBody {
+.card-body {
     min-height: 180px;
-}
-
-#innerCard {
-    height: 70px;
-    border: none;
-    position: absolute;
 }
 
 .card-footer {
@@ -83,8 +67,8 @@
 }
 
 img {
-    height: 90px;
-    width: 90px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     padding: 1%;
     border-color: lightgrey;
@@ -96,12 +80,6 @@ div {
 
 .badge-pill {
     position: absolute;
-}
-
-#ownerPic {
-    width: 70px;
-    height: 70px;
-    margin-right: 10px;
 }
 
 .adopted {
@@ -121,4 +99,47 @@ div {
 
 .transparent {
     opacity: 50%;
+}
+
+#innerCard:hover img {
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.7; 
+}
+
+#innerCard img {
+    transform: scale(1.0, 1.0);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    object-fit: cover;
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+    object-fit: cover;
+    height: 60%;
+}
+
+.btn-primary {
+    position: absolute;
+    bottom: -20%;
+    left: 20%;
+    opacity: 0;
+    background-color: rgb(118, 206, 235);
+    width: 40px;
+}
+
+.btn-primary:hover {
+    background-color: lightskyblue;
+}
+
+.card-img-wrapper:hover .btn-primary {
+    bottom: 25%;
+    opacity: 1;
+}
+
+.animate {
+    transition: all 0.3s ease-in-out;
 }
