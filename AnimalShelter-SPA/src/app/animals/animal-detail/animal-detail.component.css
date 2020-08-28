@@ -101,14 +101,14 @@ div {
     opacity: 50%;
 }
 
-#innerCard:hover img {
+.inner-card:hover img {
     transform: scale(1.2, 1.2);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
     opacity: 0.7; 
 }
 
-#innerCard img {
+.inner-card img {
     transform: scale(1.0, 1.0);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
@@ -122,11 +122,25 @@ div {
     height: 60%;
 }
 
+.card-img-wrapper-mobile {
+    position: relative;
+    object-fit: cover;
+    height: 60%;
+}
+
 .btn-primary {
     position: absolute;
     bottom: -20%;
     left: 20%;
     opacity: 0;
+    background-color: rgb(118, 206, 235);
+    width: 40px;
+}
+
+.btn-primary-mobile {
+    position: absolute;
+    bottom: -80%;
+    left: 15%;
     background-color: rgb(118, 206, 235);
     width: 40px;
 }
@@ -142,4 +156,16 @@ div {
 
 .animate {
     transition: all 0.3s ease-in-out;
+}
+
+i {
+    color: black;
+}
+
+.icon-white {
+    color: white;
+}
+
+.owner-card {
+    min-height: 110px;
 }

@@ -36,7 +36,7 @@ export class AnimalDetailComponent implements OnInit {
       this.animal = data.animal;
     });
 
-    if (window.screen.width < 800) { // 768px portrait
+    if (window.screen.width < 350) { // 768px portrait
       this.mobile = true;
     }
 

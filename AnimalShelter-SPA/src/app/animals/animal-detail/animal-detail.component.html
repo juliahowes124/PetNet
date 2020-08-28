@@ -5,19 +5,19 @@
         <div class="container" id="picContainer">
           <span class="adopted" *ngIf="animal.adopted">ADOPTED</span>
           <img class="card-img-top img-thumbnail" [ngClass]="{'transparent' : animal.adopted}" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
-          <button class="btn btn-primary" *ngIf="!animal.adopted" (click)="saveAnimal(animal.id)"><i class="fa fa-heart"></i></button>
+          <button class="btn btn-secondary" *ngIf="!animal.adopted" (click)="saveAnimal(animal.id)"><i class="fa fa-heart icon-white"></i></button>
         </div>
         <div class="card-body">
           <div class="viewBar">
             <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
           </div>
           <hr>
-          <div class="card" id="innerCard">
+          <div class="card owner-card" [ngClass]="{'inner-card': !mobile}">
             <div class="row no-gutters">
-              <div class="col-3 card-img-wrapper" style="margin-right: 10%">
+              <div class="col-3" [ngClass]="{'card-img-wrapper': !mobile, 'card-img-wrapper-mobile': mobile}" style="margin-right: 10%">
                   <img id="ownerPic" src="{{animal.userPhotoUrl || '../../../assets/user.png'}}" alt="Owner Picture">
-                  <button *ngIf="!animal.adopted" class="btn btn-primary animate" (click)="checkAuth()">
-                    <i class="fa fa-envelope"></i></button>
+                  <button *ngIf="!animal.adopted" class="btn" [ngClass]="{'btn-primary': !mobile, animate: !mobile, 'btn-primary-mobile': mobile}" (click)="checkAuth()">
+                    <i class="fa fa-envelope icon-white"></i></button>
               </div>
               <div class="col">
                     <h5 class="card-title">{{animal.userKnownAs}} - @{{animal.username}}</h5>
