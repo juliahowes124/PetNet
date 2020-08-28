@@ -1,7 +1,18 @@
-.card {
+.card-large {
     width: 50%;
     margin-left: 25%;
+}
+
+.row {
+    margin-left: 5px;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.row-large {
+    margin-left: 25%;
+    margin-top: 10px;
+    width: 25%;
 }
 
 .chat {
@@ -23,7 +34,7 @@
 
 .card-body {
     overflow-y: scroll;
-    height: 500px;
+    height: 425px;
     width: 100%;
 }
 .card-footer {
@@ -41,7 +52,7 @@ img {
 	position: relative;
 	background: #d8d5d6;
     border-radius: .4em;
-    max-width: 300px;
+    max-width: 50%;
     padding: 5px;
     margin-right: 10px;
     margin-left: 10px;
