@@ -25,10 +25,9 @@ export class MessageThreadComponent implements OnInit {
               private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (window.screen.width < 800) { // 768px portrait
+    if (window.screen.width < 360) { // 768px portrait
       this.mobile = true;
     }
-
     const currentUserId = +this.authService.decodedToken.nameid;
     this.route.data
       .pipe(

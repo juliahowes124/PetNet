@@ -1,7 +1,18 @@
-.large-card {
+.card-large {
     width: 50%;
     margin-left: 25%;
+}
+
+.row {
+    margin-left: 5px;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.row-large {
+    margin-left: 25%;
+    margin-top: 10px;
+    width: 25%;
 }
 
 .small-card {
@@ -46,7 +57,7 @@
 
 .card-body {
     overflow-y: scroll;
-    height: 400px;
+    height: 425px;
     width: 100%;
 }
 .card-footer {

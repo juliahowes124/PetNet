@@ -1,15 +1,14 @@
-<div class="row" [ngClass]="{'large-info': !mobile, 'small-info': mobile}">
+<div class="row" [ngClass]="{'row-large': !mobile}">
   <div class="col-3">
-    <img [ngClass]="{'large-pic': !mobile, 'small-pic': mobile}" class="rounded-circle" src="{{recipient.profilePictureUrl || '../../../assets/user.png'}}"> 
+    <img style="height: 60px; width: 60px; margin: 0;" class="rounded-circle" src="{{recipient.profilePictureUrl || '../../../assets/user.png'}}"> 
   </div>
   <div class="col-9">
-    <h4 *ngIf="!mobile">{{recipient.knownAs}}</h4>
-    <h6 *ngIf="mobile">{{recipient.knownAs}}</h6>
+    <h4>{{recipient.knownAs}}</h4>
     <small>Last Active: {{recipient.lastActive | timeago}}</small>
   </div>
 </div>
 
-<div [ngClass]="{'large-card': !mobile, 'small-card': mobile}">
+<div class="card" [ngClass]="{'card-large': !mobile}">
   <div class="card-body">
     <div *ngIf="messages?.length === 0">
       <p>No messages yet</p>
