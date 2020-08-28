@@ -9,7 +9,9 @@
         </div>
         <div class="card-body">
           <div class="viewBar">
-            <i class="fa fa-eye mr-3"> Views {{animal.views}}</i><i class="fa fa-heart mr-3"> Saves {{animal.saves}}</i> <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i>
+            <!-- <i class="fa fa-eye mr-3"> Views {{animal.views}}</i> -->
+            <i class="fa fa-heart mr-3"> {{animal.saves}}</i>
+            <!-- <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i> -->
           </div>
           <hr>
           <div class="card owner-card" [ngClass]="{'inner-card': !mobile}">

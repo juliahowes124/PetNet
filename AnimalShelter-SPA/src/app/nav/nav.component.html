@@ -2,8 +2,11 @@
     <div class="drawer-background" *ngIf="drawerToggle" (click)="closeDrawer()">
       <div class="side-drawer" (click)="$event.stopPropagation()">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" routerLinkActive="active">
+          <!-- <li class="nav-item" routerLinkActive="active">
             <button type="button" class="btn btn-info" [routerLink]="['/about']" (click)="closeDrawer()" routerLinkActive="router-link-active" >About</button>
+          </li> -->
+          <li class="nav-item" routerLinkActive="active">
+            <button type="button" class="btn btn-info" [routerLink]="['/home']" (click)="closeDrawer()">Home</button>
           </li>
           <li class="nav-item" routerLinkActive="active">
             <button type="button" class="btn btn-info" [routerLink]="['/animals']" (click)="closeDrawer()">Browse Pets</button>
@@ -22,15 +25,14 @@
           <span></span>
         </button>
       </div>
-      <div class="col-2">
+      <div class="col-1">
         <a *ngIf="!mobile" class="navbar-brand" [routerLink]="['/home']">Website Name</a>
-        <i class="fa fa-paw fa-3x"></i>
       </div>
       <div class="col" *ngIf="!mobile">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" routerLinkActive="active">
+          <!-- <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
-          </li>
+          </li> -->
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/animals']">Browse Pets</a>
           </li>
