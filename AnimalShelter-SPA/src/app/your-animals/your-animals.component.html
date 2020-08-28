@@ -12,7 +12,7 @@
 
 <div class="container mt-5">
   <div class="row">
-    <div *ngFor="let animal of animals" class="col-lg-6">
+    <div *ngFor="let animal of animals" class="col-md-6">
       
           <div class="card mb-5">
             <span class="adopted" *ngIf="animal.adopted">ADOPTED</span>
@@ -21,17 +21,16 @@
                 <strong>{{animal.name}}</strong>
               </div>
               <div class="row">
-                <div class="col md-3">
+                <div class="col-md-6">
                     <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
-                </div>
-                <div class="col md-9">
+                    <div class="view-bar">
+                      <i class="fa fa-eye mr-3"> {{animal.views}}</i><i class="fa fa-heart mr-3"> {{animal.saves}}</i> <i class="fa fa-comment-o"> {{animal.inquiries}}</i>
+                    </div>
+                  </div>
+                <div class="col-md-6" style="margin-top: 1rem">
                   <p>Posted: {{animal.posted | timeago}}</p>
                   <p><i class="fa fa-hourglass"></i> {{timeLefts[animal.id]}} Days Left</p>
-                  <p>Saved by {{animal.saves}} people</p>
                 </div>
-              </div>
-              <div id="viewBar">
-                <i class="fa fa-eye mr-3"> {{animal.views}}</i><i class="fa fa-heart mr-3"> {{animal.saves}}</i> <i class="fa fa-comment-o"> {{animal.inquiries}}</i>
               </div>
             </div>
             <div class="card-footer" [ngClass]="{'transparent' : animal.adopted}">

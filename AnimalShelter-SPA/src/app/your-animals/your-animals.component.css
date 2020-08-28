@@ -6,8 +6,7 @@
 }
 
 .card-body {
-    height: 300px;
-    width: 500px;
+    min-height: 300px;
 }
 
 strong {
@@ -43,6 +42,10 @@ strong {
     text-align: center;
     transform: translateX(50%);
 
+}
+
+.view-bar {
+    text-align: center;
 }
 
 
