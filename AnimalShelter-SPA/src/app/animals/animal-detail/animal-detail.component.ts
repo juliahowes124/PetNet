@@ -23,6 +23,8 @@ export class AnimalDetailComponent implements OnInit {
   animalQualities: Tag[];
   animalGoodWith: Tag[];
   mobile: boolean;
+  galHeight: string;
+  galWidth: string;
 
 
   constructor(private animalService: AnimalService, private alertify: AlertifyService, private route: ActivatedRoute,
@@ -52,10 +54,18 @@ export class AnimalDetailComponent implements OnInit {
       this.timeLeft = 0;
     }
 
+    if (this.mobile) {
+      this.galHeight = '300px';
+      this.galWidth = '100%';
+    } else {
+      this.galHeight = '500px';
+      this.galWidth = '100%';
+    }
+
     this.galleryOptions = [
       {
-        width: '500px',
-        height: '500px',
+        width: this.galWidth,
+        height: this.galHeight,
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
