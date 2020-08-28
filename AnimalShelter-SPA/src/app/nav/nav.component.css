@@ -43,8 +43,9 @@ img {
     background: white;
   }
 
-  .side-drawer {
+  .drawer-visible {
     position: fixed;
+    visibility: visible;
     left: 0;
     top: 0;
     z-index: 100;
@@ -52,17 +53,20 @@ img {
     width: 70%;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition: all 0.3s ease-in-out;
   }
 
-  .drawer-background {
+  .drawer-hidden {
     position: fixed;
-    left: 0;
+    visibility: visible;
+    left: -500px;
     top: 0;
     z-index: 100;
     height: 100vh;
-    width: 100%;
-    background: rgb(133, 130, 130);
+    width: 70%;
+    background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition: all 0.3s ease-in-out;
   }
 
   .side-drawer ul{
@@ -72,5 +76,12 @@ img {
 
   .side-drawer ul li{
       margin-top: 1rem;
+  }
+
+  .close-drawer-btn {
+      transform: translate(70px,-170px);
+      right: 0;
+      padding: 2px;
+      width: 25px;
   }
   

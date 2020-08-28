@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <div class="drawer-background" *ngIf="drawerToggle" (click)="closeDrawer()">
-      <div class="side-drawer" (click)="$event.stopPropagation()">
+      <div class="side-drawer" [ngClass]="{'drawer-visible': drawerToggle, 'drawer-hidden':!drawerToggle}">
         <ul class="navbar-nav mr-auto">
           <!-- <li class="nav-item" routerLinkActive="active">
             <button type="button" class="btn btn-info" [routerLink]="['/about']" (click)="closeDrawer()" routerLinkActive="router-link-active" >About</button>
           </li> -->
+          <button class="btn btn-danger close-drawer-btn" (click)="closeDrawer()"><i class="fa fa-times"></i></button>
           <li class="nav-item" routerLinkActive="active">
             <button type="button" class="btn btn-info" [routerLink]="['/home']" (click)="closeDrawer()">Home</button>
           </li>
@@ -16,7 +16,6 @@
           </li>
         </ul>
       </div>
-    </div>
     <div class="row" style="width: 100%;">
       <div class="col-2" *ngIf="mobile">
         <button class="main-navigation__menu-btn" (click)="openDrawer()">
@@ -52,7 +51,7 @@
             placeholder="Username" required [(ngModel)]= "model.username">
           <input class="form-control mr-sm-2" type="password" name="password" 
             placeholder="Password" required [(ngModel)]= "model.password">
-          <button type="button" class="mr-2" (click)="loginToggle()" style="background: rgb(189, 38, 38);color: rgb(105, 10, 10);"><i class="fa fa-times"></i></button>
+          <button class="btn btn-danger mr-2" (click)="loginToggle()"><i class="fa fa-times"></i></button>
           <button [disabled] = "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
         </div>
