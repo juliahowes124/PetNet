@@ -1,8 +1,36 @@
-.card {
+.large-card {
     width: 50%;
     margin-left: 25%;
     margin-top: 10px;
 }
+
+.small-card {
+    margin-top: 10px;
+}
+
+.large-info {
+    margin-left: 25%;
+    margin-top: 10px;
+    width: 25%;
+}
+
+.small-info {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.large-pic {
+    height: 60px;
+    width: 60px;
+    margin: 0;
+}
+
+.small-pic {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+}
+
 
 .chat {
     list-style: none;
@@ -16,14 +44,9 @@
     border-bottom: 1px dotted lightblue;
 }
 
-.rounded-circle {
-    height: 50px;
-    width: 50px;
-}
-
 .card-body {
     overflow-y: scroll;
-    height: 500px;
+    height: 400px;
     width: 100%;
 }
 .card-footer {
@@ -41,7 +64,7 @@ img {
 	position: relative;
 	background: #d8d5d6;
     border-radius: .4em;
-    max-width: 300px;
+    max-width: 50%;
     padding: 5px;
     margin-right: 10px;
     margin-left: 10px;

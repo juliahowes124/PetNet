@@ -1,14 +1,15 @@
-<div class="row" style="margin-left: 25%; margin-top: 10px; width: 25%;">
-  <div class="col-sm-3">
-    <img style="height: 60px; width: 60px; margin: 0;" class="rounded-circle" src="{{recipient.profilePictureUrl || '../../../assets/user.png'}}"> 
+<div class="row" [ngClass]="{'large-info': !mobile, 'small-info': mobile}">
+  <div class="col-3">
+    <img [ngClass]="{'large-pic': !mobile, 'small-pic': mobile}" class="rounded-circle" src="{{recipient.profilePictureUrl || '../../../assets/user.png'}}"> 
   </div>
-  <div class="col-sm-9">
-    <h4>{{recipient.knownAs}}</h4>
+  <div class="col-9">
+    <h4 *ngIf="!mobile">{{recipient.knownAs}}</h4>
+    <h6 *ngIf="mobile">{{recipient.knownAs}}</h6>
     <small>Last Active: {{recipient.lastActive | timeago}}</small>
   </div>
 </div>
 
-<div class="card">
+<div [ngClass]="{'large-card': !mobile, 'small-card': mobile}">
   <div class="card-body">
     <div *ngIf="messages?.length === 0">
       <p>No messages yet</p>

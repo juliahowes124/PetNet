@@ -19,11 +19,16 @@ export class MessageThreadComponent implements OnInit {
   newMessage: any = {};
   recipientId: number;
   recipient: User;
+  mobile: boolean;
 
   constructor(private userService: UserService, private authService: AuthService,
               private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    if (window.screen.width < 800) { // 768px portrait
+      this.mobile = true;
+    }
+
     const currentUserId = +this.authService.decodedToken.nameid;
     this.route.data
       .pipe(
