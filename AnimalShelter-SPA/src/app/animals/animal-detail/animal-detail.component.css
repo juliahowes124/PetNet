@@ -11,7 +11,6 @@
 #picContainer .btn {
     position: relative;
     transform: translate(20%, -120%);
-    background-color: darksalmon;
     color: white;
     font-size: 16px;
     padding: 10px 15px;
@@ -20,9 +19,6 @@
     border-radius: 5px;
   }
 
-  #picContainer .btn:hover {
-    background-color: rgb(153, 56, 56);
-  }
 
 #timeLeft {
     text-align: right;
@@ -54,7 +50,7 @@
 }
 
 .viewBar {
-    text-align: right;
+    text-align: left;
 }
 
 .list-group-item {

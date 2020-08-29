@@ -10,7 +10,7 @@
         <div class="card-body">
           <div class="viewBar">
             <!-- <i class="fa fa-eye mr-3"> Views {{animal.views}}</i> -->
-            <i class="fa fa-heart mr-3"> {{animal.saves}}</i>
+            <!-- <i class="fa fa-heart mr-3"> {{animal.saves}}</i> -->
             <!-- <i class="fa fa-comment-o"> Inquiries {{animal.inquiries}}</i> -->
           </div>
           <hr>
@@ -44,6 +44,7 @@
                   <div class="col" id="timeLeft">
                     <p>Posted {{animal.posted | timeago}}</p>
                     <i class="fa fa-hourglass"> {{timeLeft}} Days</i> 
+                    <i class="fa fa-heart ml-3"> {{animal.saves}}</i>
                   </div>
                 </div>
                 <hr style="border-color: white">

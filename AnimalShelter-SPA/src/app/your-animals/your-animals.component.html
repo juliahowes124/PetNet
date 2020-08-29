@@ -25,20 +25,21 @@
                     <img class="card-img-top img-thumbnail" src="{{animal.photoUrl || '../../../assets/user.png'}}" alt="{{animal.name}}">
                     <div class="view-bar">
                       <!-- <i class="fa fa-eye mr-3"> {{animal.views}}</i> -->
-                      <i class="fa fa-heart mr-3"> {{animal.saves}}</i>
+                      <!-- <i class="fa fa-heart mr-3"> {{animal.saves}}</i> -->
                       <!-- <i class="fa fa-comment-o"> {{animal.inquiries}}</i> -->
                     </div>
                   </div>
                 <div class="col-md-6" style="margin-top: 1rem">
                   <p>Posted: {{animal.posted | timeago}}</p>
                   <p><i class="fa fa-hourglass"></i> {{timeLefts[animal.id]}} Days Left</p>
+                  <p><i class="fa fa-heart mr-3"> {{animal.saves}}</i></p>
                 </div>
               </div>
             </div>
             <div class="card-footer" [ngClass]="{'transparent' : animal.adopted}">
               <div class="btn-group d-flex">
                 <button class="btn btn-success mr-1" [routerLink]="['/messages']" routerLinkActive="router-link-active" > <i class="fa fa-envelope"> Messages</i> </button>
-                <button class="btn btn-primary mr-1 ml-1" [routerLink]="['/animal/edit',animal.id]" routerLinkActive="router-link-active" ><i class="fa fa-pencil"> Edit Profile</i></button>
+                <button class="btn btn-secondary mr-1 ml-1" [routerLink]="['/animal/edit',animal.id]" routerLinkActive="router-link-active" ><i class="fa fa-pencil"> Edit Profile</i></button>
                 <button class="btn btn-warning ml-1" *ngIf="!animal.adopted" (click)="markAsAdopted(animal.id)"><i class="fa fa-check"> Mark As Adopted</i></button>
               </div>
             </div>
