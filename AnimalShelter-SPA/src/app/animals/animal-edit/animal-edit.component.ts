@@ -77,13 +77,15 @@ export class AnimalEditComponent implements OnInit {
       tags: [this.animal.tags]
 
     });
+    console.log(this.datepipe.transform(this.animal.adoptBy, 'MM/dd/yyyy'));
   }
 
   updateAnimal() {
-    console.log(this.animal.adoptBy);
     if (this.animalUpdateForm.valid) {
       this.animal = Object.assign({}, this.animalUpdateForm.value);
       this.animal.id = this.originalAnimal.id;
+      this.animal.photos = this.originalAnimal.photos;
+      this.animal.photoUrl = this.originalAnimal.photoUrl;
       this.animal.userId = this.originalAnimal.userId;
       this.animalService.updateAnimal(this.animal.id, this.animal).subscribe(next => {
         this.alertify.success('Profile updated successfully');
@@ -118,7 +120,6 @@ export class AnimalEditComponent implements OnInit {
   }
 
   isDifferent() {
-
     const isSame = (this.animalUpdateForm.value.name === this.originalAnimal.name
               && this.animalUpdateForm.value.gender === this.originalAnimal.gender
               && this.animalUpdateForm.value.ageYears == this.originalAnimal.ageYears
@@ -126,7 +127,7 @@ export class AnimalEditComponent implements OnInit {
               && this.animalUpdateForm.value.description === this.originalAnimal.description
               && this.animalUpdateForm.value.species === this.originalAnimal.species
               && this.animalUpdateForm.value.breed === this.originalAnimal.breed
-              && this.datepipe.transform(this.animalUpdateForm.value.adoptBy, 'MM/dd/yyyy')
+              && this.animalUpdateForm.value.adoptBy
                 === this.datepipe.transform(this.originalAnimal.adoptBy, 'MM/dd/yyyy')
               && this.animalUpdateForm.value.adoptionFee == this.originalAnimal.adoptionFee
               && !this.tagChanges);

@@ -68,8 +68,8 @@ export class AnimalService {
       return this.http.post(this.baseUrl + 'animals/' + userId + '/register', animal);
     }
 
-    updateAnimal(id: number, animal: Animal) {
-      return this.http.put(this.baseUrl + 'animals/' + id, animal);
+    updateAnimal(animalId: number, animal: Animal) {
+      return this.http.put(this.baseUrl + 'animals/' + animalId, animal);
     }
 
     setMainPhoto(animalId: number, id: number) {
