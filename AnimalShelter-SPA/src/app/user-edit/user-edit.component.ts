@@ -73,6 +73,8 @@ export class UserEditComponent implements OnInit {
         };
         this.userService.changeMainPhoto(photo.url, this.user);
         this.authService.changeMemberPhoto(photo.url);
+        this.authService.currentUser.profilePictureUrl = photo.url;
+        localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
       }
     };
   }

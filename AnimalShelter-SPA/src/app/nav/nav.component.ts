@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
     console.log(window.screen.width);
 
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
     if (this.authService.decodedToken !== undefined) {
       this.userService.getMessages(this.authService.decodedToken.nameid, 1, 1, 'Unread').subscribe(data => {
         this.messages = data.pagination.totalItems;
