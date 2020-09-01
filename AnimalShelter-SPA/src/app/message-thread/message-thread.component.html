@@ -31,7 +31,7 @@
               </small>
             </div>
             <br>
-            <div class="speech-bubble float-right">
+            <div class="speech-bubble speech-bubble-right float-right">
               {{message.content}}
               <div class="arrow bottom right"></div>
             </div>
@@ -45,12 +45,12 @@
           </span>
           <div class="chat-body">
             <div class="header">
-              <small class="text-muted float-right">
+              <small class="text-muted" style="float:right;">
                 <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
               </small>
               <small class="primary-font">{{message.senderKnownAs}}</small>
             </div>
-            <div class="speech-bubble float-left">
+            <div class="speech-bubble speech-bubble-left float-left">
               {{message.content}}
               <div class="arrow bottom left"></div>
             </div>

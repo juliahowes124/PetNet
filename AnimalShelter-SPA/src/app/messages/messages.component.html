@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div *ngIf="!mobile" class="container mt-5">
   <div class="row">
     <div class="btn-group">
       <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Unread" (click)="loadMessages()">
@@ -49,12 +49,62 @@
   </div>
 
 </div>
-<div class="d-flex justify-content-center">
-    <pagination [boundaryLinks]="true" 
-                [totalItems]="pagination.totalItems"
-                [itemsPerPage]="pagination.itemsPerPage"
-                [(ngModel)]="pagination.currentPage"
-                (pageChanged)="pageChanged($event)"
-              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-  </pagination>
+
+  <div *ngIf="mobile" class="container mt-5">
+    <div class="row">
+      <div class="btn-group">
+        <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Unread" (click)="loadMessages()">
+          <i class="fa fa-envelope"></i> Unread
+        </button>
+        <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Inbox" (click)="loadMessages()">
+          <i class="fa fa-envelope-open"></i> Inbox
+        </button>
+        <button class="btn btn-primary" [(ngModel)]="messageContainer" btnRadio="Outbox" (click)="loadMessages()">
+          <i class="fa fa-paper-plane"></i> Outbox
+        </button>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="messages.length == 0">
+      <h3>No new messages</h3>
+    </div>
+  
+    <div class="row" *ngIf="messages.length > 0">
+      <table class="table table-mobile table-hover" style="cursor: pointer">
+        <tr *ngFor="let message of messages" [routerLink]= "['/message-thread/', 
+          messageContainer == 'Outbox' ? message.senderId : message.recipientId, 
+          messageContainer == 'Outbox' ? message.recipientId : message.senderId]">
+          <td style="width: 30%;">
+            <div *ngIf="messageContainer != 'Outbox'">
+                  <img src={{message?.senderPhotoUrl}} class="img-circle rounded-circle">
+                  <strong>{{message.senderKnownAs}}</strong>
+                  <br>
+                  <small>{{message.messageSent | timeago}}</small>
+
+            </div>
+            <div *ngIf="messageContainer == 'Outbox'">
+                  <img src={{message?.recipientPhotoUrl}} class="img-circle rounded-circle">
+                  <strong>{{message.recipientKnownAs}}</strong>
+                  <br>
+                  <small>{{message.messageSent | timeago}}</small>
+            </div>
+          </td>
+          <td style="max-width: 20px; overflow: hidden;">{{message.content}}</td>
+          <td style="width: 10%;">
+            <button class="btn btn-danger" (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)"><i class="fa fa-trash"></i> </button>
+          </td>
+        </tr>
+      </table>
+  
+    </div>
+  
   </div>
+  <div class="d-flex justify-content-center">
+      <pagination [boundaryLinks]="true" 
+                  [totalItems]="pagination.totalItems"
+                  [itemsPerPage]="pagination.itemsPerPage"
+                  [(ngModel)]="pagination.currentPage"
+                  (pageChanged)="pageChanged($event)"
+                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+    </div>
