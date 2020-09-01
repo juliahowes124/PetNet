@@ -28,7 +28,7 @@
       <tr *ngFor="let message of messages" [routerLink]= "['/message-thread/', 
         messageContainer == 'Outbox' ? message.senderId : message.recipientId, 
         messageContainer == 'Outbox' ? message.recipientId : message.senderId]">
-        <td>{{message.content}}</td>
+        <td style="max-width: 50px; overflow: hidden;">{{message.content}}</td>
         <td>
           <div *ngIf="messageContainer != 'Outbox'">
                 <img src={{message?.senderPhotoUrl}} class="img-circle rounded-circle">
