@@ -1,7 +1,6 @@
 #cardContainer .btn {
-    position: relative;
-    transform: translate(30%, -1070%);
-    background-color: rgb(196, 52, 4);
+    position: absolute;
+    transform: translate(30%, -1000%);
     color: white;
     padding: none;
     border: none;

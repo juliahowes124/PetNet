@@ -10,7 +10,7 @@
   <div *ngFor="let animal of animals" class="col-lg-3 col-md-4 col-sm-6">
     <div class="container" id="cardContainer">
       <app-animal-card [animal]="animal"></app-animal-card>
-      <button class="btn btn-primary" (click)="removeSave(animal.id)"><i class="fa fa-minus-square"></i></button>
+      <button class="btn btn-danger" (click)="removeSave(animal.id)"><i class="fa fa-minus-square"></i></button>
     </div>
   </div>
   

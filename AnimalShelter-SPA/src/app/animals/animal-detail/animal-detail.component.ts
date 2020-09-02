@@ -40,7 +40,8 @@ export class AnimalDetailComponent implements OnInit {
       this.mobile = true;
     }
 
-    if (this.authService.decodedToken !== undefined) {
+    console.log(this.authService.decodedToken);
+    if (this.authService.decodedToken !== undefined && this.authService.decodedToken !== null) {
       this.userId = this.authService.decodedToken.nameid;
     }
 
@@ -99,7 +100,7 @@ export class AnimalDetailComponent implements OnInit {
   }
 
   saveAnimal(animalId: number) {
-    if (this.authService.decodedToken === undefined) {
+    if (this.authService.decodedToken === undefined || this.authService.decodedToken === null) {
       this.alertify.warning("To save this pet, you'll need an account first!");
       this.router.navigate(['/register']);
     } else {

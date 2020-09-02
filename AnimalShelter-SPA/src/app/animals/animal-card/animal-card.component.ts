@@ -29,7 +29,7 @@ export class AnimalCardComponent implements OnInit {
   }
 
   saveAnimal(animalId: number) {
-    if (this.authService.decodedToken === undefined) {
+    if (this.authService.decodedToken === undefined || this.authService.decodedToken === null) {
       this.alertify.warning('To save this pet, all you need to do is sign up!');
       this.router.navigate(['/register']);
     }

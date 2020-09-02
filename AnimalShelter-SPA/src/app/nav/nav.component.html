@@ -51,7 +51,7 @@
             placeholder="Username" required [(ngModel)]= "model.username">
           <input class="form-control mr-sm-2" type="password" name="password" 
             placeholder="Password" required [(ngModel)]= "model.password">
-          <button class="btn btn-danger mr-2" (click)="loginToggle()"><i class="fa fa-times"></i></button>
+          <button type="button" class="btn btn-danger mr-2" (click)="loginToggle()"><i class="fa fa-times"></i></button>
           <button [disabled] = "!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
         </div>
