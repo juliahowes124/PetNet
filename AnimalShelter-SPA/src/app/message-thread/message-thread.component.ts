@@ -49,6 +49,7 @@ export class MessageThreadComponent implements OnInit {
 
     this.userService.getUser(this.recipientId).subscribe(data => {
       this.recipient = data;
+      console.log(this.recipient);
     });
 
   }

@@ -90,6 +90,7 @@ export class AnimalEditComponent implements OnInit {
       this.animalService.updateAnimal(this.animal.id, this.animal).subscribe(next => {
         this.alertify.success('Profile updated successfully');
         this.animalUpdateForm.reset(this.animal);
+        this.originalAnimal = this.animal;
       }, error => {
         this.alertify.error(error);
       });
