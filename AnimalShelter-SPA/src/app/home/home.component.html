@@ -1,12 +1,14 @@
 <body class="fullscreen">
-  <div class="container mt-5">
-    <h1 class="text-center" style="margin-bottom: 5%;">PetNet</h1>
-      <div style="text-align: left">
-        <div class="text-center">
-          <button class="btn btn-success btn-lg mr-2" [routerLink]="['/animals']"><i class="fa fa-paw"> Adopt</i></button>
-          <button class="btn btn-warning btn-lg ml-2" [routerLink]="['/rehome']"><i class="fa fa-home"> Rehome</i></button>
-        </div>
+  <div class="container">
+    <h1 class="text-center" style="margin-bottom: 5%">PetNet</h1>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-success btn-lg mr-2" [routerLink]="['/animals']"><i class="fa fa-paw"> Adopt</i></button>
       </div>
+      <div class="col">
+        <button class="btn btn-warning btn-lg ml-2" [routerLink]="['/rehome']"><i class="fa fa-home"> Rehome</i></button>
+      </div>
+    </div>
   </div>
 </body>
 
