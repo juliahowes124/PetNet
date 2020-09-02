@@ -1,0 +1,13 @@
+label {
+    vertical-align: sub;
+}
+
+@media (max-width: 425px) {
+    .form-group {
+        width: 50%;
+    }
+
+    button {
+       width: 25%;
+    }
+  }
