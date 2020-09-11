@@ -13,18 +13,9 @@ My goal for this project was to start by building the major features of this web
 
 ## Technologies Used
 
-Front-end:
-- Angular 9
-- HTML/CSS
-- Typescript
-- Bootstrap
-- Fontawesome
+Front-end: Angular 9 / HTML / CSS / TypeScript / Bootstrap / FontAwesome
 
-Back-end:
-- ASP.NET Core
-- C#
-- SQLite
-- Postman
+Back-end: ASP.NET Core / C# / SQLite / Postman
 
 ## Features
 - Client-side login and register
