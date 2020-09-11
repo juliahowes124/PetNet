@@ -59,7 +59,11 @@ Back-end:
 ### Edit Pet Photos
 ![Edit Pet Photos](https://github.com/juliahowes124/PetApp/blob/master/pet_edit_photos.gif)
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+### Pagination, Filtering, and Sorting
+![Pagination](https://github.com/juliahowes124/PetApp/blob/master/pagination.gif)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Save and Unsave Pet Profiles
 ![Save/Unsave](https://github.com/juliahowes124/PetApp/blob/master/save_unsave_pet.gif)
 
