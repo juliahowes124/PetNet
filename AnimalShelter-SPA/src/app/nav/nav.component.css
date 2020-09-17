@@ -11,6 +11,11 @@
     transform: translateY(15px);
 }
 
+.dropdown-toggle::after {
+    float: right;
+    margin-top: -15px;
+    margin-right: -15px;
+}
 
 
 .dropdown-menu{

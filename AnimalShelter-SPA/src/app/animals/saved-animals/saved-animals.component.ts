@@ -64,6 +64,7 @@ export class SavedAnimalsComponent implements OnInit {
     this.userService.removeSave(this.authService.decodedToken.nameid, animalId).subscribe(() => {
       this.alertify.success('You have unsaved this pet');
       this.animals.splice(this.animals.findIndex(a => a.id === animalId), 1);
+      this.pagination.totalItems = this.pagination.totalItems - 1;
     }, error => {
       this.alertify.error(error);
     });
