@@ -28,42 +28,42 @@ Back-end: ASP.NET Core / C# / SQLite / Postman
 ## Feature Demos 
 
 ### User Registration
-![User Register](https://github.com/juliahowes124/PetApp/blob/master/user_register.gif)
+![User Register](https://github.com/juliahowes124/PetApp/blob/master/Demos/user_register.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Edit User Information
-![Edit User](https://github.com/juliahowes124/PetApp/blob/master/user_edit.gif)
+![Edit User](https://github.com/juliahowes124/PetApp/blob/master/Demos/user_edit.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Create a Pet Profile
-![Pet Register](https://github.com/juliahowes124/PetApp/blob/master/pet_register.gif)
+![Pet Register](https://github.com/juliahowes124/PetApp/blob/master/Demos/pet_register.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Edit Pet Details
-![Edit Pet Details](https://github.com/juliahowes124/PetApp/blob/master/pet_edit_details.gif)
+![Edit Pet Details](https://github.com/juliahowes124/PetApp/blob/master/Demos/pet_edit_details.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Edit Pet Tags
-![Edit Pet Tags](https://github.com/juliahowes124/PetApp/blob/master/pet_edit_tag.gif)
+![Edit Pet Tags](https://github.com/juliahowes124/PetApp/blob/master/Demos/pet_edit_tag.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Edit Pet Photos
-![Edit Pet Photos](https://github.com/juliahowes124/PetApp/blob/master/pet_edit_photos.gif)
+![Edit Pet Photos](https://github.com/juliahowes124/PetApp/blob/master/Demos/pet_edit_photos.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Pagination, Filtering, and Sorting
-![Pagination](https://github.com/juliahowes124/PetApp/blob/master/pagination.gif)
+![Pagination](https://github.com/juliahowes124/PetApp/blob/master/Demos/pagination.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Save and Unsave Pet Profiles
-![Save/Unsave](https://github.com/juliahowes124/PetApp/blob/master/save_unsave_pet.gif)
+![Save/Unsave](https://github.com/juliahowes124/PetApp/blob/master/Demos/save_unsave_pet.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Mark Your Pet as Adopted
-![Mark Adopted](https://github.com/juliahowes124/PetApp/blob/master/mark_as_adopted.gif)
+![Mark Adopted](https://github.com/juliahowes124/PetApp/blob/master/Demos/mark_as_adopted.gif)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Private Messaging System
-![Messaging](https://github.com/juliahowes124/PetApp/blob/master/messaging.gif)
+![Messaging](https://github.com/juliahowes124/PetApp/blob/master/Demos/messaging.gif)
 
 
