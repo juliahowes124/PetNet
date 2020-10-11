@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace AnimalShelter.API.Controllers
 {
     
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AnimalsController : ControllerBase

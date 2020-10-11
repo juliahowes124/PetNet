@@ -16,7 +16,6 @@ using Microsoft.Extensions.Options;
 
 namespace AnimalShelter.API.Controllers
 {
-    [Authorize]
     [Route("api/animals/{animalId}/photos")]
     [ApiController]
     public class PhotosController : ControllerBase

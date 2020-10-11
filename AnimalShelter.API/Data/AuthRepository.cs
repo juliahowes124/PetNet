@@ -15,15 +15,15 @@ namespace AnimalShelter.API.Data
         public async Task<User> Login(string username, string password)
         {
             //retrieve user from database
-            var user = await _context.Users.Include(u => u.ProfilePicture).FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _context.Users.Include(u => u.ProfilePicture).FirstOrDefaultAsync(x => x.UserName == username);
             
             //see if user exists
             if (user == null)
                 return null;
 
             //verify that given password matches the hash and salt in the database for that user
-            if (!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
-                return null;
+            // if (!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
+            //     return null;
             
             return user;
 
@@ -48,8 +48,8 @@ namespace AnimalShelter.API.Data
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            // user.PasswordHash = passwordHash;
+            // user.PasswordSalt = passwordSalt;
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -68,7 +68,7 @@ namespace AnimalShelter.API.Data
 
         public async Task<bool> UserExists(string username)
         {
-            if (await _context.Users.AnyAsync(u => u.Username == username))
+            if (await _context.Users.AnyAsync(u => u.UserName == username))
                 return true;
             return false;
         }

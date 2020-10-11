@@ -12,7 +12,6 @@ using AnimalShelter.API.Helpers;
 namespace AnimalShelter.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

@@ -8,6 +8,7 @@ using AnimalShelter.API.Data;
 using AnimalShelter.API.DTOs;
 using AnimalShelter.API.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,6 +18,7 @@ namespace AnimalShelter.API.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
 
     public class AuthController : ControllerBase
     {
@@ -61,7 +63,7 @@ namespace AnimalShelter.API.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+                new Claim(ClaimTypes.Name, userFromRepo.UserName)
             };
 
 
