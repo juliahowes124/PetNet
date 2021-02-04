@@ -1,5 +1,5 @@
 # PetNet
-A platform for owners looking to rehome their pet to connect with prospective adopters.
+A peer-to-peer pet adoption web application. 
 
 [See Feature Demos](#feature-demos)
 
