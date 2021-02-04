@@ -1,21 +1,17 @@
 # PetNet
-A platform where owners looking to rehome their pet can connect with prospective adopters.
+A platform for owners looking to rehome their pet to connect with prospective adopters.
 
 [See Feature Demos](#feature-demos)
 
 ## Inspiration
-After gaining an initial exposure to ASP.NET Core and Angular applications from this Udemy [course](https://www.udemy.com/course/build-an-app-with-aspnet-core-and-angular-from-scratch/),
-I wanted to apply what I learned to a real-world problem that I have always been passionate about: animal homelessness. I recently encountered the website [getyourpet.com](https://getyourpet.com/), and was impressed with its unique approach to helping solve the animal shelter
-crisis. By providing a way for pet owners to directly connect with individuals looking to adopt, they can completely bypass the shelter system,
-freeing up space and resources for the stray and abused animals, in turn preventing euthanasia and the spread of illness within the shelters.
-This system also reduces stress on the animals by smoothly transitioning them directly from one home to another.
-My goal for this project was to start by building the major features of this website using the knowledge I gained from Udemy.
+After gaining an initial exposure to ASP.NET Core and Angular from this Udemy [course](https://www.udemy.com/course/build-an-app-with-aspnet-core-and-angular-from-scratch/), I wanted to apply what I learned to a real-world problem that I have always been passionate about. I recently encountered the website [getyourpet.com](https://getyourpet.com/), and was impressed with its unique approach to helping solve the animal shelter crisis. The site offers a platform for pet owners to directly connect with prospective adopters, so that they can bypass the shelter system, helping to free up space and resources for the stray and abused animals who need it. This system also provides pets with a smoother and lower-stress transition from one home to another.
+My goal for PetNet was to build the main features of getyourpet.com using my newfound knowledge of ASP.NET and Angular.
 
 ## Technologies Used
 
-Front-end: Angular 9 / HTML / CSS / TypeScript / Bootstrap / FontAwesome
+Front End: Angular 9 / HTML / CSS / TypeScript / Bootstrap / FontAwesome
 
-Back-end: ASP.NET Core / C# / SQLite / Postman
+Back End: ASP.NET Core / C# / SQLite / Postman
 
 ## Features
 - Client-side login and register
