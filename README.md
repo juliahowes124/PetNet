@@ -17,6 +17,8 @@ Back End: ASP.NET Core / C# / SQLite / Postman
 - Client-side login and register
 - Secure storage of user information
 - Session management with authenticated routes
+- Error handling
+- Form validation
 - Photo upload functionality using Cloudinary for storage
 - A private-messaging system
 - Paging/Filtering/Sorting of available animals
